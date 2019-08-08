@@ -1,0 +1,2 @@
+exports.ids=[9],exports.modules={240:function(t,e,r){"use strict";r.r(e);var n={},l=r(1),component=Object(l.a)(n,function(){var t=this.$createElement;return(this._self._c||t)("div",[this._ssrNode("\n    手机端页面AAA\n")])},[],!1,null,null,"42f81422");e.default=component.exports}};
+//# sourceMappingURL=5f0cf013b7a1e5f78966.js.map

@@ -36,7 +36,7 @@ import { salesman } from "@@/assets/commen.js";
 export default {
     methods: {
         lianxi(){
-            window.open(salesman())
+            window.open(salesman(JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID))
         }
     },
 }
@@ -96,7 +96,7 @@ export default {
 }
 .needHelp{
     width: 335px;
-    height: 620px;
+    height: 200px;
     background-color: #f5f5f5;
     margin-top: 30px;
     padding: 25px 25px 15px;

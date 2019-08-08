@@ -390,3 +390,20 @@ ul li{
 .v-note-wrapper .v-note-panel.shadow{
   box-shadow:none !important;
 }
+/* =============================轮播图样式============== */
+.el-carousel__arrow{
+  width: 46px;
+  height: 46px;
+  font-size: 26px;
+
+}
+.el-carousel__arrow--left{
+  left: 99px;
+}
+.el-carousel__arrow--right{
+  right: 99px;
+}
+/* 右侧购物车 */
+.rightbtn{
+  z-index: 20;
+}

@@ -22,15 +22,6 @@
                <el-button class="loginbtn" :disabled="loging" @click="login"><span v-show="loging">正在</span>登陆 <i v-show="loging" class="el-icon-loading"></i> </el-button>
            </div>
         </div> 
-        <el-dialog
-            title="提示"
-            :visible.sync="dialogVisible"
-            width="30%">
-            <span>{{text}}</span>
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-            </span>
-        </el-dialog>
     </div>
 </template>
 <script>
@@ -42,7 +33,6 @@ export default {
             loging:false,
             iswait:false,
             waittime:60,
-            dialogVisible:false,
             text:'图片验证码错误',
             yanzhengphoto:'',
             isuser: true,        //账户密码登陆
@@ -86,12 +76,14 @@ export default {
             //====================================================================================
                     }).catch((err)=>{
                         this.text = err.response.data.message
-                        this.dialogVisible = true
+                        // this.dialogVisible = true
+                        this.$message.error('失败:' + err.response.data.message)
                     })
                 }
             }).catch((err)=>{
                 this.text = err.response.data.message
-                this.dialogVisible = true
+                // this.dialogVisible = true
+                this.$message.error('失败:' + err.response.data.message)
             })
         },
         login(){
@@ -116,9 +108,9 @@ export default {
                          this.loging = false
                     }
                 }).catch((err)=>{
-                    this.$message.error('登陆失败')
                     this.text = err.response.data.message
-                    this.dialogVisible = true
+                    // this.dialogVisible = true
+                    this.$message.error('失败:' + err.response.data.message)
                     this.shuaxinyanzheng()
                     this.loging = false
                 })
@@ -135,7 +127,8 @@ export default {
                         })
                 }).catch((err)=>{
                     this.text = err.response.data.message
-                    this.dialogVisible = true
+                    // this.dialogVisible = true
+                    this.$message.error('失败:' + err.response.data.message)
                     this.shuaxinyanzheng()
                     this.loging = false
                 })
@@ -158,7 +151,6 @@ export default {
     },
 }
 </script>
-
 <style lang="css" scoped>
 .hand:hover{
     cursor: pointer;
