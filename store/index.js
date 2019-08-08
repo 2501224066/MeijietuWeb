@@ -12,7 +12,7 @@ const store = () => new Vuex.Store({
         available_money:'/',                              //个人钱包
         indentBelongSelf:'',                              //个人收藏
         // header_img:'https://zhong-zhi-chuan-mei.oss-cn-beijing.aliyuncs.com/',   //OSS地址
-        header_img:'http://cdn.meijietu.cn/',   //OSS地址
+        header_img:'https://cdns.meijietu.cn/',   //OSS地址
         salesman:'',                                      //客服信息
         searchkeyword:'',                                 //搜索字段
         indexdata:'',                                     //首页数据
