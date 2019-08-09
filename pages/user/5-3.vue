@@ -28,7 +28,7 @@
                         <p v-for="(itemp,i) in item.goods_price" v-show="itemp.price !== '0.00'" :key="i">{{itemp.priceclassify_name}}: <span class="red">￥{{itemp.price}}</span></p>
                     </div>
                     <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':'已上架'}}</div>
-                    <div>取消审核</div>
+                    <div>请等待</div>
                 </div>
             </div>
         </div>

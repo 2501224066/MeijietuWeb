@@ -28,7 +28,7 @@
                         <p v-for="(itemp,i) in item.goods_price" v-show="itemp.price !== '0.00'" :key="i">{{itemp.priceclassify_name}}: <span class="red">￥{{itemp.price}}</span></p>
                     </div>
                     <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':'已上架'}}</div>
-                    <div>取消审核</div>
+                    <div v-if="item.verify_status==2" class="cr" @click="goodsDown(item.goods_num,index)">{{item.verify_status==0?'':item.verify_status==1?'':'商品下架'}}</div>
                 </div>
             </div>
         </div>
@@ -63,6 +63,16 @@ export default {
         kefu(){
             window.open('https://wpa.qq.com/msgrd?v=3&uin='+JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID+'&site=qq&menu=yes') 
         },
+        goodsDown(a,b){
+            gettoken().then(val=>{
+                return this.$axios.post('/goodsDown',{goods_num:a},{headers:{'Authorization':'Bearer'+val}})
+            }).then(res=>{
+                this.$message({message: '删除成功',type: 'success'})
+                this.goodsBelongSelf.splice(b,1)
+            }).catch(err=>{
+                this.$message.error('失败:'+err.response.data.message)
+            })
+        }
     },
 }
 </script>

@@ -9,7 +9,7 @@
       <div>
         <div class="contentleft">头像:</div>
         <div class="contentright touxiang">
-          <div>
+          <div class="yuan">
             <img :src="$store.state.header_img+head_portrait" alt="">
           </div>
         </div>
@@ -408,5 +408,8 @@ export default {
     bottom: 0;
     left: 50%;
     transform: translateX(-3px)
+}
+.yuan{
+  border-radius: 50%
 }
 </style>

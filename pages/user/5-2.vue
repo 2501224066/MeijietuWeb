@@ -31,6 +31,16 @@
                     <div v-if="item.verify_status==2" class="cr" @click="goodsDown(item.goods_num,index)">{{item.verify_status==0?'':item.verify_status==1?'':'商品下架'}}</div>
                 </div>
             </div>
+            <div class="fenye">
+                <el-pagination
+                background
+                @current-change="handleCurrentChange"
+                :current-page.sync="currentPage"
+                :page-size="15"
+                layout="prev, pager, next, jumper"
+                :total="15">
+                </el-pagination>
+            </div>
         </div>
     </div>
 </template>
@@ -43,6 +53,7 @@ export default {
         return {
             loading:true,
             goodsBelongSelf:[],
+            currentPage:1,
         }
     },
     mounted(){
@@ -50,8 +61,9 @@ export default {
             return this.$axios.post('/goodsBelongSelf',{},{headers:{'Authorization':'Bearer'+val}})
         }).then(res => {
             this.goodsBelongSelf = res.data.data
+            // this.total = res.data
             this.loading=false
-        }).catch(err =>{
+        }).catch(err => {
             this.loading=false
         })
     },
@@ -60,14 +72,22 @@ export default {
             window.open('https://wpa.qq.com/msgrd?v=3&uin='+JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID+'&site=qq&menu=yes') 
         },
         goodsDown(a,b){
-            gettoken().then(val=>{
-                return this.$axios.post('/goodsDown',{goods_num:a},{headers:{'Authorization':'Bearer'+val}})
-            }).then(res=>{
+            this.$axios.post('/goodsDown',{goods_num:a},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}})
+            .then(res=>{
                 this.$message({message: '删除成功',type: 'success'})
                 this.goodsBelongSelf.splice(b,1)
             }).catch(err=>{
                 this.$message.error('失败:'+err.response.data.message)
             })
+        },
+        handleCurrentChange(a){
+        this.$axios.post('/goodsBelongSelf?page=' + a,{},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}})
+        .then(res => {
+            this.goodsBelongSelf = res.data.data
+            this.loading=false
+        }).catch(err => {
+            this.loading=false
+        })
         }
     },
 }
@@ -155,5 +175,8 @@ span.modular{
 .contentitem_cont p {
     margin: 2px 0;
     font-size: 14px;
+}
+.fenye{
+    margin: 30px 300px;
 }
 </style>
