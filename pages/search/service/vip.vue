@@ -9,13 +9,13 @@
                 <div class="vc_general ">
                     <h2>每月仅三席!</h2>
                     <p>商业计划书由商业计划在线CEO/CFO/COO亲自担任项目经理，主笔完成。每月仅三席！</p>
-                    <el-button type="success">即刻预定</el-button>
+                    <el-button @click="yuding" type="success">即刻预定</el-button>
                 </div>
-                <div class="ceo">
+                <!-- <div class="ceo">
                     <div></div>
                     <div></div>
                     <div></div>
-                </div>
+                </div> -->
                 <p>商业计划在线的团队核心成员有风险投资公司的高管，曾经投资过上百家公司，并且为大量各种行业、各种规模的企业提供商业咨询服务；也有财富500强的高级管理人员，并主导创办和运营过多家企业。这些宝贵的经验财富让我们对商业计划书有着特别深刻的理解。</p>
                 <div class="select_cr">
                     <h2>不止于商业计划书</h2>
@@ -130,6 +130,7 @@
 import headert from '@@/components/nobanner.vue';
 import serR from '@@/components/service_liucheng.vue';
 import serL from '@@/components/service_left.vue';
+import {gettoken} from '@@/assets/commen.js'
 export default {
     layout:'header',
     data() {
@@ -139,7 +140,10 @@ export default {
     },
     methods: {
         lianxi(){
-            window.open('https://wpa.qq.com/msgrd?v=3&uin=28458999&site=qq&menu=yes')
+            window.open(salesman(JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID))
+        },
+        yuding(){
+            window.open(salesman(JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID))
         }
     },
     components:{

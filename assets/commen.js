@@ -3,8 +3,8 @@ export const gettoken = async () => {
     var newtoken
     var oldtoken = localStorage.getItem('access_token')
     try{
-        // let res = await axios.post('http://develop_webapi.meijietu.cn/api/refresh',{},{headers:{'Authorization':'Bearer'+oldtoken}})
-        let res = await axios.post('https://back.meijietu.cn/api/refresh',{},{headers:{'Authorization':'Bearer'+oldtoken}})
+        let res = await axios.post('http://develop_webapi.meijietu.cn/api/refresh',{},{headers:{'Authorization':'Bearer'+oldtoken}})
+        // let res = await axios.post('https://back.meijietu.cn/api/refresh',{},{headers:{'Authorization':'Bearer'+oldtoken}})
         newtoken = res.data.access_token
         localStorage.setItem('access_token',newtoken)
     }catch(err){

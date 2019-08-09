@@ -151,7 +151,7 @@ export default {
       this.userdata = this.$store.state.userdata;
     }
     if(localStorage.getItem('userdata')!=''){
-      this.userdata = JSON.parse(localStorage.getItem('userdata')) 
+      this.userdata = localStorage.getItem('userdata')
     }
   }
 };

@@ -7,7 +7,7 @@
       <div>
         <div class="contentleft">当前密码 :</div>
         <div class="contentright">
-            <el-input v-model="password" maxlength="15" placeholder="请输入当前密码"></el-input>
+            <el-input v-model="password" show-password maxlength="15" placeholder="请输入当前密码"></el-input>
         </div>
       </div>
       <div>

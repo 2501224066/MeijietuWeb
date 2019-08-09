@@ -150,10 +150,12 @@ export default {
   },
   mounted() {
     hmt()
-    var mytime
+    var mytime ,count
     if(mytime){clearInterval(mytime)}
     mytime = setInterval(() => {
-      gettoken()
+      gettoken().catch(err=>{
+        clearInterval(mytime)
+      })
       count +=1
     }, 360000);
      gettoken().then(val =>{ 
