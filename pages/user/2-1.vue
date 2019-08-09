@@ -181,14 +181,6 @@ export default {
     };
   },
   mounted() {
-    gettoken().then(val => {
-      this.token = val;
-    });
-    setInterval(() => {
-      gettoken().then(val => {
-        this.token = val;
-      });
-    }, 360000);
     this.$axios
       .post(
         "/indentBelongSelf",
@@ -262,8 +254,8 @@ export default {
       });
     },
     kefu(){
-      window.open('https://wpa.qq.com/msgrd?v=3&uin=28458999&site=qq&menu=yes')
-    },
+            window.open('https://wpa.qq.com/msgrd?v=3&uin='+JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID+'&site=qq&menu=yes') 
+        },
     handleAvatarSuccess(res, file) {
       this.$axios
         .post(

@@ -134,8 +134,8 @@ export default {
   },
   methods: {
     kefu(){
-      window.open('https://wpa.qq.com/msgrd?v=3&uin=28458999&site=qq&menu=yes')
-    },
+            window.open('https://wpa.qq.com/msgrd?v=3&uin='+JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID+'&site=qq&menu=yes') 
+        },
     allcheck() {
       if (this.checked) {
         this.checkList = this.list_num;

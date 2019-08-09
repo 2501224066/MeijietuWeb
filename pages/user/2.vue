@@ -161,14 +161,6 @@ export default {
     };
   },
   mounted() {
-    gettoken().then(val => {
-      this.token = val;
-    });
-    setInterval(() => {
-      gettoken().then(val => {
-        this.token = val;
-      });
-    }, 360000);
     this.$axios
       .post(
         "/indentBelongSelf",
@@ -244,14 +236,14 @@ export default {
       this.gengxin(a)
     },
     kefu(){
-      window.open('https://wpa.qq.com/msgrd?v=3&uin=28458999&site=qq&menu=yes')
-    },
+            window.open('https://wpa.qq.com/msgrd?v=3&uin='+JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID+'&site=qq&menu=yes') 
+        },
     handleAvatarSuccess(res, file) {
       this.$axios
         .post(
           "/addAchievementsFile",
           { indent_num: this.indent_num, achievements_file: res.data.path },
-          { headers: { Authorization: "Bearer" + this.token } }
+          { headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }
         )
         .then(res => {
           this.loading = false;
@@ -296,7 +288,7 @@ export default {
             indent_num: this.cancel_indent,
             cancel_cause: this.cancel_cause
           },
-          { headers: { Authorization: "Bearer" + this.token } }
+          { headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }
         ).then(res => {
           this.$message({message: '取消成功',type: 'success'})
           this.gengxin_status+=1
@@ -309,7 +301,7 @@ export default {
         this.$axios.post('/inTransactionSellerCancel',{
           indent_num: this.cancel_indent,
           cancel_cause: this.cancel_cause
-        }, { headers: { Authorization: "Bearer" + this.token } }).then(res => {
+        }, { headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }).then(res => {
           this.gengxin_status+=1
           this.loading = false
         }).catch(err =>{
@@ -327,7 +319,7 @@ export default {
       this.loading = true
       this.$axios.post('/sellerConfirmComplete',{
         indent_num:a
-      },{ headers: { Authorization: "Bearer" + this.token } }).then(res => {
+      },{ headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }).then(res => {
         this.$message({message: '确定订单成功',type: 'success'})
         this.gengxin_status+=1
         this.loading = false
@@ -346,7 +338,7 @@ export default {
         .post(
           "/acceptIndent",
           {indent_num:a},
-          { headers: { Authorization: "Bearer" + this.token } }
+          { headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }
         )
         .then(res => {
           this.$message({message: '成功接单',type: 'success'})

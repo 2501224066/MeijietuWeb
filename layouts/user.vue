@@ -134,8 +134,8 @@ export default {
   },
   methods: {
     kefu(){
-      window.open('https://wpa.qq.com/msgrd?v=3&uin=28458999&site=qq&menu=yes')
-    },
+            window.open('https://wpa.qq.com/msgrd?v=3&uin='+JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID+'&site=qq&menu=yes') 
+        },
     zhuxiao(){
       this.userdata = ''
       localStorage.setItem('userdata','')
@@ -222,11 +222,6 @@ div.el-submenu__title>span{
 .el-menu-item.is-active i{
   color: #409EFF;
 }
-.el-menu-item i{
-  /* color: transparent; */
-  font-size: 18px;
-  color: #303133;
-}
 .usercontent{
   width: 1000px;
   float: right;
@@ -286,5 +281,9 @@ a {
   width: 301px;
   height: 39px;
   background: url("/logo1.png");
+}
+.iconfont{
+  font-size: 18px;
+    color: #303133;
 }
 </style>

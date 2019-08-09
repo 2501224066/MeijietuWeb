@@ -534,12 +534,10 @@ import {gettoken,hmt} from '@@/assets/commen.js'
 export default {
   async asyncData({app,params}) {
     // let { data } = await app.$axios('/indexPage')
-    let { data:recommendGoods } = await app.$axios('/recommendGoods')
     let { data:banner } = await app.$axios('/banner')
     let { data:randomSalesman } = await app.$axios('/randomSalesman')
     let { data:information } = await app.$axios('/information')
     return { indexData:{
-      recommendGoods:recommendGoods.data,
       banner:banner.data,
       randomSalesman:randomSalesman.data,
       information:information.data
@@ -586,6 +584,12 @@ export default {
   mounted() {
     hmt()
     localStorage.setItem('salesman',JSON.stringify(this.indexData.randomSalesman))
+    if(localStorage.getItem('salesman')==''){
+      this.$axios('/recommendGoods').then(res=>{
+        localStorage.setItem('salesman',JSON.stringify(res.data.data))
+      })
+    }
+    
     // this.$store.commit('setsalesman',this.indexData)
   },
 }

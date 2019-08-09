@@ -91,7 +91,7 @@ export default {
         nextToken: this.nextToken //手机验证返回的token值
       }).then(res=>{
         this.steps = 3;
-        setTimeout(function(){
+        setTimeout(()=>{
           this.$router.push('/login')
         },1000)
       }).catch(err=>{

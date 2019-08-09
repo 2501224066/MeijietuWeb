@@ -58,7 +58,7 @@ export default {
               .get("/smsVerifCode", {
                 params: {
                   phone: this.$store.state.userdata.phone,
-                  code_type: "resetPassCode"
+                  code_type: "savePass"
                 }
               })
               .then(result => {
@@ -131,6 +131,7 @@ export default {
   justify-content: flex-end;
 }
 .contentright{
+  width: 320px;
   margin-top: -7px;
 }
 </style>

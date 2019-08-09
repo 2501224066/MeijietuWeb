@@ -57,7 +57,7 @@ export default {
               .get("/smsVerifCode", {
                 params: {
                   phone: this.phone,
-                  code_type: "checkPhone"
+                  code_type: "savePhone"
                 }
               })
               .then(result => {
