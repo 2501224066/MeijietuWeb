@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{482:function(n,t,e){"use strict";e.r(t);var l={},c=e(2),component=Object(c.a)(l,function(){var n=this.$createElement;return(this._self._c||n)("div",[this._v("\n    手机端页面AAA\n")])},[],!1,null,null,null);t.default=component.exports}}]);
