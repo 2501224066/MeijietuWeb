@@ -84,4 +84,4 @@ typings/
 sw.*
 
 # 个人设置
-#/assets/js/comm.js
+/assets/js/comm.js
