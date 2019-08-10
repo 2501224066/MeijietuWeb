@@ -1,0 +1,1 @@
+{"version":3,"file":"0e1830d85a879d0b6e7e.js","sources":["webpack:///./pages/m/index.vue"],"sourcesContent":["var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._ssrNode(\"\\n    手机端页面AAA\\n\")])}\nvar staticRenderFns = []\n\nexport { render, staticRenderFns }"],"mappings":"AAAA","sourceRoot":""}

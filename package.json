@@ -1,0 +1,28 @@
+{
+  "name": "meijietu",
+  "version": "1.0.0",
+  "description": "My amazing Nuxt.js project",
+  "author": "thy-tr",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.5.2",
+    "axios": "^0.18.0",
+    "cross-env": "^5.2.0",
+    "element-ui": "^2.7.2",
+    "koa": "^2.6.2",
+    "mavon-editor": "^2.7.5",
+    "npm": "^6.9.0",
+    "nuxt": "^2.4.0",
+    "vue-markdown-run": "^1.1.41"
+  },
+  "devDependencies": {
+    "babel-plugin-component": "^1.1.1",
+    "nodemon": "^1.18.9"
+  }
+}
