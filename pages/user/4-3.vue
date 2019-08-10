@@ -92,6 +92,9 @@ export default {
         },{headers:{'Authorization':'Bearer'+val}})
       }).then(res=>{
         this.$message({message: '修改成功',type: 'success'})
+        setTimeout(() => {
+          this.$router.push('/user')
+        }, 2000);
       }).catch(err =>{
         this.$message.error('失败:'+err.response.data.message)
       })

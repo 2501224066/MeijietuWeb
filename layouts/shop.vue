@@ -43,7 +43,8 @@
         </div> 
         <div class="lfctwo">
             <div>鄂ICP备19013711号-1</div>
-            <div>网站常驻法律顾问：常朋辉</div>
+            <div class="gongsi">网站常驻法律顾问：常朋辉</div>
+            <div>粤公网安备: 42011102003497</div>
             <div class="fr">客服热线：027-87229100</div>
         </div>
         <div class="lfctwo" style="border:none">

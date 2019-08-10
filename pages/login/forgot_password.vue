@@ -20,8 +20,8 @@
         <el-button @click="checkImgCode" :disabled="iswait">{{iswait?'等待'+waittime+'s':'发送验证码'}}</el-button>
         <el-button class="loginbtn" @click="login">下一步</el-button>
       </div>
-      <!-- 第二步================================================================================================ -->
-      <div class="logincontent" v-show="steps===1">
+      <!-- ====================================第二步=========================================================== -->
+      <div class="logincontent" v-show="steps===2">
         <el-input v-model="newpassword" maxlength="16" show-password placeholder="新密码"></el-input>
         <el-input v-model="password_confirmation" maxlength="16" show-password placeholder="确认密码"></el-input>
         <el-button class="loginbtn" @click="login2">确认</el-button>
@@ -77,7 +77,7 @@ export default {
         })
         .then(res => {
           this.nextToken = res.data.data.nextToken;
-          this.steps += 1;
+          this.steps = 2;
         })
         .catch(err => {
           this.$message.error('失败:'+err.response.data.message)

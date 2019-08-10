@@ -102,8 +102,11 @@
                 <div class="cr">
                     <div class="textp">
                         <h4 style="width:180px" class="nowrap">{{item.title}}</h4>
+                        <div class="ruanwenlink">
+                            <a :href="item.link" rel="nofollow">入口</a>
+                            <a :href="item.case_link" rel="nofollow">案例</a>
+                        </div>
                         <p>领域:{{item.filed_name}}</p>
-                        <p>地区:{{item.region_name}}</p>
                     </div>
                 </div>
                  <div class="cr">
@@ -118,50 +121,15 @@
                     <p>{{item.phone_weightlevel_id}}</p>
                 </div>
                 <div class="cr">
-                    <p>{{item.news_source_status}}</p>
+                    <p>{{item.news_source_status==0?'非新闻源':item.news_source_status==1?'新闻源':'/'}}</p>
                 </div>
-                <div class="cr">{{item.link_type}}</div>
+                <div class="cr"><p>{{item.link_type==0?'不可带网址':item.link_type==1?'可带网址':'/'}}</p></div>
                 <div class="cr">
-                    {{item.title_about}}
+                    <p>{{item.title_about}}</p>
                 </div>
                 <div>
                     <div @click.stop="collection(item.goods_id,index)" :class="issoucanglist.indexOf(index)==-1?'shoucang':'isshoucang'">收藏</div>
                     <div class="addcar" @click.stop="addshopcar(item.goods_id,item.goods_price[0].goods_price_id)"> 加入购物车 </div>
-                </div>
-            </div>
-            <div class="goodslistcontent goodslistitem">
-                <el-checkbox-group v-model="checkList">
-                    <el-checkbox :label='1'></el-checkbox>
-                </el-checkbox-group>
-                <div class="cr">
-                    <div class="textp">
-                        <h4 style="width:180px" class="nowrap">凤凰网客户端-首页推荐...</h4>
-                        <p>领域:美妆达人</p>
-                    </div>
-                </div>
-                 <div class="cr">
-                    <p>
-                      <span class="red fr">3000.00</span>
-                    </p>
-                </div>
-                <div class="cr">
-                    <p>8</p>
-                </div>
-                <div class="cr">
-                    <p>8</p>
-                </div>
-                <div class="cr">
-                    <p>新闻源</p>
-                </div>
-                <div class="cr"><p>非新闻源链接</p></div>
-                <div class="cr">
-                    <p>简介大大师傅 大范甘迪刚发的没给你 股份或控股否很过分恢复规划法规规划法规和梵蒂冈是多少是的是的发生发敖德萨多多</p>
-                    
-                </div>
-                <div>
-                    <div class="shoucang">收藏</div>
-                    <div class="addcar"> 加入购物车
-                    </div>
                 </div>
             </div>
             <div class="fenye">
@@ -326,6 +294,7 @@ export default {
         },
         alladd(){
             if(this.btnwait){return this.$message({message: '操作太频繁,请稍后',type: 'warning'})}
+            if(this.checkList.length == 0){return this.$message({message: '请选择商品',type: 'warning'})}
             if(localStorage.getItem('userdata')===''){
                 return this.$message({
                     message: '需要登陆才能加入购物车',
@@ -756,5 +725,20 @@ export default {
 }
 .goodslistcontent>div:nth-child(9){
     width: 180px;
+}
+.ruanwenlink{
+    height: 30px;
+    padding-top:  5px;
+}
+.ruanwenlink a{
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid #5141ED;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    color: #5141ED;
 }
 </style>

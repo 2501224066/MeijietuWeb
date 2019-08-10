@@ -1,10 +1,11 @@
 import axios from 'axios'
+import { url } from '@@/assets/js/comm.js'
+// const url = 'http://develop_webapi.meijietu.cn/api'
 export const gettoken = async () => {
     var newtoken
     var oldtoken = localStorage.getItem('access_token')
     try{
-        let res = await axios.post('http://develop_webapi.meijietu.cn/api/refresh',{},{headers:{'Authorization':'Bearer'+oldtoken}})
-        // let res = await axios.post('https://back.meijietu.cn/api/refresh',{},{headers:{'Authorization':'Bearer'+oldtoken}})
+        let res = await axios.post( url + '/refresh',{},{headers:{'Authorization':'Bearer'+oldtoken}})
         newtoken = res.data.access_token
         localStorage.setItem('access_token',newtoken)
     }catch(err){
@@ -36,12 +37,12 @@ export const selectGoods = (a) => {
         pricelevel_min:'',
         pricelevel_max:''
     }
-    if(!a){return axios('https://back.meijietu.cn/api/selectGoods',{params:params})}
+    if(!a){return axios(url + '/selectGoods',{params:params})}
     for(var k in a){
         if(a[k]===undefined){continue}
         params[k] = a[k]
     }
-    return axios('https://back.meijietu.cn/api/selectGoods',{params:params})
+    return axios(url + '/selectGoods',{params:params})
 }
 export const hmt = () => {
     var _hmt = _hmt || [];

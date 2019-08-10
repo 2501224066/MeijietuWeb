@@ -20,7 +20,7 @@
             <div class="persontopclass fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -42,7 +42,7 @@
             <div class="persontopclass fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -64,7 +64,7 @@
             <div class="persontopclass fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -86,7 +86,7 @@
             <div class="persontopclass fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -108,7 +108,7 @@
             <div class="persontopclass fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -143,7 +143,7 @@
             <div class="persontopclass bgblue fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -165,7 +165,7 @@
             <div class="persontopclass bgblue fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -187,7 +187,7 @@
             <div class="persontopclass bgblue fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr" >
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -209,7 +209,7 @@
             <div class="persontopclass bgblue fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr" >
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -231,7 +231,7 @@
             <div class="persontopclass bgblue fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -271,7 +271,7 @@
             <div class="persontopclass bgred fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -293,7 +293,7 @@
             <div class="persontopclass bgred fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -314,7 +314,7 @@
             <div class="persontopclass bgred fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -335,7 +335,7 @@
             <div class="persontopclass bgred fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -356,7 +356,7 @@
             <div class="persontopclass bgred fl">{{item.filed_name}}</div>
             <div :class="weixincolle.indexOf(item.goods_id)=='-1'?'collection cr fr':'collection cr fr colled'" @click="collection(item.goods_id,item.goods_id)">收藏</div>
             <div class="personportrait cr">
-              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods"></nuxt-link>
+              <nuxt-link :to="'/goods/'+item.goods_num" class="agoods" target="_blank"></nuxt-link>
               <img :src="$store.state.header_img + item.avatar_url">
             </div>
             <p>{{item.title}}</p>
@@ -585,7 +585,7 @@ export default {
     hmt()
     // localStorage.setItem('salesman',JSON.stringify(this.indexData.randomSalesman))
     if(localStorage.getItem('salesman')==''){
-      this.$axios('/randomSalesman').then(res=>{
+      this.$axios('/randomSalesman',{},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}}).then(res=>{
         localStorage.setItem('salesman',JSON.stringify(res.data.data))
       })
     }

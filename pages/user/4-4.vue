@@ -266,11 +266,15 @@ export default {
         },{headers:{'Authorization':'Bearer'+val}}).then(res => {
           this.$message({message: '认证成功',type: 'success'})
           this.$router.push('/user/4-5')
+          this.iswait = false
         }).catch(err => {
           this.$message.error('失败:'+err.response.data.message)
           this.iswait = false
         })
       })
+      setTimeout(() => {
+        this.iswait = false
+      }, 3000);
     },
     realnameEnterprise(){   //企业实名认证
       if(this.enterprise_name.search(/^[\u4e00-\u9fa5]+$/)== -1){return this.$message.error('请输入正确的企业名称')}
@@ -298,6 +302,7 @@ export default {
         },{headers:{'Authorization':'Bearer'+val}}).then(res => {
           this.$message({message: res.data.message,type: 'success'})
           this.$router.push('/user/4-5')
+          this.iswait = false
         }).catch(err => {
           this.$message.error('失败:'+err.response.data.message)
           this.iswait = false

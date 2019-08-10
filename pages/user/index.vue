@@ -28,11 +28,6 @@
             <nuxt-link to="/user/3-2" class="tixianbtn">充值</nuxt-link>
             <nuxt-link :to="$store.state.userdata.realname_status==0?'/user/4-4':'/user/3-3'" class="tixianbtn">提现</nuxt-link>
           </div>
-          <!-- <div>
-            <p>本月支出</p>
-            <p>15566.00元</p>
-            <nuxt-link to>查看详情</nuxt-link>
-          </div> -->
         </div>
       </div>
       <div class="myright">
@@ -127,7 +122,6 @@ export default {
   mounted() {
         this.token = localStorage.getItem('access_token')
         //查询客服信息
-        
         this.$axios
           .post(
             "/salsesmanInfo",
@@ -139,6 +133,7 @@ export default {
             localStorage.setItem('salesman',JSON.stringify(res.data.data))
           })
           .catch(err => {
+            // if(err.response.data.message == 'The token has been blacklisted'){return this.again()}
             this.$axios.post(
               "/distributionSalsesman",
               {},
@@ -223,6 +218,104 @@ export default {
       });
   },
   methods: {
+    getagain(){
+      this.token = localStorage.getItem('access_token')
+        //查询客服信息
+        this.$axios
+          .post(
+            "/salsesmanInfo",
+            {},
+            { headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }
+          )
+          .then(res => {
+            this.usalsesmanInfo = res.data.data;
+            localStorage.setItem('salesman',JSON.stringify(res.data.data))
+          })
+          .catch(err => {
+            // if(err.response.data.message == 'The token has been blacklisted'){return}
+            this.$axios.post(
+              "/distributionSalsesman",
+              {},
+              { headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }
+            );
+          });
+          //查询自己的订单
+          if(this.$store.state.userdata.identity == 2||this.$store.state.userdata===''){           //媒体主订单
+            if(this.$store.state.indentBelongSelf == ''){
+              this.$axios.post('/indentBelongSelf',{},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}}).then(res => {
+                this.$store.commit('setindent',res.data.data)
+                res.data.data.data.forEach(item => {
+                  this.oder[0].count+=1
+                  if(item.status==1){this.oder[1].count+=1}
+                  if(item.status==4){this.oder[2].count+=1}
+                  if(item.status==7){this.oder[3].count+=1}
+                  if(item.status==8&&item.status==9){this.oder[4].count+=1}
+                })
+                this.loading=false
+              })
+            }else {
+              this.$store.state.indentBelongSelf.data.forEach(item => {
+                this.oder[0].count+=1
+                  if(item.status==1){this.oder[1].count+=1}
+                  if(item.status==4){this.oder[2].count+=1}
+                  if(item.status==7){this.oder[3].count+=1}
+                  if(item.status==8&&item.status==9){this.oder[4].count+=1}
+                })
+                this.loading=false
+            }
+          }
+        if(this.$store.state.userdata.identity ==1){          //广告主订单
+        this.oder[0].title = '待付款'
+          if(this.$store.state.indentBelongSelf == ''){
+              this.$axios.post('/indentBelongSelf',{},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}}).then(res => {
+                this.$store.commit('setindent',res.data.data)
+                res.data.data.data.forEach(item => {
+                  if(item.status==0){this.oder[0].count+=1}
+                  if(item.status==1){this.oder[1].count+=1}
+                  if(item.status==4){this.oder[2].count+=1}
+                  if(item.status==7){this.oder[3].count+=1}
+                  if(item.status==8&&item.status==9){this.oder[4].count+=1}
+                })
+                this.loading=false
+              })
+            }else {
+              this.$store.state.indentBelongSelf.data.forEach(item => {
+                  if(item.status==0){this.oder[0].count+=1}
+                  if(item.status==1){this.oder[1].count+=1}
+                  if(item.status==4){this.oder[2].count+=1}
+                  if(item.status==7){this.oder[3].count+=1}
+                  if(item.status==8&&item.status==9){this.oder[4].count+=1}
+                })
+                this.loading=false
+            }
+        }
+        return this.$axios.post(
+          "/getCollection",
+          {},
+          { headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }
+        )
+      .then(res => {
+        this.collectionlist = res.data;
+        if(this.collectionlist[0].goods===null){this.loading=false;return this.collectionlist=[]}
+        this.collectionlist.forEach(item => {
+          if (item.goods.modular_id == 1) {
+            this.weixinlist.push(item);
+          } else if (item.goods.modular_id == 2) {
+            this.weibolist.push(item);
+          } else if (item.goods.modular_id == 3) {
+            this.videolist.push(item);
+          } else if (item.goods.modular_id == 4) {
+            this.selfmeida.push(item);
+          } else if (item.goods.modular_id == 5) {
+            this.softarticle.push(item);
+          }
+        });
+        this.loading = false
+      })
+      .catch(err => {
+        this.loading = false
+      });
+    },
     addcar(a,b){
       if(this.waitbtn){this.$message({message: '操作太频繁,请稍后',type: 'warning'})}
       this.waitbtn = true

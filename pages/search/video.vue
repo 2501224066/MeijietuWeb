@@ -114,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-                <nuxt-link class="agoods" :to="'/goods/'+item.goods_num"></nuxt-link>
+                <nuxt-link class="agoods" :to="'/goods/'+item.goods_num" target="_blank"></nuxt-link>
             </div>
             <div class="fenye">
                 <el-pagination

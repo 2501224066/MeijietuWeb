@@ -274,7 +274,7 @@ html {
 .meijietu{
   width:301px;
   height:39px;
-  background: url('/logo1.png');
+  background: url('/logo1.png') no-repeat;
   margin-right: 41px;
 }
 .layoutful li a{
@@ -377,7 +377,7 @@ ul li{
 .layoutfooterContent .erweima >div{
   width: 99px;
   height: 99px;
-  background: url('/hezuo/meijieerweima.png') 0 0/99px 99px no-repeat;
+  background: url('/hezuo/meijieerweima.jpg') 0 0/99px 99px no-repeat;
   margin-bottom: 10px;
 }
 .layoutbotton div{

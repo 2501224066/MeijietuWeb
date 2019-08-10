@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import city from './modules/city'
+import { url } from '@@/assets/js/comm.js'
 
 Vue.use(Vuex)
 
 const store = () => new Vuex.Store({
     state:{
         userdata:'',
-        imgcodehost:'http://develop_webapi.meijietu.cn/api',       //域名 测试
+        // imgcodehost:'http://develop_webapi.meijietu.cn/api',       //域名 测试
         // imgcodehost:'https://back.meijietu.cn/api',       //域名 线上
+        imgcodehost: url,
         available_money:'/',                              //个人钱包
         indentBelongSelf:'',                              //个人收藏
         // header_img:'https://zhong-zhi-chuan-mei.oss-cn-beijing.aliyuncs.com/',   //OSS地址

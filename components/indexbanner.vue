@@ -2,7 +2,10 @@
 <div>
     <div class="bgcf">
       <div class="search">
-      <nuxt-link to="/" class="logo cr"></nuxt-link>
+      <div class="lo">
+        <nuxt-link to="/" class="logo cr"></nuxt-link>
+        <h1>KOL,广告投放平台,营销推广,微信公众号,微博,小红书,视频,网红直播,短视频</h1>
+      </div>
       <div class="rightsearch">
         <div class="searchborder">
           <el-select v-model="value" placeholder="请选择" style="width:120px" class="elSele">
@@ -118,6 +121,13 @@ export default {
 .shopcar i {
   width: 22px;
   height: 22px;
+}
+.lo{
+  position: relative;
+}
+.lo h1{
+  position: absolute;
+  left: -99999px;
 }
 .logo {
   display: block;

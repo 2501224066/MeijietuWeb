@@ -109,7 +109,8 @@
         </div> 
         <div class="lfctwo">
             <div>鄂ICP备19013711号-1</div>
-            <div>网站常驻法律顾问：常朋辉</div>
+            <div class="gongsi">网站常驻法律顾问：常朋辉</div>
+            <div>粤公网安备: 42011102003497</div>
             <div class="fr">客服热线：027-87229100</div>
         </div>
         <div class="lfctwo" style="border:none">
@@ -174,6 +175,7 @@ export default {
           this.realname_status = res.data.data.realname_status
         })
       }else{
+        // if(err.response.data.message == 'The token has been blacklisted'){return}
         this.$message({message: '请登录',type: 'success'})
         this.$store.commit('setuserdata','')
         localStorage.setItem('userdata','')
@@ -280,10 +282,10 @@ a {
 .logo {
   width: 301px;
   height: 39px;
-  background: url("/logo1.png");
+  background: url("/logo1.png") no-repeat;
 }
 .iconfont{
   font-size: 18px;
-    color: #303133;
+  color: #303133;
 }
 </style>

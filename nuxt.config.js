@@ -1,5 +1,6 @@
 const pkg = require('./package')
-
+const url = require('./assets/js/comm.js')
+// import  url  from '@@/assets/js/comm.js'
 module.exports = {
   mode: 'universal',
 
@@ -53,8 +54,7 @@ module.exports = {
     '@nuxtjs/axios',
   ],
   axios:{
-    baseURL:'http://develop_webapi.meijietu.cn/api/'
-    // baseURL:'https://back.meijietu.cn/api'
+    baseURL: url.url
   },
   /*
   ** Build configuration
