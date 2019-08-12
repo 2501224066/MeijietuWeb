@@ -90,7 +90,7 @@
             class="upload-demo"
             :action="$store.state.imgcodehost+'/uploadFile'"
             multiple
-            :headers="{'Authorization':'Bearer'+token}"
+            :headers="{'Authorization':'Bearer'+localStorage.getItem('access_token')}"
             :data="{upload_type:'indent_word'}"
             name="file"
             :on-success="handleAvatarSuccess"
@@ -143,7 +143,6 @@ export default {
       loading: true,
       currentPage:1,       //当前分页
       btnwait:false,       //按钮节流阀
-      token: "",
       indent_num: "",
       indentdata: "", //个人订单全部数据
       indentclass: 1,

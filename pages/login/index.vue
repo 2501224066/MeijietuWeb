@@ -96,7 +96,6 @@ export default {
                     imgToken:this.phototoken
                 }).then((r)=>{
                     let res = r.data
-                    console.log(res.data.access_token)
                     if(res.data.access_token){
                         localStorage.setItem('access_token',res.data.access_token)
                         this.$axios.post('/me',{},{headers:{'Authorization':'Bearer'+res.data.access_token}}).then(result => {

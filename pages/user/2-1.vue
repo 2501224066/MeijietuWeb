@@ -117,7 +117,7 @@
             class="upload-demo"
             :action="$store.state.imgcodehost+'/uploadFile'"
             multiple
-            :headers="{'Authorization':'Bearer'+token}"
+            :headers="{'Authorization':'Bearer'+localStorage.getItem('access_token')}"
             :data="{upload_type:'indent_word'}"
             name="file"
             :on-success="handleAvatarSuccess"
@@ -162,7 +162,6 @@ export default {
       fukuanindent: "", //确认付款订单号
       dialogVisible: false, //取消订单弹出框
       loading: true,
-      token: "",
       indent_num: "",     //上传资料订单号
       indentdata: "", //个人订单全部数据
       indentclass: 1,

@@ -57,9 +57,8 @@ export default {
         }
     },
     mounted(){
-        gettoken().then(val =>{
-            return this.$axios.post('/goodsBelongSelf',{},{headers:{'Authorization':'Bearer'+val}})
-        }).then(res => {
+        this.$axios.post('/goodsBelongSelf',{},{headers:{'Authorization':'Bearer'+ localStorage.getItem('access_token')}})
+        .then(res => {
             this.goodsBelongSelf = res.data.data
             // this.total = res.data
             this.loading=false

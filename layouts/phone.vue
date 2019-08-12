@@ -17,9 +17,10 @@ export default {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 40px;
     background: #fff;
     border-top: #666;
+    border-top: 1px solid #ccc;
 }
 </style>
 
