@@ -60,6 +60,17 @@ export default {
             this.runwaterList = res.data.data
             this.loading=false
         }).catch(err => {
+            gettoken().then(val =>{
+                this.$axios.post('/walletInfo',{},{headers:{'Authorization':'Bearer'+val}}).then(res=>{
+                    this.$store.commit('setmoney',res.data.data.available_money)
+                })
+                return this.$axios.post('/runwaterList',{},{ headers: { Authorization: "Bearer" + val } })
+            }).then(res =>{
+                this.runwaterList = res.data.data
+                this.loading=false
+            }).catch(err => {
+                this.loading=false
+            })
             this.loading=false
         })
     },

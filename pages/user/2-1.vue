@@ -117,7 +117,7 @@
             class="upload-demo"
             :action="$store.state.imgcodehost+'/uploadFile'"
             multiple
-            :headers="{'Authorization':'Bearer'+localStorage.getItem('access_token')}"
+            :headers="{'Authorization':'Bearer'+ token}"
             :data="{upload_type:'indent_word'}"
             name="file"
             :on-success="handleAvatarSuccess"
@@ -164,6 +164,7 @@ export default {
       loading: true,
       indent_num: "",     //上传资料订单号
       indentdata: "", //个人订单全部数据
+      token:'',    //不能删
       indentclass: 1,
       indentlist: [],
       indentstatus0: [], //订单的状态分类列表
@@ -209,8 +210,11 @@ export default {
           }
         });
         this.loading = false;
+        this.token = localStorage.getItem('access_token')
       })
       .catch(err => {
+        gengxin()
+        this.token = localStorage.getItem('access_token')
         this.loading = false;
       });
   },
@@ -220,8 +224,8 @@ export default {
       if(!a){this.currentPage=1}
       this.$axios
       .post(
-        "/indentBelongSelf",
-        {page:a},
+        "/indentBelongSelf?page=" + a,
+        {},
         {
           headers: {
             Authorization: "Bearer" + localStorage.getItem("access_token")
@@ -315,6 +319,7 @@ export default {
     },
     beforeAvatarUpload() {
       this.loading = true;
+      this.token = localStorage.getItem('access_token')
       this.shanghcuanbtn = false
     },
     //删除订单

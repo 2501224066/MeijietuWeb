@@ -90,7 +90,7 @@
             class="upload-demo"
             :action="$store.state.imgcodehost+'/uploadFile'"
             multiple
-            :headers="{'Authorization':'Bearer'+localStorage.getItem('access_token')}"
+            :headers="{'Authorization':'Bearer'+ token}"
             :data="{upload_type:'indent_word'}"
             name="file"
             :on-success="handleAvatarSuccess"
@@ -146,6 +146,7 @@ export default {
       indent_num: "",
       indentdata: "", //个人订单全部数据
       indentclass: 1,
+      token: '',
       indentlist: [],
       indentstatus0: [], //订单的状态分类列表
       indentstatus1: [],
@@ -189,14 +190,17 @@ export default {
           }
         });
         this.loading = false;
+        this.token = localStorage.getItem('access_token')
       })
       .catch(err => {
+        gengxin()
+        this.token = localStorage.getItem('access_token')
         this.loading = false;
       })
   },
   methods: {
     gengxin(){
-          this.$axios
+      this.$axios
       .post(
         "/indentBelongSelf",
         {},
@@ -253,6 +257,7 @@ export default {
       })
     },
     beforeAvatarUpload() {
+      this.token = localStorage.getItem('access_token')
       this.loading = true;
     },
     upload(val) {
