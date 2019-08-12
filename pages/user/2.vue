@@ -46,7 +46,7 @@
       >
         <el-row>
           <el-col :span="9">
-            <img src="/usericon/personal_tx001.png">
+            <img :src="$store.state.header_img + item.indent_item.avatar_url">
             <div style="width:160px">
               <h3 class="shopname">
                 <span>{{item.indent_item.modular_name}}</span>
