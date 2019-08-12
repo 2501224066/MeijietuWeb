@@ -1,7 +1,7 @@
 import axios from 'axios'
-// import { url } from '@@/assets/js/comm.js'
-// const url = 'http://develop_webapi.meijietu.cn/api'
-const url = 'https://back.meijietu.cn/api'
+// import { url } from '@@/static/comm.js'
+const url = 'http://develop_webapi.meijietu.cn/api'
+// const url = 'https://back.meijietu.cn/api'
 export const gettoken = async () => {
     var newtoken
     var oldtoken = localStorage.getItem('access_token')
