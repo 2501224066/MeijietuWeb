@@ -7,7 +7,7 @@ export const gettoken = async () => {
     var oldtoken = localStorage.getItem('access_token')
     try{
         let res = await axios.post( url + '/refresh',{},{headers:{'Authorization':'Bearer'+oldtoken}})
-        newtoken = res.data.access_token
+        newtoken = res.data.data.access_token
         localStorage.setItem('access_token',newtoken)
     }catch(err){
         newtoken = ''
