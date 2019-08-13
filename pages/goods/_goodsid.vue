@@ -10,7 +10,13 @@
                                     <img style="width:98px" :src="$store.state.header_img + oneGoodsInfo.avatar_url">
                                     <!-- <span>{{oneGoodsInfo.filed_name}}</span> -->
                                 </div>
-                                <p class="black">{{oneGoodsInfo.title}}</p>
+                                <p class="black">{{oneGoodsInfo.title}} </p>
+                                <div class="ericon" v-if="oneGoodsInfo.modular_id == 1">
+                                    <div>
+                                        <img :src="oneGoodsInfo.qrcode_url" :alt="oneGoodsInfo.title">
+                                        <p>扫一扫,查看公众号</p>
+                                    </div>
+                                </div>
                                 <p class="nowrap" style="font-size:12px;margin-bottom:15px">商品编号:{{oneGoodsInfo.goods_num}}</p>
                                 <p>领域分类:{{oneGoodsInfo.filed_name}}</p>
                                 <p>地区:{{oneGoodsInfo.region_name}}</p>
@@ -560,5 +566,47 @@ export default {
     color: #DE0D0D;
     line-height: 60px;
     padding: 0 10px;
+}
+.ericon{
+    position: relative;
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    top: 5px;
+    margin: 2px 5px;
+    z-index: 9;
+    background: url('/indexicon/woa_code.webp') no-repeat
+}
+.ericon > div{
+    display: none;
+    top: -53px;
+    left: 35px;
+    width: 146px;
+    height: 164px;
+    overflow: hidden;
+    border-radius: 6px;
+    position: absolute;
+    background-color: #fff;
+    padding: 8px 13px 0 13px;
+    box-shadow: 0 2px 24px 0 rgba(164,176,203,.3);
+}
+.ericon img {
+    width: 120px;
+    height: 120px;
+    display: block;
+}
+.ericon:hover{
+    background: url('/indexicon/woa_code_h.webp') no-repeat
+}
+.ericon:hover div{
+    display: block;
+    z-index: 10;
+}
+.ericon p {
+    color: #666;
+    font-size: 12px;
+    margin-top: 6px;
+    line-height: 12px;
+    text-align: center;
 }
 </style>

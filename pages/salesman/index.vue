@@ -160,7 +160,7 @@ export default {
             })
         },
         xuquwendang(a){              //需求文档
-            window.open($store.state.header_img+a.demand_file)
+            window.open(this.$store.state.header_img+a.demand_file)
         },
         ruanwen(){                   //软文套餐订单
             localStorage.setItem('indent_num',this.yijiadata.indent_num)

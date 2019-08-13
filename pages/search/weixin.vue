@@ -97,7 +97,14 @@
                 <div class="cr">
                     <img :src="$store.state.header_img + item.avatar_url" style="width:70px;border-radius:50%">
                     <div class="textp">
-                        <h4>{{item.title}}</h4>
+                        <h4>{{item.title}}
+                            <div class="ericon">
+                                <div>
+                                    <img :src="item.qrcode_url" :alt="item.title">
+                                    <p>扫一扫,查看公众号</p>
+                                </div>
+                            </div>
+                        </h4>
                         <p>领域:{{item.filed_name}}</p>
                         <p>地区:{{item.region_name}}</p>
                     </div>
@@ -668,7 +675,7 @@ export default {
     width: 60px;
 }
 .goodslistitem>div .textp{
-    width: 120px;
+    width: 170px;
     margin-left: 30px;
 }
 .goodslistitem p{
@@ -681,7 +688,7 @@ export default {
 }
 .goodslistcontent>div:nth-child(1){
     width: 320px;
-    padding-left: 70px;
+    padding-left: 36px;
 }
 .goodslistcontent>div:nth-child(3){
     width: 300px;
@@ -692,5 +699,46 @@ export default {
 .goodslistcontent>div:nth-child(4),
 .goodslistcontent>div:nth-child(5){
     width: 249px;
+}
+.ericon{
+    position: relative;
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    top: 5px;
+    z-index: 9;
+    background: url('/indexicon/woa_code.webp') no-repeat
+}
+.ericon > div{
+    display: none;
+    top: -53px;
+    left: 35px;
+    width: 146px;
+    height: 164px;
+    overflow: hidden;
+    border-radius: 6px;
+    position: absolute;
+    background-color: #fff;
+    padding: 8px 13px 0 13px;
+    box-shadow: 0 2px 24px 0 rgba(164,176,203,.3);
+}
+.ericon img {
+    width: 120px;
+    height: 120px;
+    display: block;
+}
+.ericon:hover{
+    background: url('/indexicon/woa_code_h.webp') no-repeat
+}
+.ericon:hover div{
+    display: block;
+    z-index: 10;
+}
+.ericon p {
+    color: #666;
+    font-size: 12px;
+    margin-top: 6px;
+    line-height: 12px;
+    text-align: center;
 }
 </style>

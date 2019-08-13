@@ -28,7 +28,7 @@
                         <p v-for="(itemp,i) in item.goods_price" v-show="itemp.price !== '0.00'" :key="i">{{itemp.priceclassify_name}}: <span class="red">￥{{itemp.price}}</span></p>
                     </div>
                     <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':'已上架'}}</div>
-                    <div v-if="item.verify_status==2" class="cr" @click="goodsDown(item.goods_num,index)">{{item.verify_status==0?'':item.verify_status==1?'':'商品下架'}}</div>
+                    <div v-if="item.verify_status==2" class="cr xiajia" @click="goodsDown(item.goods_num,index)"><span>商品下架</span></div>
                 </div>
             </div>
         </div>
@@ -159,5 +159,15 @@ span.modular{
 .contentitem_cont p {
     margin: 2px 0;
     font-size: 14px;
+}
+.xiajia span{
+    display: inline-block;
+    width: 80px;
+    height: 26px;
+    background-color: #DE0D0D;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
 }
 </style>

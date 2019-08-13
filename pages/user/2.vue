@@ -46,7 +46,7 @@
       >
         <el-row>
           <el-col :span="9">
-            <img :src="$store.state.header_img + item.indent_item.avatar_url">
+            <img style="width:98px;border-radius:50%;" :src="$store.state.header_img + item.indent_item.avatar_url">
             <div style="width:160px">
               <h3 class="shopname">
                 <span>{{item.indent_item.modular_name}}</span>
@@ -80,7 +80,8 @@
       </div>
       <div v-if="item.status==4" class="selectbtn">
         <p class="tac" @click="demand_file(index)">下载资料</p>
-        <p @click="buyerConfirmComplete(item.indent_num)">确认完成</p>
+        <p class="quxiao"   @click="buyerConfirmComplete(item.indent_num)">确认完成</p>
+        <p class="quxiao" @click="oderCancel(item.indent_num,item.status)">取消订单</p>
         
       </div>
       <div v-if="item.status==7" class="selectbtn">
@@ -123,7 +124,7 @@
     </div>
     <!-- 取消订单弹出框 -->
     <el-dialog title="取消订单原因" :visible.sync="dialogVisible" width="30%">
-      <p class="red" v-show="!cancel_status==1" style="margin-top:-20px">取消订单将扣除保证金!</p>
+      <p class="red" v-show="cancel_status!==1" style="margin-top:-20px">取消订单将扣除保证金!</p>
       <el-input type="textarea" resize="none" :rows="3" placeholder="请输入取消原因" v-model="cancel_cause"></el-input>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="istrueCancal">确 定</el-button>
@@ -269,11 +270,11 @@ export default {
         }
         window.open(this.$store.state.header_img + a);
     },
-    oderCancel(a, b) {
+    oderCancel(a, b) {                  //媒体主待接单拒绝接单
       if(this.btnwait){return this.$message({message: '操作太频繁,请稍后',type: 'warning'})}
-      this.dialogVisible = true;
       this.cancel_status = b;
       this.cancel_indent = a;
+      this.dialogVisible = true;
     },
     istrueCancal() {
       if(this.btnwait){return this.$message({message: '操作太频繁,请稍后',type: 'warning'})}
@@ -469,8 +470,13 @@ p.active {
 }
 .Orderlist > div.selectbtn {
   position: absolute;
-  bottom: 25px;
-  right: 40px;
+  bottom: 0px;
+  right: 60px;
+  height: 120px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .Orderlist > div.selectbtn  p{
   padding: 5px 7px;
