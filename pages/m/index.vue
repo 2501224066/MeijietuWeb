@@ -31,8 +31,7 @@
 </template>
 <script>
 import {gettoken} from '@@/assets/commen.js'
-// import Stepper  from 'vant/lib/stepper';
-// import 'vant/lib/stepper/style';
+
 export default {
     layout:'phone',
     data() {

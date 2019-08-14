@@ -55,8 +55,8 @@ module.exports = {
     '@nuxtjs/axios',
   ],
   axios:{
-    baseURL: 'http://develop_webapi.meijietu.cn/api'
-    // baseURL: 'https://back.meijietu.cn/api'
+    // baseURL: 'http://develop_webapi.meijietu.cn/api'         //测试
+    baseURL: 'https://back.meijietu.cn/api'                     //线上
     // baseURL: url
   },
   /*
