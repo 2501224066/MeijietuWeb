@@ -101,6 +101,7 @@ export default {
 .right_s{
   padding-left: 240px;
   width: 100%;
+  min-width: 1582px;
 }
 .cont_s{
     width: 100%;

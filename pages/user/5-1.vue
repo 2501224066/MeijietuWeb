@@ -441,15 +441,15 @@
       <div v-if="mediaclass==6">
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>商品名称:
+            <span class="red">*</span>媒体名称:
           </div>
           <div class="applyright">
-            <el-input v-model="goods_title" placeholder="请输入商品名称"></el-input>
+            <el-input v-model="goods_title" placeholder="请输入媒体名称"></el-input>
           </div>
         </div>
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>标题简介:
+            <span class="red">*</span>媒体简介:
           </div>
           <div class="applyright">
             <el-input v-model="goods_title_about" placeholder="请输入标题简介"></el-input>
@@ -457,10 +457,10 @@
         </div>
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>链接网址:
+            入口网址:
           </div>
           <div class="applyright">
-            <el-input v-model="web_link" placeholder="请输入链接网址"></el-input>
+            <el-input v-model="web_link" placeholder="请输入入口网址"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -469,6 +469,7 @@
           </div>
           <div class="applyright">
             <el-input v-model="case_link" placeholder="请输入案例链接 "></el-input>
+            <span class="elink">网址链接示例:  http://www.baidu.com</span>
           </div>
         </div>
         <div class="applyaline">
@@ -517,7 +518,7 @@
         </div>
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>限制标题长度:
+            限制标题长度:
           </div>
           <div class="applyright">
             <el-input v-model="max_title_long" maxlength="2" placeholder="请输入限制长度"></el-input>
@@ -540,7 +541,7 @@
         </div>
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>平台选择:
+            门户媒体:
           </div>
           <div class="applyright">
             <el-select v-model="platform_id" placeholder="请选择">
@@ -555,7 +556,7 @@
         </div>
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>行业选择:
+            特殊行业:
           </div>
           <div class="applyright">
             <el-select v-model="industry_id" placeholder="请选择">
@@ -680,9 +681,10 @@
           <div class="clause">
             <p>
               我已阅读并同意
-              <span class="blue">《媒介兔用户出售协议》</span>
+              <nuxt-link to="/problem/agreement" tag="span" class="blue">《媒介兔用户出售协议》</nuxt-link>
+              <!-- <span class="blue">《媒介兔用户出售协议》</span> -->
             </p>
-            <p>
+            <p v-if="mediaclass!=6">
               温馨提示 :出售传媒成功交易后,媒介兔将收取传媒成交价格的
               <span class="red">10%</span>作为手续费
             </p>
@@ -897,6 +899,9 @@ export default {
           });
       }
       if (this.mediaclass == 6) {
+        if(this.platform_id==''){this.platform_id = '50'}
+        if(this.industry_id==''){this.industry_id = '1'}
+        if(this.max_title_long == ''){this.max_title_long = '0'}
         gettoken()
           .then(val => {
             //申请软文营销按钮
@@ -958,13 +963,14 @@ export default {
       this.head_portrait = res.data.path
     },
     beforeAvatarUpload(){
+      this.access_token =localStorage.getItem('access_token')
       this.isshangchuan = true
-      gettoken().then(val=>{
-        this.access_token =val
-      })
     }
   },
   mounted() {
+    setTimeout(() => {
+      this.access_token =localStorage.getItem('access_token')
+    }, 2000);
       
   },
   computed: {
@@ -1104,5 +1110,9 @@ export default {
 }
 .el-textarea {
   width: 320px;
+}
+.elink{
+  font-size: 14px;
+  color: rgba(189, 33, 33, 1);
 }
 </style>
