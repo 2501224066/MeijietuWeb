@@ -39,7 +39,7 @@ import 'mavon-editor/dist/css/index.css'
 export default {
     layout:'header',
     async asyncData({app,params}) {
-        let { data } = await app.$axios('/informationInfo',{params:{
+        let { data } = await app.$axios('/information',{params:{
             information_id:params.information
         }})
         return { informationInfo:data.data }

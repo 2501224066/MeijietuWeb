@@ -17,13 +17,13 @@
                                         <p>扫一扫,查看公众号</p>
                                     </div>
                                 </div>
-                                <p class="nowrap" style="font-size:12px;margin-bottom:15px">商品编号:{{oneGoodsInfo.goods_num}}</p>
                                 <p>领域分类:{{oneGoodsInfo.filed_name}}</p>
                                 <p>地区:{{oneGoodsInfo.region_name}}</p>
+                                <p class="nowrap">入驻平台 :{{oneGoodsInfo.theme_name}}</p>
                             </div>
                         </div>
                         <div>
-                            <p>入驻平台 :{{oneGoodsInfo.theme_name}}</p>
+                            <p>商品编号:{{oneGoodsInfo.goods_num}}</p>
                             <div>
                                 <p class="black">{{oneGoodsInfo.fans_num>=10000?parseInt(oneGoodsInfo.fans_num/10000)+'W+':oneGoodsInfo.fans_num}}</p>
                                 <p>粉丝数</p>
@@ -312,14 +312,14 @@ export default {
     font-size: 19px;
 }
 .topleftname > div:nth-child(1){
-    width: 394px;
+    width: 333px;
     height: 102px;
     border-right: 1px dashed #D2D2D2;
     /* background-image: url('/pic/tx_mr002.png'); */
     /* background-repeat: no-repeat; */
 }
 .topleftname > div:nth-child(2){
-    width: 241px;
+    width: 288px;
     text-align: center;
     border-right: 1px dashed #D2D2D2;
     height: 102px;

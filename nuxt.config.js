@@ -45,7 +45,7 @@ module.exports = {
     // '@/plugins/element-ui'
     { src: '@/plugins/element-ui', ssr: true},
     '~/plugins/axios',
-    { src: '@/plugins/vue-mavon-editor', srr: false }
+    // { src: '@/plugins/vue-mavon-editor', srr: false }
   ],
 
   /*

@@ -76,11 +76,6 @@ export default {
         return { mediadata: data.data[5].theme ,listdata : selectgoods.data.data,
             selectWeixin : selectgoods.data };    
     },
-    head(){
-        return{
-            title:'微信营销|微信推广|微信KOL|微信公众号 - 媒介兔-全行业&全流程_获客整合营销平台'
-        }
-    },
     data() {
         return {
             loading:false,
@@ -574,7 +569,6 @@ export default {
     width: 60px;
 }
 .goodslistitem>div .textp{
-    width: 120px;
     margin-left: 30px;
 }
 .goodslistitem p{
@@ -587,7 +581,7 @@ export default {
 }
 .goodslistcontent>div:nth-child(1){
     width: 320px;
-    padding-left: 70px;
+    padding-left: 14px;
 }
 .goodslistcontent>div:nth-child(3){
     width: 180px;
