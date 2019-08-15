@@ -189,12 +189,12 @@ export default {
                 this.$message({message: '商品审核成功',type: 'success'})
                 this.getselect()
             }).catch(err => {
-                this.$message.error('审核失败')
+                this.$message.error('失败:'+err.response.data.message)
             })
             this.goodsxiangqin = false
         },
         ruanwenfinsh(){
-            this.$axios.post('/setSoftArticlePrice',{
+            this.$axios.post('/setPrice',{
                 goods_num: this.ruanwendata.goods_num,
                 price: this.ruanwenprice
             },{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}}).then(res => {
@@ -259,7 +259,7 @@ export default {
     height: 40px;
 }
 .fenye{
-    padding: 20px 0 20px 666px;
+    padding: 20px 0 20px 500px;
 }
 .kefucaozuo img{
     cursor: pointer;

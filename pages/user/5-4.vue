@@ -17,7 +17,7 @@
             <div class="contentitem" v-for="(item,index) in goodsBelongSelf" :key="index">
                 <div class="itemtitle tijiaodate">提交审核 : {{item.created_at}}</div>
                 <div class="listitem contentitem_cont">
-                    <div>
+                    <div :style="'background:url('+$store.state.header_img+item.avatar_url+') 24px 31px/98px 98px no-repeat'">
                         <p style="fontZise:16px;color:#000;"><span class="modular">{{item.modular_name}}</span>{{item.title}}</p>
                         <p>所属分类:{{item.theme_name}}</p>
                         <p>媒体领域:{{item.filed_name}}</p>
@@ -145,7 +145,6 @@ export default {
 .contentitem_cont > div:nth-child(1){
     align-items: baseline;
     padding-left: 134px;
-    background: url('/usericon/personal_tx001.png') 24px 31px no-repeat ;
 }
 span.modular{
     display: inline-block;

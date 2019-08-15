@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="header_s">
-      <div class="fl">
-        <img src="/usericon/selamenlogo.png" alt="">
+      <div class="fl" style="padding: 10px 0 0 20px">
+        <img src="/usericon/selamenlogo.png" alt="媒介兔">
       </div>
       <div class="xiala">
         <span>{{kefudata.nickname}}</span>
