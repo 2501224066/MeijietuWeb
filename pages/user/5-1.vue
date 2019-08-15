@@ -10,12 +10,12 @@
         </div>
         <div class="applyright">
           <el-radio-group v-model="mediaclass" @change="qiehuan">
+            <el-radio :label="6">软文</el-radio>
             <el-radio :label="1">微信营销</el-radio>
             <el-radio :label="2">微博营销</el-radio>
             <el-radio :label="3">短视频</el-radio>
             <el-radio :label="4">直播</el-radio>
             <el-radio :label="5">自媒体营销</el-radio>
-            <el-radio :label="6">软文</el-radio>
           </el-radio-group>
         </div>
       </div>
@@ -415,7 +415,7 @@
             <span class="red">*</span>粉丝数量:
           </div>
           <div class="applyright">
-            <el-input v-model="fans_num" placeholder="请输入粉丝数量"></el-input>
+            <el-input v-model="fans_num" maxlength="8" placeholder="请输入粉丝数量"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -671,7 +671,7 @@
       <div class="applyaline">
         <div class="applyleft">商家备注:</div>
         <div class="applyright">
-          <el-input v-model="remarks" type="textarea" resize="none" placeholder="请输入备注"></el-input>
+          <el-input v-model="remarks" type="textarea" maxlength="150" resize="none" placeholder="请输入备注"></el-input>
         </div>
       </div>
       <div class="applyaline">
@@ -681,12 +681,14 @@
           <div class="clause">
             <p>
               我已阅读并同意
-              <nuxt-link to="/problem/agreement" tag="span" class="blue">《媒介兔用户出售协议》</nuxt-link>
-              <!-- <span class="blue">《媒介兔用户出售协议》</span> -->
+              <nuxt-link to="/problem/agreement" tag="span" class="blue cr">《媒介兔用户出售协议》</nuxt-link>
             </p>
-            <p v-if="mediaclass!=6">
+            <p v-if="mediaclass!=6&&mediaclass!=5">
               温馨提示 :出售传媒成功交易后,媒介兔将收取传媒成交价格的
               <span class="red">10%</span>作为手续费
+            </p>
+            <p v-if="mediaclass!=6&&mediaclass!=5">
+              温馨提示 :该版块媒介兔不会收取手续费
             </p>
           </div>
         </div>
@@ -711,7 +713,7 @@ export default {
   },
   data() {
     return {
-      mediaclass: 1,
+      mediaclass: 6,
       theme_index: 0,
       filed: "", //领域
       isorder: "", //是否预约

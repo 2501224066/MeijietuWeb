@@ -38,7 +38,7 @@
                     <el-col :span="2"><div :class="item.verify_status===0?'red':''">{{item.verify_status===0?'待审核':item.verify_status===1?'未通过':'已通过'}}</div></el-col>
                     <el-col :span="3"><div class="kefucaozuo">
                         <img @click="goodsxiangqin=true;goodsdata=item;goodsindex=index" style="margin-right:10px" src="/indexicon/kefucaozuo01.png" title="商品详情">
-                        <img v-if="item.modular_id===5&&item.goods_price[0].price==0" @click="ruanwen=true;ruanwendata=item" src="/indexicon/kefucaozuo03.png" title="软文商品设置价格">
+                        <img v-if="item.modular_id===5&&item.goods_price[0].price==0" @click="ruanwen=true;ruanwendata=item" src="/indexicon/kefucaozuo02.png" title="软文商品设置价格">
                     </div>
                     </el-col>
                 </el-row>

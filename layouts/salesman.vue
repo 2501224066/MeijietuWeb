@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="header_s">
+      <div class="fl">
+        <img src="/usericon/selamenlogo.png" alt="">
+      </div>
       <div class="xiala">
         <span>{{kefudata.nickname}}</span>
         <span @click="zhuxiao" style="margin-left:20px">注销</span>

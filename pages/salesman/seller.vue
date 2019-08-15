@@ -72,13 +72,18 @@ export default {
     },
     methods: {
         handleCurrentChange(a){
-            this.$axios.post('/serveUserSelect?page='+a,{user_num:'',phone:'',nickname:'',identity:'2'},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}})
+            this.$axios.post('/serveUserSelect?page='+a,{user_num: this.user_num,phone:this.phone,nickname:this.nickname,identity:'2'},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}})
             .then(res=>{
                 this.serveUser = res.data.data
             })
         },
         searchbtn(){
-
+            this.$axios.post('/serveUserSelect',{user_num:this.user_num,phone:this.phone,nickname:this.nickname,identity:'2'},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}})
+            .then(res=>{
+                this.serveUser = res.data.data
+            }).catch(err => {
+                this.$message({message: '身份过期,请重新登录'+err.response.data.message,type: 'warning'})
+            })
         }
     },
 }
