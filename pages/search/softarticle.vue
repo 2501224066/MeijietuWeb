@@ -99,33 +99,34 @@
                 <el-checkbox-group v-model="checkList">
                     <el-checkbox :label="index"></el-checkbox>
                 </el-checkbox-group>
-                <div class="cr">
+                <div>
                     <div class="textp">
                         <h4 style="width:180px" class="nowrap">{{item.title}}</h4>
                         <div class="ruanwenlink">
                             <!-- <nuxt-link :to="{name:'item.case_link'}" targer='_blank'>入口</nuxt-link> -->
-                            <a :href="item.link" rel="nofollow" targer='_blank'>入口</a>
-                            <a :href="item.case_link" rel="nofollow" targer='_blank'>案例</a>
+                            <span v-if="!item.link">入口</span>
+                            <a :href="item.link" rel="nofollow" target='_blank' v-if="item.link">入口</a>
+                            <a :href="item.case_link" rel="nofollow" target='_blank' v-if="item.case_link">案例</a>
                         </div>
                         <p>领域:{{item.filed_name}}</p>
                     </div>
                 </div>
-                 <div class="cr">
+                 <div>
                     <p>
                         <span class="red fr">{{item.goods_price[0].price=='0.00'?'/':item.goods_price[0].price}}</span>
                     </p>
                 </div>
-                <div class="cr">
+                <div>
                     <img :src="$store.state.header_img + item.phone_weightlevel_img" alt="item.title">
                 </div>
-                <div class="cr">
+                <div>
                     <img :src="$store.state.header_img + item.pc_weightlevel_img" alt="item.title">
                 </div>
-                <div class="cr">
+                <div>
                     <p>{{item.news_source_status==0?'非新闻源':item.news_source_status==1?'新闻源':'/'}}</p>
                 </div>
-                <div class="cr"><p>{{item.link_type==0?'不可带网址':item.link_type==1?'可带网址':'/'}}</p></div>
-                <div class="cr">
+                <div><p>{{item.link_type==0?'不可带网址':item.link_type==1?'可带网址':'/'}}</p></div>
+                <div>
                     <p>{{item.title_about}}</p>
                 </div>
                 <div>
@@ -225,6 +226,7 @@ export default {
                 page:a||'1',
                 modular_id: 5,
                 theme_id: '',
+                priceclassify_id: 26,
                 key_word: this.keyword,
                 filed_id:this.mediadata[this.theme_index].filed[this.filed]&&this.mediadata[this.theme_index].filed[this.filed].filed_id||'',
                 pricelevel_min:this.mediadata[0].pricelevel[this.pricelevel]&&JSON.stringify(this.mediadata[0].pricelevel[this.pricelevel].pricelevel_min)||'',
@@ -741,5 +743,16 @@ export default {
     line-height: 18px;
     font-size: 12px;
     color: #5141ED;
+}
+.ruanwenlink span{
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid #d2d2d2;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    color: #d2d2d2;
 }
 </style>

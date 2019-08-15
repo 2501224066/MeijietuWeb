@@ -616,7 +616,7 @@
         </div>
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>价格:
+            <span class="red">*</span>成本价格(底价):
           </div>
           <div class="applyright">
             <el-input v-model="price" maxlength="8" placeholder="请输入商品价格"></el-input>
