@@ -93,8 +93,8 @@
                     <div>{{goodsdata.reserve_status==0?'否':'是'}}</div>
                 </div>
                 <div v-for="(item,index) in goodsdata.goods_price" :key="index">
-                    <div>{{item.priceclassify_name}}/底价:</div>
-                    <div>{{item.price}}/{{item.floor_price}}</div>
+                    <div>{{item.priceclassify_name}} <span v-if="modular_settlement_type==2">/底价:</span></div>
+                    <div>{{item.price}}<span v-if="modular_settlement_type==2">/{{item.floor_price}}</span></div>
                 </div>
                 <div>
                     <div>商品简介</div>

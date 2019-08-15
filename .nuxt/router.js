@@ -53,6 +53,7 @@ const _ca971f2e = () => interopDefault(import('..\\pages\\search\\service\\keyan
 const _5261aa4a = () => interopDefault(import('..\\pages\\search\\service\\pptword.vue' /* webpackChunkName: "pages_search_service_pptword" */))
 const _4c07167a = () => interopDefault(import('..\\pages\\search\\service\\vip.vue' /* webpackChunkName: "pages_search_service_vip" */))
 const _3f378a06 = () => interopDefault(import('..\\pages\\search\\service\\word.vue' /* webpackChunkName: "pages_search_service_word" */))
+const _2854feb2 = () => interopDefault(import('..\\pages\\user\\5-5\\_goodsnum.vue' /* webpackChunkName: "pages_user_5-5__goodsnum" */))
 const _60f7c2ae = () => interopDefault(import('..\\pages\\goods\\_goodsid.vue' /* webpackChunkName: "pages_goods__goodsid" */))
 const _047eb2bf = () => interopDefault(import('..\\pages\\information\\_information.vue' /* webpackChunkName: "pages_information__information" */))
 const _4f727c91 = () => interopDefault(import('..\\pages\\jump\\_link.vue' /* webpackChunkName: "pages_jump__link" */))
@@ -336,6 +337,10 @@ export function createRouter() {
       path: "/search/service/word",
       component: _3f378a06,
       name: "search-service-word"
+    }, {
+      path: "/user/5-5/:goodsnum?",
+      component: _2854feb2,
+      name: "user-5-5-goodsnum"
     }, {
       path: "/goods/:goodsid?",
       component: _60f7c2ae,

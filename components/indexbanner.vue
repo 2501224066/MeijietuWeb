@@ -61,6 +61,9 @@ export default {
         },{
           value: '3',
           label: '短视频'
+        },{
+          value: '4',
+          label: '软文营销'
         }],
         value:'1',
     }
@@ -72,6 +75,7 @@ export default {
       if(this.value=='1'){return this.$router.push('/search/weixin')}
       if(this.value=='2'){return this.$router.push('/search/weibo')}
       if(this.value=='3'){return this.$router.push('/search/video')}
+      if(this.value=='4'){return this.$router.push('/search/softarticle')}
     },
     liaojie(a){
       if(a===0){

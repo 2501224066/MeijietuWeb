@@ -645,7 +645,7 @@
         </div>
       </div>
       <div class="applyaline relative">
-        <span class="tishi">价格为0或空的时候表示不接单</span>
+        <span v-if="mediaclass!=6&&mediaclass!=5" class="tishi">价格为0或空的时候表示不接单</span>
         <div class="applyleft">
           <span class="red">*</span>联系QQ:
         </div>

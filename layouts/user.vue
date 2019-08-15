@@ -150,6 +150,9 @@ export default {
     },
   },
   mounted() {
+    if(this.$store.state.userdata.identity==3){
+      return this.$router.push('/salesman')
+    }
     hmt()
     var mytime ,count
     if(mytime){clearInterval(mytime)}
