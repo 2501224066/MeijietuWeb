@@ -687,7 +687,7 @@
               温馨提示 :出售传媒成功交易后,媒介兔将收取传媒成交价格的
               <span class="red">10%</span>作为手续费
             </p>
-            <p v-if="mediaclass!=6&&mediaclass!=5">
+            <p v-if="mediaclass==6||mediaclass==5">
               温馨提示 :该版块媒介兔不会收取手续费
             </p>
           </div>
