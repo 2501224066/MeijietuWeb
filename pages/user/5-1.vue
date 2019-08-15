@@ -452,7 +452,7 @@
             <span class="red">*</span>媒体简介:
           </div>
           <div class="applyright">
-            <el-input v-model="goods_title_about" placeholder="请输入标题简介"></el-input>
+            <el-input v-model="goods_title_about" maxlength="20" placeholder="请输入标题简介"></el-input>
           </div>
         </div>
         <div class="applyaline">

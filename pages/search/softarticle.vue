@@ -88,11 +88,11 @@
                 <div><el-button @click="quanxuan" size="mini" type="primary" style="margin-left:22px">全选</el-button></div>
                 <div>媒介名称</div>
                 <div>参考报价</div>
-                <div>百度权重</div>
+                <div>电脑权重</div>
                 <div>移动权重</div>
                 <div>新闻源</div>
                 <div>链接情况</div>
-                <div>简介</div>
+                <div>备注</div>
                 <div>操作</div>
             </div>
             <div class="goodslistcontent goodslistitem" v-for="(item,index) in listdata" :key="index">
@@ -101,7 +101,7 @@
                 </el-checkbox-group>
                 <div>
                     <div class="textp">
-                        <h4 style="width:180px" class="nowrap">{{item.title}}</h4>
+                        <h4 style="width:160px" class="nowrap">{{item.title}}</h4>
                         <div class="ruanwenlink">
                             <!-- <nuxt-link :to="{name:'item.case_link'}" targer='_blank'>入口</nuxt-link> -->
                             <span v-if="!item.link">入口</span>
@@ -109,11 +109,12 @@
                             <a :href="item.case_link" rel="nofollow" target='_blank' v-if="item.case_link">案例</a>
                         </div>
                         <p>领域:{{item.filed_name}}</p>
+                        <p class="nowrap" style="width:160px" :title="item.title_about">简介:{{item.title_about}}</p>
                     </div>
                 </div>
                  <div>
                     <p>
-                        <span class="red fr">{{item.goods_price[0].price=='0.00'?'/':item.goods_price[0].price}}</span>
+                        <span class="red fr">￥{{item.goods_price[0].price=='0.00'?'/':item.goods_price[0].price}}</span>
                     </p>
                 </div>
                 <div>
@@ -126,8 +127,8 @@
                     <p>{{item.news_source_status==0?'非新闻源':item.news_source_status==1?'新闻源':'/'}}</p>
                 </div>
                 <div><p>{{item.link_type==0?'不可带网址':item.link_type==1?'可带网址':'/'}}</p></div>
-                <div>
-                    <p>{{item.title_about}}</p>
+                <div :title="item.remarks">
+                    {{item.remarks}}
                 </div>
                 <div>
                     <div @click.stop="collection(item.goods_id,index)" :class="issoucanglist.indexOf(index)==-1?'shoucang':'isshoucang'">收藏</div>
@@ -676,10 +677,11 @@ export default {
 .goodslistitem>div:nth-child(2){
     display: flex;
     align-items: center;
-    padding-left: 35px;
+    padding-left: 10px;
 }
 .goodslistitem>div:nth-child(8){
-    padding-left: 15px;
+    padding: 20px 0;
+    overflow: hidden;
 }
 .goodslistitem>div:nth-child(9){
     flex-direction: column;
@@ -712,7 +714,7 @@ export default {
     width: 70px;
 }
 .goodslistcontent>div:nth-child(2){
-    width: 210px;
+    width: 150px;
 }
 .goodslistcontent>div:nth-child(3),
 .goodslistcontent>div:nth-child(4),
@@ -725,6 +727,7 @@ export default {
 }
 .goodslistcontent>div:nth-child(8){
     width: 220px;
+    margin: 0 30px;
 }
 .goodslistcontent>div:nth-child(9){
     width: 180px;
