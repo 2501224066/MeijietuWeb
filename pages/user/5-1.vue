@@ -901,7 +901,7 @@ export default {
           });
       }
       if (this.mediaclass == 6) {
-        if(this.platform_id==''){this.platform_id = '50'}
+        if(this.platform_id==''){this.platform_id = '17'}
         if(this.industry_id==''){this.industry_id = '1'}
         if(this.max_title_long == ''){this.max_title_long = '0'}
         gettoken()

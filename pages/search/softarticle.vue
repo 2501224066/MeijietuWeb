@@ -103,8 +103,9 @@
                     <div class="textp">
                         <h4 style="width:180px" class="nowrap">{{item.title}}</h4>
                         <div class="ruanwenlink">
-                            <a :href="item.link" rel="nofollow">入口</a>
-                            <a :href="item.case_link" rel="nofollow">案例</a>
+                            <!-- <nuxt-link :to="{name:'item.case_link'}" targer='_blank'>入口</nuxt-link> -->
+                            <a :href="item.link" rel="nofollow" targer='_blank'>入口</a>
+                            <a :href="item.case_link" rel="nofollow" targer='_blank'>案例</a>
                         </div>
                         <p>领域:{{item.filed_name}}</p>
                     </div>
@@ -115,10 +116,10 @@
                     </p>
                 </div>
                 <div class="cr">
-                    <p>{{item.pc_weightlevel_id}}</p>
+                    <img :src="$store.state.header_img + item.phone_weightlevel_img" alt="item.title">
                 </div>
                 <div class="cr">
-                    <p>{{item.phone_weightlevel_id}}</p>
+                    <img :src="$store.state.header_img + item.pc_weightlevel_img" alt="item.title">
                 </div>
                 <div class="cr">
                     <p>{{item.news_source_status==0?'非新闻源':item.news_source_status==1?'新闻源':'/'}}</p>

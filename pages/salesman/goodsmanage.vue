@@ -20,18 +20,18 @@
             <div class="c_list">
                 <el-row class="c_title">
                     <el-col :span="4"><div>创建时间</div></el-col>
-                    <el-col :span="3"><div>商品名称</div></el-col>
-                    <el-col :span="3"><div>媒体主编号</div></el-col>
+                    <el-col :span="4"><div>商品名称</div></el-col>
+                    <el-col :span="2"><div>价格</div></el-col>
                     <el-col :span="4"><div>商品编号</div></el-col>
                     <el-col :span="2"><div>商品模块</div></el-col>
                     <el-col :span="3"><div>媒体主</div></el-col>
                     <el-col :span="2"><div>商品状态</div></el-col>
                     <el-col :span="3"><div>操作</div></el-col>
                 </el-row>
-                <el-row v-for="(item,index) in serveGoodsData" :key="index">
+                <el-row class="hovercolor" v-for="(item,index) in serveGoodsData" :key="index">
                     <el-col :span="4"><div>{{item.created_at}}</div></el-col>
-                    <el-col :span="3"><div>{{item.title}}</div></el-col>
-                    <el-col :span="3"><div>{{item.user_num}}</div></el-col>
+                    <el-col :span="4"><div>{{item.title}}</div></el-col>
+                    <el-col :span="2"><div>￥{{item.goods_price[0].price}}</div></el-col>
                     <el-col :span="4"><div>{{item.goods_num}}</div></el-col>
                     <el-col :span="2"><div>{{item.modular_name}}</div></el-col>
                     <el-col :span="3"><div>{{item.user_nickname}}</div></el-col>

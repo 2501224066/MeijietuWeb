@@ -407,3 +407,6 @@ ul li{
 .rightbtn{
   z-index: 20;
 }
+.hovercolor:hover{
+  background: rgb(238, 242, 247);
+}

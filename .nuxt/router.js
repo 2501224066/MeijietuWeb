@@ -55,6 +55,7 @@ const _4c07167a = () => interopDefault(import('..\\pages\\search\\service\\vip.v
 const _3f378a06 = () => interopDefault(import('..\\pages\\search\\service\\word.vue' /* webpackChunkName: "pages_search_service_word" */))
 const _60f7c2ae = () => interopDefault(import('..\\pages\\goods\\_goodsid.vue' /* webpackChunkName: "pages_goods__goodsid" */))
 const _047eb2bf = () => interopDefault(import('..\\pages\\information\\_information.vue' /* webpackChunkName: "pages_information__information" */))
+const _4f727c91 = () => interopDefault(import('..\\pages\\jump\\_link.vue' /* webpackChunkName: "pages_jump__link" */))
 const _22e2da10 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
@@ -343,6 +344,10 @@ export function createRouter() {
       path: "/information/:information?",
       component: _047eb2bf,
       name: "information-information"
+    }, {
+      path: "/jump/:link?",
+      component: _4f727c91,
+      name: "jump-link"
     }, {
       path: "/",
       component: _22e2da10,
