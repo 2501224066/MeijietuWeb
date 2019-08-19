@@ -31,7 +31,7 @@
                     <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':item.status==1?'已上架':'已下架'}}</div>
                     <div v-if="item.verify_status==2">
                         <span class="cr xiajia" v-if="item.status == 1" @click="goodsDown(item.goods_num,index)">{{item.verify_status==0?'':item.verify_status==1?'':'商品下架'}}</span>
-                        <!-- <span class="xiugai cr" @click="xiugai(item.goods_num)">修改商品</span> -->
+                        <span class="xiugai cr" @click="xiugai(item.goods_num)">修改商品</span>
                         <span v-if="item.status == 2">{{item.verify_status==0?'':item.verify_status==1?'':'商品已下架'}}</span>
                     </div>
                     <div v-if="item.verify_status==1">
