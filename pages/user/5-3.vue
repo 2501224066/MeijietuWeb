@@ -25,9 +25,10 @@
                     </div>
                     <div>{{item.platform_name}}</div>
                     <div>
-                        <p v-for="(itemp,i) in item.goods_price" v-show="itemp.price !== '0.00'" :key="i">{{itemp.priceclassify_name}}: <span class="red">￥{{itemp.price}}</span></p>
+                        <p v-for="(itemp,i) in item.goods_price" v-show="itemp.price !== '0.00'&&itemp.floor_price == 0" :key="i">{{itemp.priceclassify_name}}: <span class="red">￥{{itemp.price}}</span></p>
+                        <p v-if="item.goods_price[0].floor_price != 0">价格: <span class="red">{{item.goods_price[0].floor_price}}</span> </p>
                     </div>
-                    <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':'已上架'}}</div>
+                    <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':item.status==1?'已上架':'已下架'}}</div>
                     <div>请等待</div>
                 </div>
             </div>

@@ -885,7 +885,7 @@ export default {
                 filed_id: this.filed,
                 qq_ID: this.qq_ID,
                 remarks: this.remarks,
-                price_json: JSON.stringify(this.price_data),
+                price_json: JSON.stringify({26:this.price}),
                 reserve_status: this.isorder,
                 platform_id: this.platform_id,
                 region_id: this.region_id,

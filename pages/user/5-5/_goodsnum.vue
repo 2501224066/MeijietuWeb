@@ -3,7 +3,7 @@
     <div class="applyheader">
       <div>修改传媒</div>
     </div>
-    <div class="applycontent">
+    <div class="applycontent" v-if="goodsData">
       <div class="applyaline">
         <div class="applyleft">
           <span class="red">*</span>传媒分类:
@@ -156,16 +156,16 @@
           </div>
         </div>
       </div>
-      
-      <!-- <div v-if="goodsData.modular_id==3">
+      <!-- ========================================视频营销======================================================== -->
+      <div v-if="goodsData.modular_id==3">
         <div class="applyaline">
           <div class="applyleft">
             <span class="red">*</span>平台选择:
           </div>
           <div class="applyright">
-            <el-select v-model="platform_id" placeholder="请选择">
+            <el-select v-model="goodsData.platform_id" placeholder="请选择">
               <el-option
-                v-for="item in videoGoodsAttribute[0].platform"
+                v-for="item in mediadata[modular_index].theme[theme_index].platform"
                 :key="item.platform_id"
                 :label="item.platform_name"
                 :value="item.platform_id"
@@ -178,7 +178,7 @@
             <span class="red">*</span>商品名称:
           </div>
           <div class="applyright">
-            <el-input v-model="goods_title" placeholder="请输入商品名称"></el-input>
+            <el-input v-model="goodsData.title" placeholder="请输入商品名称"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -186,7 +186,7 @@
             <span class="red">*</span>标题简介:
           </div>
           <div class="applyright">
-            <el-input v-model="goods_title_about" placeholder="请输入标题简介"></el-input>
+            <el-input v-model="goodsData.title_about" placeholder="请输入标题简介"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -194,7 +194,7 @@
             <span class="red">*</span>房间号/账号ID:
           </div>
           <div class="applyright">
-            <el-input v-model="weixin_ID" placeholder="请输入房间号/账号ID"></el-input>
+            <el-input v-model="goodsData.room_ID" placeholder="请输入房间号/账号ID"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -202,21 +202,16 @@
             <span class="red">*</span>粉丝数:
           </div>
           <div class="applyright">
-            <el-input v-model="fans_num" maxlength="15" placeholder="请输入粉丝数量"></el-input>
+            <el-input v-model="goodsData.fans_num" maxlength="15" placeholder="请输入粉丝数量"></el-input>
           </div>
         </div>
-        <div
-          class="applyaline"
-          v-for="item in videoGoodsAttribute[0].priceclassify"
-          :key="item.priceclassify_id"
-          v-show="item.tag == tag"
-        >
+       <div class="applyaline" v-for="(value,key,index) in price_data" :key="index">
           <div class="applyleft">
             <span class="red">*</span>
-            {{item.priceclassify_name}}价格:
+            {{mediadata[modular_index].theme[theme_index].priceclassify[index].priceclassify_name}}价格:
           </div>
           <div class="applyright">
-            <el-input v-model="price_data[item.priceclassify_id]" maxlength="8" placeholder="请输入价格"></el-input>
+            <el-input v-model="price[key]" :placeholder="price_data[key]"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -224,9 +219,9 @@
             <span class="red">*</span>媒体领域:
           </div>
           <div class="applyright">
-            <el-select v-model="filed" placeholder="请选择">
+            <el-select v-model="goodsData.filed_id" placeholder="请选择">
               <el-option
-                v-for="item in videoGoodsAttribute[0].filed"
+                v-for="item in mediadata[modular_index].theme[theme_index].filed"
                 :key="item.filed_id"
                 :label="item.filed_name"
                 :value="item.filed_id"
@@ -235,7 +230,7 @@
           </div>
         </div>
       </div>
-      <div v-if="goodsData.modular_id==4">
+      <!-- <div v-if="goodsData.modular_id==4">
         <div class="applyaline">
           <div class="applyleft">
             <span class="red">*</span>平台选择:
@@ -403,7 +398,7 @@
         </div>
       </div> -->
       <!-- =====================================软文============================================================= -->
-      <div v-if="goodsData.modular_id==6">
+      <div v-if="goodsData.modular_id==5">
         <div class="applyaline">
           <div class="applyleft">
             <span class="red">*</span>媒体名称:
@@ -442,7 +437,7 @@
             <span class="red">*</span>周末是否发稿:
           </div>
           <div class="applyright">
-            <el-radio-group v-model="goodsData.weekend_send">
+            <el-radio-group v-model="goodsData.weekend_status">
               <el-radio :label="1">是</el-radio>
               <el-radio :label="0">否</el-radio>
             </el-radio-group>
@@ -453,7 +448,7 @@
             <span class="red">*</span>新闻源:
           </div>
           <div class="applyright">
-            <el-radio-group v-model="goodsData.news_source">
+            <el-radio-group v-model="goodsData.news_source_status">
               <el-radio :label="1">是</el-radio>
               <el-radio :label="0">否</el-radio>
             </el-radio-group>
@@ -481,14 +476,14 @@
             </el-radio-group>
           </div>
         </div>
-        <!-- <div class="applyaline">
+        <div class="applyaline">
           <div class="applyleft">
             限制标题长度:
           </div>
           <div class="applyright">
             <el-input v-model="goodsData.max_title_long" maxlength="2" placeholder="请输入限制长度"></el-input>
           </div>
-        </div> -->
+        </div>
         <div class="applyaline">
           <div class="applyleft">
             <span class="red">*</span>媒体领域:
@@ -584,7 +579,7 @@
             <span class="red">*</span>成本价格(底价):
           </div>
           <div class="applyright">
-            <el-input v-model="goodsData.price" maxlength="8" placeholder="请输入商品价格"></el-input>
+            <el-input v-model="goodsData.goods_price[0].floor_price" maxlength="8" placeholder="请输入商品价格"></el-input>
           </div>
         </div>
       </div>
@@ -622,7 +617,7 @@
           <span class="red">*</span>地区:
         </div>
         <div class="applyright">
-          <el-select v-model="goodsData.filed_id" placeholder="请选择">
+          <el-select v-model="goodsData.region_id" placeholder="请选择">
             <el-option
               v-for="item in region"
               :key="item.region_id"
@@ -693,19 +688,19 @@ export default {
             // remarks: '',
             // avatar_url: '',
             // price_json: '',
-            //===========
+            //=====================================
             price:{},
             entry_statuslist: [{id:1,name:'没有入口'},{id:2,name:'首页入口'},{id:3,name:'频道入口'},{id:4,name:'上级入口'}],
         }
     },
     methods: {
         test(){
-            console.log(this.price,this.goodsData.title)
+            console.log(this.goodsData)
         },
         updatasusses(){
            this.$message({message: '修改成功',type: 'success'})
             setTimeout(() => {
-              this.$router.push('/user/5-2')
+              // this.$router.push('/user/5-2')
             }, 2000);
         },
         btn(){
@@ -727,6 +722,27 @@ export default {
                     auth_type:this.goodsData.auth_type,
                     reserve_status:this.goodsData.reserve_status,
                     region_id:this.goodsData.region_id
+                }).then(res=>{
+                    this.updatasusses()
+                }).catch(err=>{
+                    this.$message({message: '失败'+err.response.data.message,type: 'warning'})
+                })
+            }else if(this.goodsData.modular_id == 5){
+                this.updateGoods({
+                    max_title_long:this.goodsData.max_title_long,
+                    link:this.goodsData.link,
+                    case_link:this.goodsData.case_link,
+                    news_source_status:this.goodsData.news_source_status,
+                    entry_status:this.goodsData.entry_status,
+                    included_sataus:this.goodsData.included_sataus,
+                    link_type:this.goodsData.link_type,
+                    weekend_status:this.goodsData.weekend_status,
+                    platform_id:this.goodsData.platform_id,
+                    industry_id:this.goodsData.industry_id,
+                    region_id:this.goodsData.region_id,
+                    phone_weightlevel_id:this.goodsData.phone_weightlevel_id,
+                    pc_weightlevel_id:this.goodsData.pc_weightlevel_id,
+                    price_json: JSON.stringify({'26':this.goodsData.goods_price[0].floor_price})
                 }).then(res=>{
                     this.updatasusses()
                 }).catch(err=>{
@@ -800,10 +816,24 @@ export default {
             this.goodsData.goods_price.forEach((item,index) => {
                 this.price_data[item.priceclassify_id] = item.price
             })
+        }).catch(err => {
+          
         })
     },
     computed: {
-    }
+      tag: function() {
+        if (this.goodsData.platform_id == 4) {
+          return "小红书";
+        } else if (this.goodsData.platform_id == 2) {
+          return "bilibili";
+        } else if (this.goodsData.platform_id == 10) {
+          return "淘宝直播";
+        } else {
+          return "default";
+        }
+      }
+    },
+
 }
 </script>
 <style scoped>
