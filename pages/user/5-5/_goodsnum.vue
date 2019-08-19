@@ -658,17 +658,17 @@
 <script>
 export default {
     layout:'user',
-    // async asyncData({ app }) {
-    //     let { data } = await app.$axios.get("/getGoodsAttribute");
-    //     return { 
-    //         mediadata: data.data,
-    //         region : data.data[0].theme[0].region, //地区列表数据
-    //     };
-    // },
+    async asyncData({ app }) {
+        let { data } = await app.$axios.get("/getGoodsAttribute");
+        return { 
+            mediadata: data.data,
+            region : data.data[0].theme[0].region, //地区列表数据
+        };
+    },
     data() {
         return {
-            mediadata:'',
-            region:'',
+            // mediadata:'',
+            // region:'',
 
             goodsData:'',
             price_data:{},
