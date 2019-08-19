@@ -72,7 +72,6 @@
             </el-radio-group>
           </div>
         </div>
-        <button @click="test">按钮</button>
         <div class="applyaline" v-for="(value,key,index) in price_data" :key="index">
           <div class="applyleft">
             <span class="red">*</span>
@@ -659,15 +658,18 @@
 <script>
 export default {
     layout:'user',
-    async asyncData({ app }) {
-        let { data } = await app.$axios.get("/getGoodsAttribute");
-        return { 
-            mediadata: data.data,
-            region : data.data[0].theme[0].region, //地区列表数据
-        };
-    },
+    // async asyncData({ app }) {
+    //     let { data } = await app.$axios.get("/getGoodsAttribute");
+    //     return { 
+    //         mediadata: data.data,
+    //         region : data.data[0].theme[0].region, //地区列表数据
+    //     };
+    // },
     data() {
         return {
+            mediadata:'',
+            region:'',
+
             goodsData:'',
             price_data:{},
             imageUrl:'',
@@ -786,6 +788,10 @@ export default {
         beforeAvatarUpload(){},
     },
     mounted() {
+      this.$axios('/getGoodsAttribute').then(res => {
+        this.mediadata = res.data.data
+        this.region = res.data.data[0].theme[0].region
+      })
         this.$axios('/oneGoodsInfo',{params:{goods_num:this.$route.params.goodsnum}}).then(res =>{
             this.goodsData = res.data.data.data[0]
 
