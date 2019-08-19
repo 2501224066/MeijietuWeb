@@ -35,7 +35,7 @@
                         <span v-if="item.status == 2">{{item.verify_status==0?'':item.verify_status==1?'':'商品已下架'}}</span>
                     </div>
                     <div v-if="item.verify_status==1">
-                        <span class="xiugai cr" @click="xiugai(item.goods_num)">修改商品</span>
+                        <!-- <span class="xiugai cr" @click="xiugai(item.goods_num)">修改商品</span> -->
                     </div>
                     <div v-if="item.verify_status==0" class="cr" @click="goodsDown(item.goods_num,index)">
                         <span>请等待</span>
@@ -84,7 +84,7 @@ export default {
         goodsDown(a,b){
             this.$axios.post('/goodsDown',{goods_num:a},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}})
             .then(res=>{
-                this.$message({message: '删除成功',type: 'success'})
+                this.$message({message: '下架成功',type: 'success'})
                 this.goodsBelongSelf.splice(b,1)
             }).catch(err=>{
                 this.$message.error('失败:'+err.response.data.message)

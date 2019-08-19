@@ -1,7 +1,7 @@
 <template>
   <div class="apply">
     <div class="applyheader">
-      <div>修改传媒</div>
+      <div class="tac">修改传媒</div>
     </div>
     <div class="applycontent" v-if="goodsData">
       <div class="applyaline">
@@ -158,7 +158,7 @@
       </div>
       <!-- ========================================视频营销======================================================== -->
       <div v-if="goodsData.modular_id==3">
-        <div class="applyaline">
+        <!-- <div class="applyaline">
           <div class="applyleft">
             <span class="red">*</span>平台选择:
           </div>
@@ -172,7 +172,7 @@
               ></el-option>
             </el-select>
           </div>
-        </div>
+        </div> -->
         <div class="applyaline">
           <div class="applyleft">
             <span class="red">*</span>商品名称:
@@ -652,7 +652,6 @@
           </div> -->
         </div>
       </div>
-      <button @click="test">text</button>
     </div>
   </div>
 </template>
@@ -748,6 +747,17 @@ export default {
                 }).catch(err=>{
                     this.$message({message: '失败'+err.response.data.message,type: 'warning'})
                 })
+            }else if(this.goodsData.modular_id == 3){
+                this.updateGoods({
+                    room_ID:this.goodsData.room_ID,
+                    fans_num:this.goodsData.fans_num,
+                    platform_id:this.goodsData.platform_id,
+                    region_id:this.goodsData.region_id
+                }).then(res=>{
+                    this.updatasusses()
+                }).catch(err=>{
+                    this.$message({message: '失败'+err.response.data.message,type: 'warning'})
+                })
             }
         },
         updateGoods(a){
@@ -814,7 +824,11 @@ export default {
                 this.options.push({ value: item.filed_id, label: item.filed_name });
             })
             this.goodsData.goods_price.forEach((item,index) => {
+              if(this.goodsData.modular_id==3){
+                if(this.tag == item.tag){this.price_data[item.priceclassify_id] = item.price}
+              }else{
                 this.price_data[item.priceclassify_id] = item.price
+              }
             })
         }).catch(err => {
           
