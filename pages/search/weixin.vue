@@ -116,9 +116,9 @@
                     </p>
                 </div>
                 <div class="cr">
-                    <p>平均阅读数: {{item.avg_read_num==false?'/':item.avg_read_num>=10000?parseInt(item.avg_read_num/10000)+'W+':item.avg_read_num}}</p>
-                    <p>平均点赞数: {{item.avg_like_num==false?'/':item.avg_like_num>=10000?parseInt(item.avg_like_num/10000)+'W+':item.avg_like_num}}</p>  
-                    <p>平均转发数: {{item.avg_retweet_num==false?'/':item.avg_retweet_num>=10000?parseInt(item.avg_retweet_num/10000)+'W+':item.avg_retweet_num}}</p>
+                    <p>平均阅读数: <span class="black">{{item.avg_read_num==false?'/':item.avg_read_num>=10000?parseInt(item.avg_read_num/10000)+'W+':item.avg_read_num}}</span> </p>
+                    <p>平均点赞数: <span class="black">{{item.avg_like_num==false?'/':item.avg_like_num>=10000?parseInt(item.avg_like_num/10000)+'W+':item.avg_like_num}}</span> </p>  
+                    <p>最大阅读数: <span class="black">{{item.max_read_num==false?'/':item.max_read_num>=10000?parseInt(item.max_read_num/10000)+'W+':item.max_read_num}}</span> </p>
                 </div>
                 <div>
                     <div @click.stop="collection(item.goods_id,index)" :class="issoucanglist.indexOf(index)==-1?'shoucang':'isshoucang'">收藏</div>

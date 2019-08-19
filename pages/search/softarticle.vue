@@ -703,7 +703,7 @@ export default {
     width: 120px;
 }
 .goodslistitem p{
-    color: #666;
+    color: #242424;
     font-size: 14px;
     margin-top: 4px;
 }

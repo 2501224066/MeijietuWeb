@@ -102,16 +102,16 @@
                     </p>
                 </div>
                 <div>
-                    <p>{{item.avg_retweet_num==false||item.avg_retweet_num==false?'/':item.avg_retweet_num>=10000?parseInt(item.avg_retweet_num/10000)+'W+':item.avg_retweet_num}}</p>
+                    <p class="black">{{item.avg_retweet_num==false||item.avg_retweet_num==false?'/':item.avg_retweet_num>=10000?parseInt(item.avg_retweet_num/10000)+'W+':item.avg_retweet_num}}</p>
                 </div>
                 <div>
-                     <p>{{item.avg_like_num==false?'/':item.avg_like_num>=10000?parseInt(item.avg_like_num/10000)+'W+':item.avg_like_num}}</p>  
+                     <p class="black">{{item.avg_like_num==false?'/':item.avg_like_num>=10000?parseInt(item.avg_like_num/10000)+'W+':item.avg_like_num}}</p>  
                 </div>
                 <div>
-                     <p>{{item.avg_comment_num==false?'/':item.avg_comment_num>=10000?parseInt(item.avg_comment_num/10000)+'W+':item.avg_comment_num}}</p>
+                     <p class="black">{{item.avg_comment_num==false?'/':item.avg_comment_num>=10000?parseInt(item.avg_comment_num/10000)+'W+':item.avg_comment_num}}</p>
                 </div>
                 <div>
-                    <p>{{item.auth_type===0?'未认证':'已认证'}}</p>
+                    <p class="black">{{item.auth_type==0?'未认证':'已认证'}}</p>
                 </div>
                 <div>
                     <div @click.stop="collection(item.goods_id)" class="shoucang">收藏</div>

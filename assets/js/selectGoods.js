@@ -21,7 +21,7 @@ export const selectGoods = async (a) => {
         pricelevel_max:''
     }
     for(var k in a){
-        params.k = a.k
+        params.k = a[k]
     }
     return axios('https://back.meijietu.cn/api/selectGoods',{params:params})
 }

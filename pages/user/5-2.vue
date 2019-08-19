@@ -27,11 +27,16 @@
                     <div>
                         <p v-for="(itemp,i) in item.goods_price" v-show="itemp.price !== '0.00'" :key="i">{{itemp.priceclassify_name}}: <span class="red">￥{{itemp.price}}</span></p>
                     </div>
-                    <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':'已上架'}}</div>
-                    <div v-if="item.verify_status==2" class="cr xiajia" @click="goodsDown(item.goods_num,index)">
-                        <span>{{item.verify_status==0?'':item.verify_status==1?'':'商品下架'}}</span>
+                    <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':item.status==1?'已上架':'已下架'}}</div>
+                    <div v-if="item.verify_status==2">
+                        <span class="cr xiajia" v-if="item.status == 1" @click="goodsDown(item.goods_num,index)">{{item.verify_status==0?'':item.verify_status==1?'':'商品下架'}}</span>
+                        <span class="xiugai cr" @click="xiugai(item.goods_num)">修改商品</span>
+                        <span v-if="item.status == 2">{{item.verify_status==0?'':item.verify_status==1?'':'商品已下架'}}</span>
                     </div>
-                    <div v-if="item.verify_status!=2" class="cr" @click="goodsDown(item.goods_num,index)">
+                    <div v-if="item.verify_status==1">
+                        <span class="xiugai cr" @click="xiugai(item.goods_num)">修改商品</span>
+                    </div>
+                    <div v-if="item.verify_status==0" class="cr" @click="goodsDown(item.goods_num,index)">
                         <span>请等待</span>
                     </div>
                 </div>
@@ -85,13 +90,16 @@ export default {
             })
         },
         handleCurrentChange(a){
-        this.$axios.post('/goodsBelongSelf?page=' + a,{},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}})
-        .then(res => {
-            this.goodsBelongSelf = res.data.data
-            this.loading=false
-        }).catch(err => {
-            this.loading=false
-        })
+            this.$axios.post('/goodsBelongSelf?page=' + a,{},{headers:{'Authorization':'Bearer'+localStorage.getItem('access_token')}})
+            .then(res => {
+                this.goodsBelongSelf = res.data.data
+                this.loading=false
+            }).catch(err => {
+                this.loading=false
+            })
+        },
+        xiugai(a){
+            this.$router.push('/user/5-5/' + a)
         }
     },
 }
@@ -183,7 +191,7 @@ span.modular{
 .fenye{
     margin: 30px 300px;
 }
-.xiajia span{
+.xiajia{
     display: inline-block;
     width: 80px;
     height: 26px;
@@ -192,5 +200,17 @@ span.modular{
     color: #fff;
     text-align: center;
     line-height: 26px;
+    margin-bottom: 15px;
+}
+.xiugai{
+    display: inline-block;
+    width: 80px;
+    height: 26px;
+    background-color: #5141ED;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
+    margin-bottom: 15px;
 }
 </style>

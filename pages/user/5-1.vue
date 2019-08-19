@@ -174,7 +174,7 @@
           <div class="applyright">
             <el-radio-group v-model="authtype_id">
               <el-radio :label="1">已认证</el-radio>
-              <el-radio :label="2">未认证</el-radio>
+              <el-radio :label="0">未认证</el-radio>
             </el-radio-group>
           </div>
         </div>
@@ -1084,6 +1084,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
+  align-items: center
 }
 .applyaline {
   margin-top: 30px;
