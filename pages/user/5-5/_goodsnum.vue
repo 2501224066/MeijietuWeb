@@ -306,30 +306,17 @@
             </el-select>
           </div>
         </div>
-      </div>
-      <div v-if="goodsData.modular_id==5">
-        <div class="applyaline">
-          <div class="applyleft">
-            <span class="red">*</span>所属分类:
-          </div>
-          <div class="applyright">
-            <el-radio-group v-model="theme_index">
-              <el-radio
-                v-for="(item,index) in selfmediaGoodsAttribute"
-                :key="item.theme_id"
-                :label="index"
-              >{{item.theme_name}}</el-radio>
-            </el-radio-group>
-          </div>
-        </div>
+      </div> -->
+      <!-- =========================================自媒体============================================================== -->
+      <div v-if="goodsData.modular_id==4">
         <div class="applyaline">
           <div class="applyleft">
             <span class="red">*</span>平台选择:
           </div>
           <div class="applyright">
-            <el-select v-model="platform_id" placeholder="请选择">
+            <el-select v-model="goodsData.platform_id" placeholder="请选择">
               <el-option
-                v-for="item in selfmediaGoodsAttribute[1].platform"
+                v-for="item in mediadata[modular_index].theme[theme_index].platform"
                 :key="item.platform_id"
                 :label="item.platform_name"
                 :value="item.platform_id"
@@ -342,7 +329,7 @@
             <span class="red">*</span>账号名称:
           </div>
           <div class="applyright">
-            <el-input v-model="goods_title" placeholder="请输入账号名称"></el-input>
+            <el-input v-model="goodsData.title" placeholder="请输入账号名称"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -350,7 +337,7 @@
             <span class="red">*</span>标题简介:
           </div>
           <div class="applyright">
-            <el-input v-model="goods_title_about" placeholder="请输入标题简介"></el-input>
+            <el-input v-model="goodsData.title_about" placeholder="请输入标题简介"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -358,9 +345,9 @@
             <span class="red">*</span>媒体领域:
           </div>
           <div class="applyright">
-            <el-select v-model="filed" placeholder="请选择">
+            <el-select v-model="goodsData.filed_id" placeholder="请选择">
               <el-option
-                v-for="item in selfmediaGoodsAttribute[theme_index].filed"
+                v-for="item in mediadata[modular_index].theme[theme_index].filed"
                 :key="item.filed_id"
                 :label="item.filed_name"
                 :value="item.filed_id"
@@ -370,18 +357,10 @@
         </div>
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>粉丝数量:
-          </div>
-          <div class="applyright">
-            <el-input v-model="fans_num" maxlength="8" placeholder="请输入粉丝数量"></el-input>
-          </div>
-        </div>
-        <div class="applyaline">
-          <div class="applyleft">
             <span class="red">*</span>价格:
           </div>
           <div class="applyright">
-            <el-input v-model="price" maxlength="8" placeholder="请输入商品价格"></el-input>
+            <el-input v-model="goodsData.goods_price[0].floor_price" maxlength="8" placeholder="请输入商品价格"></el-input>
           </div>
         </div>
         <div class="applyaline">
@@ -389,13 +368,13 @@
             <span class="red">*</span>是否需要预约:
           </div>
           <div class="applyright">
-            <el-radio-group v-model="isorder">
+            <el-radio-group v-model="goodsData.reserve_status">
               <el-radio :label="1">是</el-radio>
               <el-radio :label="0">否</el-radio>
             </el-radio-group>
           </div>
         </div>
-      </div> -->
+      </div>
       <!-- =====================================软文============================================================= -->
       <div v-if="goodsData.modular_id==5">
         <div class="applyaline">
@@ -701,7 +680,7 @@ export default {
         updatasusses(){
            this.$message({message: '修改成功',type: 'success'})
             setTimeout(() => {
-              // this.$router.push('/user/5-2')
+              this.$router.push('/user/5-2')
             }, 2000);
         },
         btn(){
@@ -755,6 +734,17 @@ export default {
                     fans_num:this.goodsData.fans_num,
                     platform_id:this.goodsData.platform_id,
                     region_id:this.goodsData.region_id
+                }).then(res=>{
+                    this.updatasusses()
+                }).catch(err=>{
+                    this.$message({message: '失败'+err.response.data.message,type: 'warning'})
+                })
+            }else if(this.goodsData.modular_id == 4){
+                this.updateGoods({
+                    reserve_status:this.goodsData.reserve_status,
+                    platform_id:this.goodsData.platform_id,
+                    region_id:this.goodsData.region_id,
+                    price_json:JSON.stringify({'26':this.goodsData.goods_price[0].floor_price})
                 }).then(res=>{
                     this.updatasusses()
                 }).catch(err=>{

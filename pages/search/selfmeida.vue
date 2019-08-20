@@ -6,16 +6,6 @@
                 <div v-for="(item,index) in mediadata" :key="item.theme_id" @click="theme_index = index;qingkong()" :class="[theme_index==index?'themeclass':'']">{{item.theme_name}}</div>
             </div>
             <div class="selectalign">
-                <div class="selecttitle">平台分类</div>
-                <div class="selectright">
-                    <div :class="[pingtai?'':'on']">
-                        <div @click="platform = ''"><i :class="[platform === ''?'isselect':'']">不限</i></div>
-                        <div v-for="(item,index) in mediadata[theme_index].platform" :key="index" @click="platform = index"><i :class="[index===platform?'isselect':'']">{{item.platform_name}}</i></div>
-                    </div>
-                </div>
-                <a href="javascript:;" class="zhankai" @click="pingtai == true?pingtai=false:pingtai=true">展开 <span></span></a>
-            </div>
-            <div class="selectalign">
                 <div class="selecttitle">领域分类</div>
                 <div class="selectright">
                     <div :class="[hold?'':'on']">
@@ -26,25 +16,21 @@
                 <a href="javascript:;" class="zhankai" @click="ishold">展开 <span></span></a>
             </div>
             <div class="selectalign">
-                <div class="selecttitle"> 
-                    <div class="checktitle" @click="checkboxshow===true?checkboxshow=false:checkboxshow=true">{{mediadata[theme_index].priceclassify[priceclassify_index].priceclassify_name}}</div>
-                    <div class="checkbox" v-show="checkboxshow">
-                        <div v-for="(item,index) in mediadata[theme_index].priceclassify" :key="item.priceclassify_id" v-show="item.tag==tag" @click="priceclassify_index=index;checkboxshow=false">{{item.priceclassify_name}}</div>
+                <div class="selecttitle">媒体门户</div>
+                <div class="selectright">
+                    <div :class="[pintai?'':'on']">
+                        <div @click="platform = ''"><i :class="[platform === ''?'isselect':'']">不限</i></div>
+                        <div v-for="(item,index) in mediadata[theme_index].platform" :key="index" @click="platform = index"><i :class="[index===platform?'isselect':'']">{{item.platform_name}}</i></div>
                     </div>
                 </div>
+                <a href="javascript:;" class="zhankai" @click="ispintai">展开 <span></span></a>
+            </div>
+             <div class="selectalign">
+                <div class="selecttitle"> 价格(元)</div>
                 <div class="selectright">
                     <div>
                         <div @click="pricelevel = ''"><i :class="[pricelevel === ''?'isselect':'']">不限</i></div>
                         <div v-for="(item,index) in mediadata[0].pricelevel" :key="index" @click="pricelevel = index"><i :class="[index===pricelevel?'isselect':'']">{{item.pricelevel_name}}</i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="selectalign">
-                <div class="selecttitle">粉丝数</div>
-                <div class="selectright">
-                    <div>
-                        <div @click="fansnumlevel = ''"><i :class="[fansnumlevel === ''?'isselect':'']">不限</i></div>
-                        <div v-for="(item,index) in mediadata[theme_index].fansnumlevel" :key="index" @click="fansnumlevel = index"><i :class="[index===fansnumlevel?'isselect':'']">{{item.fansnumlevel_name}}</i></div>
                     </div>
                 </div>
             </div>
@@ -63,101 +49,119 @@
                 <div class="selectright">
                     <div>
                         <div @click="qingkong"><i>清空</i></div>
-                        <div v-if="platform!==''" style="width:auto"><span>领域分类: {{mediadata[theme_index].platform[platform].platform_name}}</span></div>
                         <div v-if="filed!==''" style="width:auto"><span>领域分类: {{mediadata[theme_index].filed[filed].filed_name}}</span></div>
-                        <div v-if="fansnumlevel!==''" style="width:auto"><span>粉丝数量: {{mediadata[theme_index].fansnumlevel[fansnumlevel].fansnumlevel_name}}</span></div>
-                        <div v-if="pricelevel!==''" style="width:auto"><span>{{mediadata[theme_index].priceclassify[priceclassify_index].priceclassify_name}}:{{mediadata[0].pricelevel[pricelevel].pricelevel_name}}</span></div>
+                        <div v-if="platform!==''" style="width:auto"><span>媒体门户: {{mediadata[theme_index].platform[platform].platform_name}}</span></div>
+                        <div v-if="pricelevel!==''" style="width:auto"><span>价格(元):{{mediadata[0].pricelevel[pricelevel].pricelevel_name}}</span></div>
+                        <div v-if="included_sataus!==''" style="width:auto"><span>收录效果: {{included_sataus==='0'?'不包收录':'包收录'}}</span></div>
+                        <div v-if="weekend_status!==''" style="width:auto"><span>周末接稿: {{weekend_status==='0'?'周末不可发':'周末可发'}}</span></div>
                         <div v-if="region!==''" style="width:auto"><span>地区筛选:{{mediadata[0].region[region].region_name}}</span></div>
                     </div>
                 </div>
-                <el-button type="primary" class="selectGoods" @click="selectGoods">搜索</el-button>
             </div>
         </div> 
-        <!-- 搜索商品列表页 -->
-        <!-- <div class="goodslist a">                                   
+        <div class="goodslist a" v-loading="loading">
             <div class="goodslisttop">
-                <el-button class="fl" type="primary">刷新</el-button>
-                <el-button class="fr" type="primary">联系客服</el-button>
-                <el-button class="fr">价格</el-button>
+                <el-button class="fl" type="primary" @click="alladd">批量价入购物车</el-button>
+                <el-button class="fr lianxi" type="primary" @click="kefu">联系客服</el-button>
             </div>
             <div class="goodslisttitle goodslistcontent">
-                <div>媒介名称</div>
-                <div>参考报价</div>
+                <div><el-button @click="quanxuan" size="mini" type="primary" style="margin-left:22px">全选</el-button></div>
+                <div>媒体名称</div>
                 <div>平台</div>
-                <div>粉丝量</div>
-                <div>互动量</div>
+                <div>行业分类</div>
+                <div>价格</div>
+                <div>地区</div>
+                <div>备注</div>
                 <div>操作</div>
             </div>
             <div class="goodslistcontent goodslistitem" v-for="(item,index) in listdata" :key="index">
+                <el-checkbox-group v-model="checkList">
+                    <el-checkbox :label="index"></el-checkbox>
+                </el-checkbox-group>
                 <div>
-                    <img src="/pic/tx_mr001.png" style="width:70px">
                     <div class="textp">
-                        <h4>{{item.goods_title}}</h4>
-                        <p>领域:{{item.filed_name}}</p>
-                        <p>地区:{{item.region_name}}</p>
+                        <h4 style="width:160px" class="nowrap">{{item.title}}</h4>
+                        <p class="nowrap" style="width:160px" :title="item.title_about">简介:{{item.title_about}}</p>
                     </div>
                 </div>
                 <div>
-                    <p v-for="itemt in item.price_info" :key="itemt.priceclassify_id">
-                        {{itemt.priceclassify_name}}: <span class="red fr">{{itemt.price}}</span>
+                    <p>{{item.platform_name}}</p>
+                </div>
+                <div>
+                    <p>{{item.filed_name}}</p>
+                </div>
+                 <div>
+                    <p>
+                        <span class="red fr">￥{{item.goods_price[0].price=='0.00'?'/':item.goods_price[0].price}}</span>
                     </p>
                 </div>
-                <div></div>
-                <div>{{item.fans_num}}</div>
                 <div>
-                    <p>平均阅读数: {{item.avg_read_num==false||item.avg_read_num==false?'/':item.avg_read_num>=10000?parseInt(item.avg_read_num/10000)+'W+':item.avg_read_num}}</p>
-                    <p>平均点赞数: {{item.avg_like_num==false?'/':item.avg_like_num>=10000?parseInt(item.avg_like_num/10000)+'W+':item.avg_like_num}}</p>  
-                    <p>平均评论数: {{item.avg_comment_num==false?'/':item.avg_comment_num>=10000?parseInt(item.avg_comment_num/10000)+'W+':item.avg_comment_num}}</p>
+                    <p>{{item.region_name}}</p>
+                </div>
+                <div :title="item.remarks">
+                    {{item.remarks}}
                 </div>
                 <div>
-                    <div @click="collection(item.goods_id)">收藏</div>
-                    <div class="addcar">加入购物车
-                        <div>
-                            <div v-for="(iteminfo,index) in item.price_info" v-show="iteminfo.price!=''" :key="index" @click="addshopcar(item.goods_id,item.modular_type,iteminfo.priceclassify_id,iteminfo.price)">{{iteminfo.priceclassify_name}}</div>
-                        </div>
-                    </div>
+                    <div @click.stop="collection(item.goods_id,index)" :class="issoucanglist.indexOf(index)==-1?'shoucang':'isshoucang'">收藏</div>
+                    <div class="addcar" @click.stop="addshopcar(item.goods_id,item.goods_price[0].goods_price_id)"> 加入购物车 </div>
                 </div>
             </div>
-              <el-pagination
+            <div class="fenye">
+                <el-pagination
+                background
                 @current-change="handleCurrentChange"
-                :current-page="1"
-                layout="total, prev, pager, next, jumper"
-                :total="2">
+                :current-page.sync="currentPage"
+                :page-size="15"
+                layout="prev, pager, next, jumper"
+                :total="this.selectWeixin.total">
                 </el-pagination>
-        </div> -->
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import { gettoken,hmt } from "@@/assets/commen.js";
+import { gettoken,selectGoods,hmt } from "@@/assets/commen.js";
 import headert from '@@/components/header.vue';
 export default {
     layout:'header',
-   async asyncData({app}) {
+    async asyncData({app}) {
         let { data } = await app.$axios.get("/getGoodsAttribute");
-    return { mediadata: data.data[2].theme };    
+        let { data:selectgoods } = await selectGoods({modular_id: 4,theme_id:7})
+        return { mediadata: data.data[3].theme ,listdata : selectgoods.data.data,
+            selectWeixin : selectgoods.data };    
+    },
+    head(){
+        return{
+            title:'自媒体营销|自媒体推广|自媒体KOL - 媒介兔-全行业&全流程_获客整合营销平台'
+        }
     },
     data() {
         return {
+            loading:false,
             listdata:[],
             theme_index:0,
             filed:'',//筛选领域分类
-            fansnumlevel:'',//筛选粉丝数量
             platform:'',//筛选平台
-            priceclassify_index: 0,  //多图文索引
-            pingtai:true, //是否收起
+            included_sataus:'',//筛选收录效果
+            weekend_status:'', //筛选周末可发
             hold:true,
             diqu:true,
+            pintai:true,
             pricelevel:'',//筛选多图文价格
             region:'',//筛选地区
-            checkboxshow: false,
             selectWeixin:'', //搜索结果
+            currentPage:1,
+            keyword:'',
+            issoucanglist:[],
+            btnwait:false,
+            checkList:[],
         }
     },
-     components:{
-        headert
-    },
     methods: {
+        kefu(){
+            window.open('https://wpa.qq.com/msgrd?v=3&uin='+JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID+'&site=qq&menu=yes') 
+        },
         ishold(){
             if(this.hold ==true){
                 this.hold = false
@@ -172,111 +176,212 @@ export default {
                 this.diqu = true
             }
         },
-        qingkong(){
-            this.filed =this.fansnumlevel=this.pricelevel=this.readlevel=''
-            this.region=this.priceclassify_index =0
-        },
-        selectGoods(){
-            let params = {    
-                modular_id: 1,
-                theme_id:this.mediadata[this.theme_index].theme_id,
-                keyword:'',
-                filed_id:this.mediadata[this.theme_index].filed[this.filed]&&this.mediadata[this.theme_index].filed[this.filed].filed_id||'',
-                fansnumlevel_min:this.mediadata[this.theme_index].fansnumlevel[this.fansnumlevel]&&JSON.stringify(this.mediadata[this.theme_index].fansnumlevel[this.fansnumlevel].fansnumlevel_min)||'',
-                fansnumlevel_max:this.mediadata[this.theme_index].fansnumlevel[this.fansnumlevel]&&this.mediadata[this.theme_index].fansnumlevel[this.fansnumlevel].fansnumlevel_max||'',
-                priceclassify_id:this.mediadata[this.theme_index].priceclassify[this.priceclassify_index]&&this.mediadata[this.theme_index].priceclassify[this.priceclassify_index].priceclassify_id||'',
-                pricelevel_min:this.mediadata[0].pricelevel[this.pricelevel]&&JSON.stringify(this.mediadata[0].pricelevel[this.pricelevel].pricelevel_min)||'',
-                pricelevel_max:this.mediadata[0].pricelevel[this.pricelevel]&&this.mediadata[0].pricelevel[this.pricelevel].pricelevel_max||'',
-                platform_id:this.mediadata[this.theme_index].platform[this.platform]&&this.mediadata[this.theme_index].platform[this.platform].platform_id||'',
-                region_id:this.mediadata[0].region[this.region]&&this.mediadata[0].region[this.region].region_id||'',
+        ispintai(){
+            if(this.pintai ==true){
+                this.pintai = false
+            }else{
+                this.pintai = true
             }
-           for(var key in params){
-               if(params.pricelevel_max ==''){
-                   delete params.priceclassify_id
-               }
-               if(params[key] == ''&&params[key] !== 0&&params[key] !== '0'){
-                   delete params[key]
-               }
-           }
-            this.$axios.get('/selectGoods',{params:params}).then(res =>{
+        },
+        quanxuan(){
+            if(this.checkList.length == this.listdata.length){return this.checkList = []}
+            for(let i=0;i<this.listdata.length;i++){
+                this.checkList.push(i)
+            }
+        },
+        qingkong(){
+            this.region = this.filed =this.pricelevel=''
+        },
+        selectGoods(a){
+            this.keyword = this.$store.state.searchkeyword.keyword
+            let params = {    
+                page:a||'1',
+                modular_id: 4,
+                theme_id: this.mediadata[this.theme_index].theme_id,
+                priceclassify_id: 26,
+                key_word: this.keyword,
+                filed_id:this.mediadata[this.theme_index].filed[this.filed]&&this.mediadata[this.theme_index].filed[this.filed].filed_id||'',
+                region_id:this.mediadata[0].region[this.region]&&this.mediadata[0].region[this.region].region_id||'',
+                platform_id: this.mediadata[this.theme_index].platform[this.platform]&&this.mediadata[this.theme_index].platform[this.platform].platform_id||'',
+            }        
+            selectGoods(params).then(res=>{
                 this.listdata = res.data.data.data
                 this.selectWeixin = res.data.data
-            }).catch(err => {
+                this.loading = false
+            }).catch(err=>{
+                this.loading = false
             })
+            this.$store.commit('setsearchkeyword','')
         },
-        addshopcar(a,b,c,d){
+        addshopcar(a,b){
+            if(this.btnwait){return this.$message({message: '操作太频繁,请稍后',type: 'warning'})}
+            if(localStorage.getItem('userdata')===''){
+                return this.$message({
+                    message: '需要登陆才能加入购物车',
+                    type: 'warning'
+                })
+            }
+            if(JSON.parse(localStorage.getItem('userdata')).identity != 1){return this.$message({message: '你尚未拥有此功能',type: 'warning'})}
+            this.btnwait=true
             gettoken().then(val => {
                 return this.$axios.post('/joinShopcart',{
-                goods_id:a,
-                modular_type:b,
-                priceclassify_id:c,
-                price:d
+                goods_id_json:JSON.stringify({[a]:b})
             },{ headers: { Authorization: "Bearer" + val } })
             })
             .then(res => {
+                this.$store.state.userdata.shopcart_count += 1
+                this.btnwait = false
+                this.$message({ message: '恭喜你，加入购物车成功',type: 'success'})
             }).catch(err => {
-                alert(err.response.data.message)
+                this.btnwait = false
+                if(err.response.status == 401){
+                    return this.$message({ message: '加入购物车失败', type: 'warning'})
+                }
+                this.$message({ message: err.response.data.message, type: 'warning'})
             })
         },
-        handleCurrentChange(val){
-            // this.$axios.get('/selectWeixinGoods',{params:{
-            //     page:val
-            // }})
-        },
-        collection(a){                                       //======加入收藏
+        collection(a,b){                                       //======加入收藏
+            if(this.btnwait){return this.$message({message: '操作太频繁,请稍后',type: 'warning'})}
+            if(this.$store.state.userdata == ''){return this.$router.push('/login')}
+            if(this.$store.state.userdata.identity == 2){return this.$message({message: '媒体主没有此功能',type: 'warning'})}
+            this.btnwait=true
+            this.issoucanglist.push(b)
             gettoken().then(val => {
                 return this.$axios.post('/collectionGoods',{
                     goods_id_json:JSON.stringify({1:a})
                 },{ headers: { Authorization: "Bearer" + val } })
             }).then(res =>{
+                this.btnwait = false
+                this.$message({ message: '恭喜你，收藏成功',type: 'success'})
             }).catch(err =>{
-                alert(err.response.data.message)
+                this.btnwait = false
+                this.issoucanglist.shift()
+                this.$message.error('收藏失败:'+err.response.data.message)
+            })
+        },
+        handleCurrentChange(val){                        //商品翻页功能
+            this.loading = true
+            this.selectGoods(val)
+        },
+        alladd(){
+            if(this.btnwait){return this.$message({message: '操作太频繁,请稍后',type: 'warning'})}
+            if(this.checkList.length == 0){return this.$message({message: '请选择商品',type: 'warning'})}
+            if(localStorage.getItem('userdata')===''){
+                return this.$message({
+                    message: '需要登陆才能加入购物车',
+                    type: 'warning'
+                })
+            }
+            this.btnwait=true
+            let goodidjson = {}
+            this.checkList.forEach(item => {
+                goodidjson[this.listdata[item].goods_id] = this.listdata[item].goods_price[0].goods_price_id
+            });
+            gettoken().then(val => {
+                return this.$axios.post('/joinShopcart',{
+                    goods_id_json:JSON.stringify(goodidjson)
+                },{ headers: { Authorization: "Bearer" + val } })
+            }).then(res => {
+                this.$store.state.userdata.shopcart_count += 1
+                this.btnwait = false
+                this.$message({ message: '恭喜你，加入购物车成功',type: 'success'})
+            }).catch(err => {
+                this.btnwait = false
+                if(err.response.status == 401){
+                    return this.$message({ message: '加入购物车失败', type: 'warning'})
+                }
+                this.$message({ message: err.response.data.message, type: 'warning'})
             })
         }
     },
     mounted() {
         hmt()
-        // this.$axios('/selectGoods',{params:{
-        //     theme_id:1,
-        //     keyword:'',
-        //     filed_id:'',
-        //     fansnumlevel_min:'',
-        //     fansnumlevel_max:'',
-        //     priceclassify_id:1,
-        //     pricelevel_min:'',
-        //     pricelevel_max:'',
-        //     readlevel_min:'',
-        //     readlevel_max:'',
-        //     region_id:''
-        // }}).then(res => {
-        //     this.listdata = res.data.data.data
-        //     this.selectWeixin = res.data.data
-        // }).catch(err => {
-        // })
+        window.document.body.style.background = '#eef2f7'
+        if(this.$store.state.searchkeyword !=''){
+            this.selectGoods()
+        }
     },
-    computed:{
-        tag: function() {
-      if (this.platform == 3 &&this.theme_index==0) {
-        return "小红书";
-      } else if (this.platform == 1&&this.theme_index==0) {
-        return "bilibili";
-      } else if (this.platform == 9&&this.theme_index==1) {
-        return "淘宝直播";
-      } else {
-        return "default";
-      }
-    }
+    components:{
+        headert
+    },
+    watch:{
+        platform: function(){
+            this.loading = true
+            this.currentPage =1
+            this.selectGoods()
+        },
+        theme_index: function(){
+            this.loading = true
+            this.currentPage =1
+            this.selectGoods()
+        },
+        filed: function(){
+            this.loading = true
+            this.currentPage =1
+            this.selectGoods()
+        },
+        pricelevel: function(){
+            this.loading = true
+            this.currentPage =1
+            this.selectGoods()
+        },
+        region: function(){
+            this.loading = true
+            this.currentPage =1
+            this.selectGoods()
+        },
+        included_sataus: function(){
+            this.loading = true
+            this.currentPage =1
+            this.selectGoods()
+        },
+        weekend_status: function(){
+            this.loading = true
+            this.currentPage =1
+            this.selectGoods()
+        },
+        searchkeyword: function(a){
+            if(a==''){return}
+            this.keyword = a.keyword
+            this.loading = true
+            this.selectGoods()
+        }
+    },
+    computed: {
+        searchkeyword(){
+            return this.$store.state.searchkeyword
+        }
     }
 }
 </script>
 
 <style scoped>
+.el-button{
+    padding: 8px 20px;
+}
+.lianxi.el-button{
+    padding: 8px 12px 8px 28px;
+    background-image: url('/indexicon/lee_icon004.png');
+    background-repeat: no-repeat;
+    background-position: 5px 6px;
+}
 .a{
     width: 1200px;
     margin: 0 auto;
     background-color: #fff;
     border-radius: 3px;
     box-shadow:0px 3px 7px 0px rgba(0, 0, 0, 0.11);
+}
+.fenye{
+    padding: 20px 300px;
+}
+.isshoucang{
+    color: #5141ED;
+    font-size: 14px;
+    padding-bottom: 11px;
+    padding-left: 76px;
+    background: url('/indexicon/shouc_icon2.png') 52px 3px no-repeat;
+    cursor: pointer;
 }
 /* 搜素每行 */
 .searchlist > div{       
@@ -286,11 +391,10 @@ export default {
 .fristselect >div{
     width: 80px;
     text-align: center;
-    padding: 10px 0;
+    padding: 7px 0;
     border-radius: 3px;
-    margin: 6px 20px;
+    margin: 13px -2px 13px 18px;
     display: inline-block;
-    margin-top: 8px;
     border: 1px solid #D2D2D2;
     cursor: pointer;
 }
@@ -323,8 +427,8 @@ export default {
 .selectright{
     width: 1050px;
     display: inline-block;
-    padding: 0 20px 10px 168px;
-    margin-top: 10px;
+    padding: 0 20px 13px 195px;
+    margin-top: 14px;
     position: relative;
 }
 .selectright > div.on{
@@ -356,7 +460,7 @@ export default {
     border: 1px solid #D2D2D2;
     border-radius: 3px;
     line-height: 35px;
-    margin: 6px 0 0 12px;
+    margin: 10px 0 0 12px;
     text-align: left;
     position: relative;
     cursor: pointer;
@@ -377,7 +481,7 @@ export default {
     background-image: url('/usericon/top_icon_button002.png');
 }
 .checkbox{
-    width: 116px;
+    width: 105px;
     border: 1px solid #D2D2D2;
     border-radius: 3px;
     line-height: 32px;
@@ -404,14 +508,10 @@ export default {
 }
 .zhankai span{
     width: 9px;
-    height: 5px;
+    height: 7px;
     display: inline-block;
     background-image: url('/usericon/top_icon_button002.png');
-}
-.selectGoods{
-    position: absolute;
-    right: 50px;
-    top: 5px;
+    background-repeat: no-repeat;
 }
 .selectright span{
     padding: 3px 10px;
@@ -439,8 +539,8 @@ export default {
     background-color: #F8F7FF;
     font-size: 12px;
     color: #666;
-    border: 1px solid #D2D2D2;
-    
+    border-top: 1px solid #D2D2D2;
+    border-bottom: 1px solid #D2D2D2;
 }
 .goodslistcontent{
     display: flex;
@@ -454,17 +554,29 @@ export default {
     border-radius:3px;
     box-shadow:0px 0px 10px 1px rgba(179,173,246,0.33);
 }
+.shoucang{
+    color: #888;
+    font-size: 14px;
+    padding-bottom: 11px;
+    padding-left: 76px;
+    background: url('/indexicon/shouc_icon01.png') 52px 3px no-repeat;
+    cursor: pointer;
+}
 .addcar{
     width: 120px;
     height: 35px;
-    margin-top: 20px;
+    color: #888;
     text-align: center;
+    padding-left: 20px;
     line-height: 34px;
     position: relative;
     border-radius: 3px;
     font-size: 14px;
-    border:1px solid rgba(81,65,237,1);
+    border:1px solid #D2D2D2;
+    background: url('/indexicon/lee_icon001.png') 8px 7px no-repeat;
+    cursor: pointer;
 }
+
 .addcar > div{
     position:absolute;
     width: 158px;
@@ -512,29 +624,34 @@ export default {
 .goodslistitem:hover .addcar{
     border-color: #5141ED;
     color: #5141ED;
-}
-.goodslistitem>div:nth-child(2){
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    padding: 0 20px 0 45px;
+    background: url('/indexicon/douh_icon003.png') 8px 8px no-repeat
 }
 .goodslistitem>div:nth-child(1),
 .goodslistitem>div:nth-child(3),
 .goodslistitem>div:nth-child(4),
-.goodslistitem>div:nth-child(6){
+.goodslistitem>div:nth-child(5),
+.goodslistitem>div:nth-child(6),
+.goodslistitem>div:nth-child(7),
+.goodslistitem>div:nth-child(8),
+.goodslistitem>div:nth-child(9){
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.goodslistitem>div:nth-child(5){
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    padding: 0 20px 0 20px;
+.goodslistitem>div:nth-child(1){
+    padding-left: 30px;
 }
-.goodslistitem>div:nth-child(6){
-    flex-direction:column;
+.goodslistitem>div:nth-child(2){
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.goodslistitem>div:nth-child(7){
+    padding: 20px 0;
+    overflow: hidden;
+}
+.goodslistitem>div:nth-child(8){
+    flex-direction: column;
 }
 .el-checkbox__inner{
     width:18px;
@@ -551,10 +668,9 @@ export default {
 }
 .goodslistitem>div .textp{
     width: 120px;
-    margin-left: 12px;
 }
 .goodslistitem p{
-    color: #666;
+    color: #242424;
     font-size: 14px;
     margin-top: 4px;
 }
@@ -562,17 +678,51 @@ export default {
     font-weight: 400;
 }
 .goodslistcontent>div:nth-child(1){
-    width: 340px;
+    width: 70px;
 }
 .goodslistcontent>div:nth-child(2){
-    width: 220px;
+    width: 150px;
 }
 .goodslistcontent>div:nth-child(3),
-.goodslistcontent>div:nth-child(4){
-    width: 140px;
+.goodslistcontent>div:nth-child(4),
+.goodslistcontent>div:nth-child(5){
+    width: 136px;
 }
-.goodslistcontent>div:nth-child(5),
-.goodslistcontent>div:nth-child(6){
+.goodslistcontent>div:nth-child(6),
+.goodslistcontent>div:nth-child(7){
+    width: 110px;
+}
+.goodslistcontent>div:nth-child(7){
+    width: 220px;
+    margin: 0 30px;
+}
+.goodslistcontent>div:nth-child(8){
     width: 180px;
+}
+.ruanwenlink{
+    height: 30px;
+    padding-top:  5px;
+}
+.ruanwenlink a{
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid #5141ED;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    color: #5141ED;
+}
+.ruanwenlink span{
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid #d2d2d2;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    color: #d2d2d2;
 }
 </style>

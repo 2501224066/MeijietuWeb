@@ -38,7 +38,7 @@
                     <el-col :span="2"><div :class="item.verify_status===0?'red':''">{{item.verify_status===0?'待审核':item.verify_status===1?'未通过':'已通过'}}</div></el-col>
                     <el-col :span="3"><div class="kefucaozuo">
                         <img @click="goodsxiangqin=true;goodsdata=item;goodsindex=index" style="margin-right:10px" src="/indexicon/kefucaozuo01.png" title="商品详情">
-                        <img v-if="item.modular_id===5&&item.goods_price[0].price==0" @click="ruanwen=true;ruanwendata=item" src="/indexicon/kefucaozuo02.png" title="软文商品设置价格">
+                        <img v-if="item.modular_settlement_type==2&&item.goods_price[0].price==0" @click="ruanwen=true;ruanwendata=item" src="/indexicon/kefucaozuo02.png" title="软文商品设置价格">
                     </div>
                     </el-col>
                 </el-row>
@@ -120,11 +120,11 @@
             </span>
         </el-dialog>
           <el-dialog
-            title="软文商品价格设置"
+            title="商品价格设置"
             :visible.sync="ruanwen"
             width="30%">
-            <div>软文价格:</div>
-            <el-input v-model="ruanwenprice" placeholder="请输入软文价格"></el-input>
+            <div>底价: <span class="red">{{ruanwendata.goods_price[0].floor_price}}</span></div>
+            <el-input v-model="ruanwenprice" placeholder="请输入默认价格"></el-input>
             <span slot="footer" class="dialog-footer">
                 <el-button type="primary" @click="ruanwenfinsh">确 定</el-button>
                 <el-button @click="ruanwen = false">关 闭</el-button>
@@ -149,7 +149,7 @@ export default {
             radio: '',               //是否同意申请
             jujueliyou:'',           //拒绝申请理由 
             ruanwen:false,              //软文价格设置弹出框
-            ruanwendata:'',             //软文数据
+            ruanwendata:{goods_price:[{floor_price:''}]},             //软文数据
             ruanwenprice:'',            //软文价格
             currentPage:1,
             total: 0,                  //商品数

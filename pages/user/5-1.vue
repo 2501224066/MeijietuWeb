@@ -412,14 +412,6 @@
         </div>
         <div class="applyaline">
           <div class="applyleft">
-            <span class="red">*</span>粉丝数量:
-          </div>
-          <div class="applyright">
-            <el-input v-model="fans_num" maxlength="8" placeholder="请输入粉丝数量"></el-input>
-          </div>
-        </div>
-        <div class="applyaline">
-          <div class="applyleft">
             <span class="red">*</span>价格:
           </div>
           <div class="applyright">

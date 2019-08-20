@@ -32,7 +32,7 @@
       </div>
       <div class="myright">
         <div>
-          <img src="/usericon/man.png">
+          <img class="kefuimg" :src="$store.state.header_img + usalsesmanInfo.salesman_head_portrait">
           <p>专属客服: {{usalsesmanInfo.salesman_name}}</p> 
         </div>
         <div>联系QQ : {{usalsesmanInfo.salesman_qq_ID}}</div>
@@ -133,6 +133,7 @@ export default {
             localStorage.setItem('salesman',JSON.stringify(res.data.data))
           })
           .catch(err => {
+            this.usalsesmanInfo = JSON.parse(localStorage.getItem('salesman'))
             // if(err.response.data.message == 'The token has been blacklisted'){return this.again()}
             this.$axios.post(
               "/distributionSalsesman",
@@ -593,5 +594,10 @@ export default {
     border-style: solid;
     border-width: 8px 8px 0;
     border-color: #fff transparent transparent;
+}
+.kefuimg{
+  width: 98px;
+  height: 98px;
+  border-radius: 50%
 }
 </style>

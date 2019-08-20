@@ -28,8 +28,11 @@
                         <p v-for="(itemp,i) in item.goods_price" v-show="itemp.price !== '0.00'&&itemp.floor_price == 0" :key="i">{{itemp.priceclassify_name}}: <span class="red">￥{{itemp.price}}</span></p>
                         <p v-if="item.goods_price[0].floor_price != 0">价格: <span class="red">{{item.goods_price[0].floor_price}}</span> </p>
                     </div>
-                    <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':item.status==1?'已上架':'已下架'}}</div>
-                    <div v-if="item.verify_status==2" class="cr xiajia" @click="goodsDown(item.goods_num,index)"><span>商品下架</span></div>
+                    <div>{{item.verify_status==0?'审核中':item.verify_status==1?'未通过':'已上架'}}</div>
+                    <div v-if="item.verify_status==2" >
+                        <span class="xiugai cr" v-if="item.status == 1" @click="xiugai(item.goods_num)">修改商品</span>
+                        <span class="cr xiajia"  @click="goodsDown(item.goods_num,index)">商品下架</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,7 +54,7 @@ export default {
             return this.$axios.post('/goodsBelongSelf',{},{headers:{'Authorization':'Bearer'+val}})
         }).then(res => {
             res.data.data.forEach(item =>{
-                if(item.verify_status==2){
+                if(item.verify_status==2&&item.status == 1){
                     this.goodsBelongSelf.push(item)
                 }
             })
@@ -73,6 +76,9 @@ export default {
             }).catch(err=>{
                 this.$message.error('失败:'+err.response.data.message)
             })
+        },
+         xiugai(a){
+            this.$router.push('/user/5-5/' + a)
         }
     },
 }
@@ -160,7 +166,7 @@ span.modular{
     margin: 2px 0;
     font-size: 14px;
 }
-.xiajia span{
+.xiajia{
     display: inline-block;
     width: 80px;
     height: 26px;
@@ -169,5 +175,16 @@ span.modular{
     color: #fff;
     text-align: center;
     line-height: 26px;
+}
+.xiugai{
+    display: inline-block;
+    width: 80px;
+    height: 26px;
+    background-color: #5141ED;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
+    margin-bottom: 15px;
 }
 </style>
