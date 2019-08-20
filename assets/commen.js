@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import { url } from '@@/static/comm.js'
-const url = 'http://develop_webapi.meijietu.cn/api'          //测试
-// const url = 'https://back.meijietu.cn/api'                      //线上
+// const url = 'http://develop_webapi.meijietu.cn/api'          //测试
+const url = 'https://back.meijietu.cn/api'                      //线上
 export const gettoken = async () => {
     var newtoken
     var oldtoken = localStorage.getItem('access_token')
@@ -68,4 +68,17 @@ export const indentStatus = {
 }
 export const salesman = (a) => {
     return 'https://wpa.qq.com/msgrd?v=3&uin=' + a + '&site=qq&menu=yes'
+}
+
+export const bp = () => {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
 }

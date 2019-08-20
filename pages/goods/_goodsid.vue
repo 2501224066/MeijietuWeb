@@ -180,7 +180,7 @@
 
 <script>
 import headert from '@@/components/header.vue';
-import { gettoken,hmt } from "@@/assets/commen.js";
+import { gettoken,hmt,bp } from "@@/assets/commen.js";
 export default {
     layout:'header',
     async asyncData({app,params}) {
@@ -203,6 +203,7 @@ export default {
         }
     },
     mounted() {
+        bp()
         hmt()
         window.document.body.style.background = '#f8f8f8'
         this.salesman =JSON.parse(localStorage.getItem('salesman'))||{} 

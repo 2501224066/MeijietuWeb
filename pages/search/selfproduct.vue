@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { gettoken,selectGoods,hmt } from "@@/assets/commen.js";
+import { gettoken,selectGoods,hmt,bp } from "@@/assets/commen.js";
 import headert from '@@/components/header.vue';
 export default {
     layout:'header',
@@ -191,6 +191,7 @@ export default {
         }
     },
     mounted() {
+        bp()
         hmt()
         window.document.body.style.background = '#eef2f7'
         if(this.$store.state.searchkeyword !=''){

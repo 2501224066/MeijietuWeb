@@ -530,7 +530,7 @@
 
 <script>
 import headert from '@@/components/indexbanner.vue';
-import {gettoken,hmt} from '@@/assets/commen.js'
+import {gettoken,hmt,bp} from '@@/assets/commen.js'
 export default {
   async asyncData({app,params}) {
     // let { data } = await app.$axios('/indexPage')
@@ -582,6 +582,7 @@ export default {
     }
   },
   mounted() {
+    bp()
     hmt()
     // localStorage.setItem('salesman',JSON.stringify(this.indexData.randomSalesman))
     if(localStorage.getItem('salesman')==''){
@@ -656,6 +657,7 @@ export default {
   border-radius:3px;
   background-color: #fff;
   transition: all 0.2s linear;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.11);
 }
 .personcard:hover{
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -664,7 +666,7 @@ export default {
 .persontop{
   height: 224px;
   padding: 16px 20px;
-  border-bottom:1px #D2D2D2 solid;
+  /* border-bottom:1px #D2D2D2 solid; */
   text-align: center;
 }
 .persontopclass{
@@ -707,6 +709,8 @@ export default {
   margin: 35px auto;
   margin-bottom: 12px;
   position: relative;
+  border-radius: 50%;
+  box-shadow: 0px 0px 19px 0px rgba(0, 0, 0, 0.2);
 }
 .personportrait img{
   width:100px;
@@ -720,14 +724,15 @@ export default {
 }
 .price{
   color: #DE0D0D;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: bold;
   margin-top: 6px;
 }
 .personbottom div{
   width: 50%;
   float: left;
-  padding: 8px 20px
+  padding: 8px 20px;
+  text-align: center;
 }
 .personbottom div p:nth-child(1){
   font-size: 14px;

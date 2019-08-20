@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import { gettoken,selectGoods,hmt } from "@@/assets/commen.js";
+import { gettoken,selectGoods,hmt,bp } from "@@/assets/commen.js";
 import headert from '@@/components/header.vue';
 export default {
     layout:'header',
@@ -200,6 +200,8 @@ export default {
                 theme_id: this.mediadata[this.theme_index].theme_id,
                 priceclassify_id: 26,
                 key_word: this.keyword,
+                pricelevel_min:this.mediadata[0].pricelevel[this.pricelevel]&&JSON.stringify(this.mediadata[0].pricelevel[this.pricelevel].pricelevel_min)||'',
+                pricelevel_max:this.mediadata[0].pricelevel[this.pricelevel]&&this.mediadata[0].pricelevel[this.pricelevel].pricelevel_max||'',
                 filed_id:this.mediadata[this.theme_index].filed[this.filed]&&this.mediadata[this.theme_index].filed[this.filed].filed_id||'',
                 region_id:this.mediadata[0].region[this.region]&&this.mediadata[0].region[this.region].region_id||'',
                 platform_id: this.mediadata[this.theme_index].platform[this.platform]&&this.mediadata[this.theme_index].platform[this.platform].platform_id||'',
@@ -295,6 +297,7 @@ export default {
         }
     },
     mounted() {
+        bp()
         hmt()
         window.document.body.style.background = '#eef2f7'
         if(this.$store.state.searchkeyword !=''){

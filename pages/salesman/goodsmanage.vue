@@ -65,6 +65,10 @@
                     <div>{{goodsdata.modular_name}}</div>
                 </div>
                 <div>
+                    <div>媒体主编号</div>
+                    <div>{{goodsdata.user_num}}</div>
+                </div>
+                <div>
                     <div>领域分类:</div>
                     <div>{{goodsdata.theme_name}}</div>
                 </div>

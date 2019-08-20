@@ -297,6 +297,7 @@ export default {
         }
     },
     mounted() {
+        bp()
         hmt()
         window.document.body.style.background = '#eef2f7'
         if(this.$store.state.searchkeyword !=''){
