@@ -12,6 +12,10 @@ const _016c4384 = () => interopDefault(import('..\\pages\\shopcar\\index.vue' /*
 const _f28aa766 = () => interopDefault(import('..\\pages\\user\\index.vue' /* webpackChunkName: "pages_user_index" */))
 const _42dedd38 = () => interopDefault(import('..\\pages\\login\\forgot_password.vue' /* webpackChunkName: "pages_login_forgot_password" */))
 const _18167df2 = () => interopDefault(import('..\\pages\\login\\register.vue' /* webpackChunkName: "pages_login_register" */))
+const _3d763026 = () => interopDefault(import('..\\pages\\m\\login.vue' /* webpackChunkName: "pages_m_login" */))
+const _584e29bf = () => interopDefault(import('..\\pages\\m\\my.vue' /* webpackChunkName: "pages_m_my" */))
+const _b200fbca = () => interopDefault(import('..\\pages\\m\\shopcar.vue' /* webpackChunkName: "pages_m_shopcar" */))
+const _09e81df5 = () => interopDefault(import('..\\pages\\m\\weixin.vue' /* webpackChunkName: "pages_m_weixin" */))
 const _7444069a = () => interopDefault(import('..\\pages\\problem\\advertisers.vue' /* webpackChunkName: "pages_problem_advertisers" */))
 const _592cc5d5 = () => interopDefault(import('..\\pages\\problem\\agreement.vue' /* webpackChunkName: "pages_problem_agreement" */))
 const _01a6069e = () => interopDefault(import('..\\pages\\problem\\companyProfile.vue' /* webpackChunkName: "pages_problem_companyProfile" */))
@@ -53,6 +57,7 @@ const _ca971f2e = () => interopDefault(import('..\\pages\\search\\service\\keyan
 const _5261aa4a = () => interopDefault(import('..\\pages\\search\\service\\pptword.vue' /* webpackChunkName: "pages_search_service_pptword" */))
 const _4c07167a = () => interopDefault(import('..\\pages\\search\\service\\vip.vue' /* webpackChunkName: "pages_search_service_vip" */))
 const _3f378a06 = () => interopDefault(import('..\\pages\\search\\service\\word.vue' /* webpackChunkName: "pages_search_service_word" */))
+const _5a934c05 = () => interopDefault(import('..\\pages\\m\\goods\\_goodsid.vue' /* webpackChunkName: "pages_m_goods__goodsid" */))
 const _2854feb2 = () => interopDefault(import('..\\pages\\user\\5-5\\_goodsnum.vue' /* webpackChunkName: "pages_user_5-5__goodsnum" */))
 const _60f7c2ae = () => interopDefault(import('..\\pages\\goods\\_goodsid.vue' /* webpackChunkName: "pages_goods__goodsid" */))
 const _047eb2bf = () => interopDefault(import('..\\pages\\information\\_information.vue' /* webpackChunkName: "pages_information__information" */))
@@ -173,6 +178,22 @@ export function createRouter() {
       path: "/login/register",
       component: _18167df2,
       name: "login-register"
+    }, {
+      path: "/m/login",
+      component: _3d763026,
+      name: "m-login"
+    }, {
+      path: "/m/my",
+      component: _584e29bf,
+      name: "m-my"
+    }, {
+      path: "/m/shopcar",
+      component: _b200fbca,
+      name: "m-shopcar"
+    }, {
+      path: "/m/weixin",
+      component: _09e81df5,
+      name: "m-weixin"
     }, {
       path: "/problem/advertisers",
       component: _7444069a,
@@ -337,6 +358,10 @@ export function createRouter() {
       path: "/search/service/word",
       component: _3f378a06,
       name: "search-service-word"
+    }, {
+      path: "/m/goods/:goodsid?",
+      component: _5a934c05,
+      name: "m-goods-goodsid"
     }, {
       path: "/user/5-5/:goodsnum?",
       component: _2854feb2,

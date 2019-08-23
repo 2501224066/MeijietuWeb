@@ -124,11 +124,11 @@ export default {
     headert,shopright
   },
   mounted() {
-    // if( /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
-    //   this.$router.push('/m')
-    // }else{
-    //   console.log('PC')
-    // }
+    if( /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+      this.$router.push('/m')
+    }else{
+      console.log('PC')
+    }
     if (this.$store.state.userdata == "") {
       gettoken()
         .then(val => {

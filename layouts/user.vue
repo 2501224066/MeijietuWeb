@@ -178,7 +178,7 @@ export default {
           this.realname_status = res.data.data.realname_status
         })
       }else{
-        // if(err.response.data.message == 'The token has been blacklisted'){return}
+        if(err.response.data.message == 'The token has been blacklisted'){return}
         this.$message({message: '请登录',type: 'success'})
         this.$store.commit('setuserdata','')
         localStorage.setItem('userdata','')

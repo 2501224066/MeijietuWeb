@@ -7,10 +7,14 @@
             <img :src="$store.state.header_img + banner[1].img" alt="">
         </div>
         <div class="mtab">
-            <div><img src="/m/tab01.png" alt="微信营销"><p>微信营销</p></div>
+            <nuxt-link to="/m/weixin" tag="div"><img src="/m/tab01.png" alt="微信营销"><p>微信营销</p></nuxt-link>
+            <nuxt-link to="/m/video" tag="div"><img src="/m/tab02.png" alt="视频营销"><p>视频营销</p></nuxt-link>
+            <nuxt-link to="/m/weibo" tag="div"><img src="/m/tab03.png" alt="微博营销"><p>微博营销</p></nuxt-link>
+            <nuxt-link to="/m/seo" tag="div"><img src="/m/tab04.png" alt="SEO"><p>SEO</p></nuxt-link>
+            <!-- <div><img src="/m/tab01.png" alt="微信营销"><p>微信营销</p></div>
             <div><img src="/m/tab02.png" alt="视频营销"><p>视频营销</p></div>
             <div><img src="/m/tab03.png" alt="微博营销"><p>微博营销</p></div>
-            <div><img src="/m/tab04.png" alt="SEO"><p>SEO</p></div>
+            <div><img src="/m/tab04.png" alt="SEO"><p>SEO</p></div> -->
         </div>
 
         <div class="mgoods">
@@ -52,6 +56,15 @@ export default {
         this.$axios('/recommendGoods').then(res => {
             this.goodslist = res.data.data['微信营销']['公众号']['金融理财']
         })
+        if(localStorage.getItem('access_token')){
+            gettoken().then(val => {
+                return this.$axios.post('/me',{},{ headers: { Authorization: "Bearer" + val } })
+            }) .then(res => {
+                console.log(res.data.data)
+            }).catch(err => {
+                
+            })
+        }
     },
 }
 </script>
