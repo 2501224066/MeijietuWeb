@@ -123,6 +123,13 @@ export default {
   components:{
     headert,shopright
   },
+  // asyncData({ redirect }) {
+  //   if( /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+  //     redirect('/m')
+  //   }else{
+  //     console.log('PC')
+  //   }
+  // },
   mounted() {
     if( /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
       this.$router.push('/m')

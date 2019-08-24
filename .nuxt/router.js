@@ -49,6 +49,7 @@ const _328b9d58 = () => interopDefault(import('..\\pages\\user\\5-1.vue' /* webp
 const _326f6e56 = () => interopDefault(import('..\\pages\\user\\5-2.vue' /* webpackChunkName: "pages_user_5-2" */))
 const _32533f54 = () => interopDefault(import('..\\pages\\user\\5-3.vue' /* webpackChunkName: "pages_user_5-3" */))
 const _32371052 = () => interopDefault(import('..\\pages\\user\\5-4.vue' /* webpackChunkName: "pages_user_5-4" */))
+const _31feb24e = () => interopDefault(import('..\\pages\\user\\5-6.vue' /* webpackChunkName: "pages_user_5-6" */))
 const _bc88c99e = () => interopDefault(import('..\\pages\\user\\6.vue' /* webpackChunkName: "pages_user_6" */))
 const _bc6c9a9c = () => interopDefault(import('..\\pages\\user\\7.vue' /* webpackChunkName: "pages_user_7" */))
 const _bc506b9a = () => interopDefault(import('..\\pages\\user\\8.vue' /* webpackChunkName: "pages_user_8" */))
@@ -326,6 +327,10 @@ export function createRouter() {
       path: "/user/5-4",
       component: _32371052,
       name: "user-5-4"
+    }, {
+      path: "/user/5-6",
+      component: _31feb24e,
+      name: "user-5-6"
     }, {
       path: "/user/6",
       component: _bc88c99e,

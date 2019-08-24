@@ -9,16 +9,17 @@
       <div class="rightsearch">
         <div class="searchborder">
           <el-select v-model="value" placeholder="请选择" style="width:120px" class="elSele">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
           <el-input v-model="input" placeholder="请输入你要搜索的关键字" class="searchkey" style="borderRadius:0"></el-input>
           <el-button type="primary" class="searchbtn" style="height:37px" @click="searchkeyword">搜索</el-button>
         </div>
+        <!-- <search></search> -->
         <nuxt-link to="/shopcar" tag="button" class="shopcar"><img style="vertical-align:middle" src="/indexicon/douh_icon002.png"> 购物车({{$store.state.userdata.shopcart_count||'0'}})</nuxt-link>
       </div>
     </div>
@@ -46,6 +47,7 @@
 </template>
 
 <script>
+// import search from '@@/components/searchbtn.vue';
 import {gettoken} from '@@/assets/commen.js'
 export default {
   data() {
@@ -87,6 +89,9 @@ export default {
   },
   mounted(){
   },
+  components:{
+    // search
+  }
 }
 </script>
 <style scoped>

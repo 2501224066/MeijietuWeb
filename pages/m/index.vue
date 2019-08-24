@@ -17,7 +17,7 @@
             <div><img src="/m/tab04.png" alt="SEO"><p>SEO</p></div> -->
         </div>
 
-        <div class="mgoods">
+        <div class="mgoods" v-loading="iswait">
             <div class="mgoods_header">
                 热门媒体
             </div>
@@ -43,6 +43,7 @@ export default {
             banner:[{img:''},{img:''}],
             goodslist:[],
             value:1,
+            iswait: true,
         }
     },
     methods: {
@@ -55,14 +56,16 @@ export default {
         })
         this.$axios('/recommendGoods').then(res => {
             this.goodslist = res.data.data['微信营销']['公众号']['金融理财']
+            this.iswait = false
         })
         if(localStorage.getItem('access_token')){
             gettoken().then(val => {
                 return this.$axios.post('/me',{},{ headers: { Authorization: "Bearer" + val } })
             }) .then(res => {
                 console.log(res.data.data)
+                localStorage.setItem('userdata',this.data.data)
             }).catch(err => {
-                
+                localStorage.setItem('access_token','')
             })
         }
     },
@@ -105,7 +108,9 @@ export default {
     font-size: 12px
 }
 .mgoods{
+    background-color: #fff;
     margin-bottom: 38px;
+    min-height: 300px
 }
 .mgoods_header{
     height: 35px;

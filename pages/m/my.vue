@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="my">
         <div class="mheader">
            <img :src="$store.state.header_img + userdata.head_portrait" alt="头像">
            <div>
@@ -58,6 +58,10 @@ export default {
 }
 </script>
 <style scoped>
+.my{
+    background-color: #f2f2f2;
+    min-height: 100%;
+}
 .mheader{
     width: 100%;
     height: 149px;
@@ -66,7 +70,7 @@ export default {
     color: #fff;
 }
 .mheader img{
-    width: 60px;
+    width: 78px;
     border-radius: 50%;
     float: left;
     margin-right: 10px;

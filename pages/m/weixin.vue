@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="mheader">
-            <span class="el-icon-arrow-left mfanhui"></span>
+            <span class="el-icon-arrow-left mfanhui" @click="fanhui"></span>
             媒体分类
         </div>
         <div class="fenlei">
@@ -13,14 +13,6 @@
         <div class="select">
         </div>
         <div class="goodslist">
-            <div class="goodsitem">
-                <img src="/usericon/personal_002.png" alt="">
-                <div class="username">
-                    <p><span>健康运动</span>雪菲于雪飞</p>
-                    <p>我是雪菲与fei雪给大家带了实用的健康方法</p>
-                    <p>粉丝数:36000</p>
-                </div>
-            </div>
             <div class="goodsitem" v-for="(item,index) in goodsData.data" :key="index" @click="goods(item.goods_num)">
                 <img :src="$store.state.header_img + item.avatar_url" :alt="item.title">
                 <div class="username">
@@ -50,17 +42,25 @@ export default {
     methods: {
        goods(a){
            this.$router.push('/m/goods/'+a)
+       },
+       fanhui(){
+           this.$router.go(-1)
        } 
     },
 }
 </script>
 <style scoped>
 .mheader{
+    width: 100%;
     text-align: center;
     font-size: 20px;
     height: 50px;
     line-height: 45px;
     border-bottom: 1px solid #ccc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
 }
 .mfanhui{
     font-size: 24px;
@@ -69,9 +69,10 @@ export default {
 }
 .goodslist{
     font-size: 12px;
+    background-color: #fff;
 }
 .goodsitem{
-    padding-top: 20px;
+    padding-top: 10px;
     border-bottom: 1px solid #d2d2d2;
     position: relative;
 }
@@ -112,6 +113,8 @@ export default {
     color: #FF7200;
 }
 .fenlei{
+    background-color: #fff;
+    margin-top: 50px;
     /* height: 100px; */
     overflow: hidden;
     color: #888;

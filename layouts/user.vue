@@ -67,6 +67,7 @@
               <el-menu-item index="/user/5-2">全部传媒</el-menu-item>
               <el-menu-item index="/user/5-3">审核中的传媒</el-menu-item>
               <el-menu-item index="/user/5-4">已入驻的传媒</el-menu-item>
+              <el-menu-item index="/user/5-6">批量传媒入驻</el-menu-item>
             </el-submenu>
             <el-menu-item index="/user/6">
               <i class="iconfont icon-xiaoxizhongxinICON"></i>

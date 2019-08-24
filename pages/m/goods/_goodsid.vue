@@ -1,7 +1,7 @@
 <template>
     <div>
          <div class="mheader">
-            <span class="el-icon-arrow-left mfanhui"></span>
+            <span class="el-icon-arrow-left mfanhui" @click="fanhui"></span>
             商品详情
         </div>
         <div class="goodsmessage">
@@ -47,17 +47,25 @@ export default {
             }).then( res => {
                 alert('成功加入购物车')
             })
-        }
+        },
+        fanhui(){
+           this.$router.go(-1)
+       } 
     },
 }
 </script>
 <style scoped>
 .mheader{
     text-align: center;
+    width: 100%;
     font-size: 20px;
     height: 50px;
     line-height: 45px;
     border-bottom: 1px solid #ccc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
 }
 .mfanhui{
     font-size: 24px;
@@ -96,6 +104,8 @@ export default {
 
 }
 .goodsmessage{
+    background-color: #fff;
+    margin-top: 50px;
     position: relative;
 }
 .shoucang{
