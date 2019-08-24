@@ -412,6 +412,23 @@
         </div>
         <div class="applyaline">
           <div class="applyleft">
+            入口网址:
+          </div>
+          <div class="applyright">
+            <el-input v-model="web_link" placeholder="请输入入口网址"></el-input>
+          </div>
+        </div>
+        <div class="applyaline">
+          <div class="applyleft">
+            <span class="red">*</span>案例链接:
+          </div>
+          <div class="applyright">
+            <el-input v-model="case_link" placeholder="请输入案例链接 "></el-input>
+            <span class="elink">网址链接示例:  http://www.baidu.com</span>
+          </div>
+        </div>
+        <div class="applyaline">
+          <div class="applyleft">
             <span class="red">*</span>价格:
           </div>
           <div class="applyright">
@@ -876,6 +893,8 @@ export default {
                 title_about: this.goods_title_about,
                 filed_id: this.filed,
                 qq_ID: this.qq_ID,
+                link: this.web_link,
+                case_link:this.case_link,
                 remarks: this.remarks,
                 price_json: JSON.stringify({26:this.price}),
                 reserve_status: this.isorder,
