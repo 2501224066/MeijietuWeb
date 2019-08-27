@@ -59,7 +59,7 @@ export default {
                 this.$axios.post('/me',{},{ headers: { Authorization: "Bearer" + res.data.data.access_token } }).then( result => {
                     localStorage.setItem('userdata', JSON.stringify(result.data.data))
                 })
-                this.$router.push('/m')
+                this.$router.push('/m/my')
             }).catch(err =>{
                 this.errmessage = err.response.data.message
                 this.iserr = true

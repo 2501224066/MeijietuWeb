@@ -27,6 +27,7 @@ const _4bd5a51e = () => interopDefault(import('..\\pages\\salesman\\creatSoftArt
 const _7e64d753 = () => interopDefault(import('..\\pages\\salesman\\goodsmanage.vue' /* webpackChunkName: "pages_salesman_goodsmanage" */))
 const _ef0ce6d2 = () => interopDefault(import('..\\pages\\salesman\\seller.vue' /* webpackChunkName: "pages_salesman_seller" */))
 const _93c8df32 = () => interopDefault(import('..\\pages\\salesman\\softArticleMeal.vue' /* webpackChunkName: "pages_salesman_softArticleMeal" */))
+const _40438320 = () => interopDefault(import('..\\pages\\search\\info.vue' /* webpackChunkName: "pages_search_info" */))
 const _45896940 = () => interopDefault(import('..\\pages\\search\\selfmeida.vue' /* webpackChunkName: "pages_search_selfmeida" */))
 const _2508dd21 = () => interopDefault(import('..\\pages\\search\\selfproduct.vue' /* webpackChunkName: "pages_search_selfproduct" */))
 const _6cd8d122 = () => interopDefault(import('..\\pages\\search\\service\\index.vue' /* webpackChunkName: "pages_search_service_index" */))
@@ -239,6 +240,10 @@ export function createRouter() {
       path: "/salesman/softArticleMeal",
       component: _93c8df32,
       name: "salesman-softArticleMeal"
+    }, {
+      path: "/search/info",
+      component: _40438320,
+      name: "search-info"
     }, {
       path: "/search/selfmeida",
       component: _45896940,

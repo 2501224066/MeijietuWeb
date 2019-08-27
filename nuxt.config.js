@@ -55,17 +55,17 @@ module.exports = {
     '@nuxtjs/axios',
   ],
   axios:{
-    baseURL: 'http://develop_webapi.meijietu.cn/api'         //测试
-    // baseURL: 'https://back.meijietu.cn/api'                     //线上
+    // baseURL: 'http://develop_webapi.meijietu.cn/api'         //测试
+    baseURL: 'https://back.meijietu.cn/api'                     //线上
     // baseURL: url
   },
   /*
   ** Build configuration
   */
 //  判断是否是PC端路由中间件
-  router: {
-    middleware: ["device"],
-  },
+  // router: {
+  //   middleware: ["device"],
+  // },
   build: {
     transpile: [/^element-ui/],
     extractCSS: { allChunks: true },
