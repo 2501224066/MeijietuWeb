@@ -14,18 +14,6 @@
         <div class="needHelp">
             <div class="needHTitle">需要我们帮助吗</div>
             <div class="needHInfo">关于商业计划书、融资的任何问题，我们都乐于提供帮助。请联系客服</div>
-            <!-- <div class="from">
-                <input type="text" placeholder="姓名">
-                <input type="text" placeholder="电子邮件">
-                <input type="text" placeholder="电话*">
-                <input type="text" placeholder="城市">
-                <input type="text" placeholder="公司">
-                <textarea placeholder="留言" rows="4"></textarea>    
-            </div> -->
-            <!-- <p style="margin:0 0 20px">
-                <input type="checkbox">
-                <span class="temr_text">同意商业计划在线通过您提供的信息与您联系</span>
-            </p> -->
             <el-button @click="lianxi" type="primary">联系QQ</el-button>
         </div>
     </div>
@@ -96,7 +84,7 @@ export default {
 }
 .needHelp{
     width: 335px;
-    height: 200px;
+    height: 186px;
     background-color: #f5f5f5;
     margin-top: 30px;
     padding: 25px 25px 15px;

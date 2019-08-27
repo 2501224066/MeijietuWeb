@@ -18,7 +18,6 @@
         </div>  -->
         <div class="goodslist a" v-loading="loading">
             <div class="goodslisttop">
-                <el-button class="fl" type="primary">刷新</el-button>
                 <el-button class="fr lianxi" type="primary" @click="kefu">联系客服</el-button>
             </div>
             <div class="goodslisttitle goodslistcontent">
@@ -33,7 +32,6 @@
                     <!-- <img :src="$store.state.header_img + item.avatar_url" style="width:70px;border-radius:50%"> -->
                     <div class="textp">
                         <h4>{{item.title}}</h4>
-                        <p>领域:{{item.filed_name}}</p>
                     </div>
                 </div>
                 <div class="cr">{{item.title_about}}</div>
@@ -540,12 +538,18 @@ export default {
     justify-content: center;
     padding: 0 70px 0 62px;
 }
+.goodslistitem>div:nth-child(2){
+    color: skyblue;
+}
 .goodslistitem>div:nth-child(1),
 .goodslistitem>div:nth-child(2),
 .goodslistitem>div:nth-child(5){
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.goodslistitem>div:nth-child(1){
+    justify-content: left
 }
 .goodslistitem>div:nth-child(4){
     display: flex;
@@ -582,13 +586,14 @@ export default {
 }
 .goodslistcontent>div:nth-child(1){
     width: 320px;
-    padding-left: 14px;
+    padding: 0 14px;
 }
 .goodslistcontent>div:nth-child(3){
     width: 180px;
 }
 .goodslistcontent>div:nth-child(2){
     width: 200px;
+    padding: 0 7px;
 }
 .goodslistcontent>div:nth-child(4),
 .goodslistcontent>div:nth-child(5){

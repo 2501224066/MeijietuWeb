@@ -61,7 +61,7 @@
             :visible.sync="yijia"
             width="30%">
             <div>媒体主: {{ yijiadata.seller_name}}</div>
-            <div>订单价格: {{ yijiadata.pay_amount}}</div>
+            <div>订单价格: {{ yijiadata.indent_amount}}</div>
             <p>媒体主收入:{{xiangqingdata.seller_income}}</p>
             <div>是否同意: 
                 <el-radio style="margin-left:10px" v-model="radio" label="1">是</el-radio>

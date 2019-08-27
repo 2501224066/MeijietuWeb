@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="login_all">
         <div v-if="status ==1">
             <div class="mheader">
                 登录
@@ -12,17 +12,18 @@
                     <input type="text" v-model="phone" placeholder="请输入手机号">
                 </div>
                 <div>
-                    <input type="text" v-model="password" placeholder="请输入密码">
+                    <input type="password"  v-model="password" placeholder="请输入密码">
                 </div>
-                <div>
+                <div class="imginput">
                     <input type="text" v-model="imgma" placeholder="图形验证码">
                     <img @click="shuaxin" class="imgCode" :src="imgCode" alt="验证码">
+                    <p v-if="iserr">失败:{{errmessage}}</p>
                 </div>
             </div>
             <div class="btn_l" @click="login">
                 登录
             </div>
-            <div> 
+            <div class="footer_login"> 
                 <span class="forgot" @click="forgot">忘记密码?</span>
                 <span class="zhuce" @click="zhuce">注册账号</span>
             </div>
@@ -39,12 +40,14 @@ export default {
             imgCode: '',
             password:'',
             imgma:'',
-            imgToken: ''
+            imgToken: '',
+            iserr: false,
+            errmessage:'',
         }
     },
     methods: {
         login(){
-            console.log(this.imgma)
+            this.iserr = false
             this.$axios.post('/signIn',{
                 phone:this.phone,
                 password:this.password,
@@ -52,12 +55,14 @@ export default {
                 imgToken: this.imgToken,
             }).then(res => {
                 localStorage.setItem('access_token',res.data.data.access_token)
+                console.log(res.data.data.access_token)
                 this.$axios.post('/me',{},{ headers: { Authorization: "Bearer" + res.data.data.access_token } }).then( result => {
                     localStorage.setItem('userdata', JSON.stringify(result.data.data))
                 })
                 this.$router.push('/m')
             }).catch(err =>{
-                this.$message.error('失败: ' + err.response.data.message)
+                this.errmessage = err.response.data.message
+                this.iserr = true
             })
         },
         shuaxin(){
@@ -82,8 +87,11 @@ export default {
 }
 </script>
 <style scoped>
+.login_all{
+    background-color: #fff;
+}
 .mheader{
-    margin: 18px;
+    padding: 18px;
     font-size: 18px;
 }
 input{
@@ -110,10 +118,7 @@ input:focus{
     padding: 10px 0;
     border-bottom: 1px solid #C1C1C1;
 }
-.imgCode{
-    float: right;
-    display: block;
-}
+
 .btn_l{
     height: 41px;
     margin: 40px 30px 20px 30px;
@@ -135,5 +140,17 @@ input:focus{
     color: red;
     float: right;
     margin-right: 30px;
+}
+.imginput{
+    position: relative;
+}
+.imgCode{
+   position: absolute;
+    right: 0;
+    top: 10px;
+}
+.footer_login{
+    overflow: hidden;
+    padding-bottom: 50px;
 }
 </style>

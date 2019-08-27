@@ -25,7 +25,7 @@
         <div class="myzj">
             资金管理
         </div>
-        <div class="quit">
+        <div class="quit" @click="signOut">
             退出登录
         </div>
     </div>
@@ -54,7 +54,14 @@ export default {
             console.log(err.response.data.message)
             return this.$router.push('/m/login')
         })
-    }
+    },
+    methods: {
+        signOut(){
+            localStorage.setItem('access_token','')
+            localStorage.setItem('userdata','')
+            this.$router.push('/m')
+        }
+    },
 }
 </script>
 <style scoped>

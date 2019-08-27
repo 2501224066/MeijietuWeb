@@ -108,8 +108,11 @@ export default {
 <style scoped>
 .topbanner{
     width: 100%;
-    overflow: hidden;
-    text-align: center;
+}
+.topbanner img{
+    position: relative;
+    left: 50%;
+    margin-left: -960px;
 }
 .secondbanner{
     text-align: center;

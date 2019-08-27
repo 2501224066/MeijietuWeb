@@ -197,9 +197,12 @@ export default {
             salesman:''
         }
     },
-      head(){
+    head(){
         return{
-            title:this.oneGoodsInfo.title+'_媒介兔-全行业&全流程_获客整合营销平台'
+            title:this.oneGoodsInfo.title+'_媒介兔-全行业&全流程_获客整合营销平台',
+            meta:[
+                {hid: 'description', name: 'description', content: this.oneGoodsInfo.title + '-' + this.oneGoodsInfo.title_about}
+            ]
         }
     },
     mounted() {

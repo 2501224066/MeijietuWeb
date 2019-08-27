@@ -130,7 +130,7 @@
 import headert from '@@/components/nobanner.vue';
 import serR from '@@/components/service_liucheng.vue';
 import serL from '@@/components/service_left.vue';
-import {gettoken} from '@@/assets/commen.js'
+import {gettoken,salesman} from '@@/assets/commen.js'
 export default {
     layout:'header',
     data() {

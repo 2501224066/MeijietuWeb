@@ -11,17 +11,12 @@
             <nuxt-link to="/m/video" tag="div"><img src="/m/tab02.png" alt="视频营销"><p>视频营销</p></nuxt-link>
             <nuxt-link to="/m/weibo" tag="div"><img src="/m/tab03.png" alt="微博营销"><p>微博营销</p></nuxt-link>
             <nuxt-link to="/m/seo" tag="div"><img src="/m/tab04.png" alt="SEO"><p>SEO</p></nuxt-link>
-            <!-- <div><img src="/m/tab01.png" alt="微信营销"><p>微信营销</p></div>
-            <div><img src="/m/tab02.png" alt="视频营销"><p>视频营销</p></div>
-            <div><img src="/m/tab03.png" alt="微博营销"><p>微博营销</p></div>
-            <div><img src="/m/tab04.png" alt="SEO"><p>SEO</p></div> -->
         </div>
-
         <div class="mgoods" v-loading="iswait">
             <div class="mgoods_header">
                 热门媒体
             </div>
-            <div class="mgoods_list" v-for="(item,index) in goodslist" :key="index">
+            <div class="mgoods_list" v-for="(item,index) in goodslist" :key="index" @click="goods(item.goods_num)">
                 <img class="headerImg" :src="$store.state.header_img + item.avatar_url" :alt="item.title">
                 <div>
                     <div class="goodstitle">{{item.title}}</div>
@@ -47,17 +42,25 @@ export default {
         }
     },
     methods: {
-        
+        goods(a){
+           this.$router.push('/m/goods/'+a)
+        }
     },
     mounted() {
         this.$axios.get('/banner')
         .then(res => {
             this.banner = res.data.data
         })
-        this.$axios('/recommendGoods').then(res => {
-            this.goodslist = res.data.data['微信营销']['公众号']['金融理财']
+        if(localStorage.getItem('mshouye')){
+            this.goodslist = JSON.parse(localStorage.getItem('mshouye'))
             this.iswait = false
-        })
+        }else{
+            this.$axios('/recommendGoods').then(res => {
+                this.goodslist = res.data.data['微信营销']['公众号']['金融理财']
+                this.iswait = false
+                localStorage.setItem('mshouye',JSON.stringify(this.goodslist))
+            })
+        }
         if(localStorage.getItem('access_token')){
             gettoken().then(val => {
                 return this.$axios.post('/me',{},{ headers: { Authorization: "Bearer" + val } })
@@ -65,7 +68,7 @@ export default {
                 console.log(res.data.data)
                 localStorage.setItem('userdata',this.data.data)
             }).catch(err => {
-                localStorage.setItem('access_token','')
+                // localStorage.setItem('access_token','')
             })
         }
     },
@@ -75,6 +78,7 @@ export default {
 .mheader{
     padding: 5px;
     height: 24px;
+    background-color: #fff;
 }
 .mheader img{
     width: 50%;

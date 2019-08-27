@@ -61,6 +61,7 @@ export default {
     top: 0;
     left: 0;
     background-color: #fff;
+    z-index: 99;
 }
 .mfanhui{
     font-size: 24px;

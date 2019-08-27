@@ -47,7 +47,14 @@ export default {
             })
         },
         upsuccess(res){
-            console.log(res)
+            console.log(res.data.path)
+            this.$axios.post('/goodsBatchAdd',{
+                excel_path: res.data.path,
+                modular_id:5,
+                theme_id:9
+            },{ headers: { Authorization: "Bearer" + localStorage.getItem('access_token') } }).then( result => {
+                this.$message({message: '上传成功',type: 'success'})
+            })
         },
         uploadbtn(){
             this.upload = true

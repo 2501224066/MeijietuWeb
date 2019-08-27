@@ -5,16 +5,19 @@
             商品详情
         </div>
         <div class="goodsmessage">
-            <img class="goodsimg" :src="$store.state.header_img+goodsData.avatar_url" alt="">
+            <div class="goodsimg">
+                <img :src="$store.state.header_img+goodsData.avatar_url" alt="">
+                <p>{{goodsData.title}}</p>
+            </div> 
              <div class="username">
-                <p><span>{{goodsData.filed_name}}</span>{{goodsData.title}}</p>
-                <p class="norwap">{{goodsData.title_about}}</p>
-                <p>地区: <span>{{goodsData.region_name}}</span>  粉丝数:{{goodsData.fans_num}}</p>
-                <div class="shoucang">
-                    <img src="/indexicon/shouc_icon01.png" alt="收藏">
+                <p class="nowrap">{{goodsData.title_about}}</p>
+                <p>粉丝数: <span style="color:orange">{{goodsData.fans_num}}</span> 地区: <span style="color:#242424">{{goodsData.region_name}}</span>  </p>
+                <p>分类领域: <span style="color:#242424">{{goodsData.filed_name}}</span> </p>
+                <div class="shoucang" @click="shoucang(item.goods_id)">
+                    <img :src="iscollection?'/indexicon/shouc_icon2.png':'/indexicon/shouc_icon01.png'" alt="收藏">
                 </div>
             </div>
-            <div class="goodsprice" v-for="(item,index) in goodsData.goods_price" :key="index">
+            <div class="goodsprice" v-for="(item,index) in goodsData.goods_price" :key="index" v-show="item.price != 0">
                 {{item.priceclassify_name}} : <span class="red">￥{{item.price}}元</span>  
                 <div class="fr shopcar" @click="addshop(item.goods_id,item.goods_price_id)">加入购物车</div>
             </div>
@@ -25,17 +28,20 @@
 import {gettoken} from '@@/assets/commen.js'
 export default {
     layout: 'phone',
+    async asyncData({app,params}) {
+        let { data } = await app.$axios('/oneGoodsInfo',{params:{
+            goods_num: params.goodsid,
+        }})
+        return { goodsData:data.data.data[0] }
+    },
     data() {
         return {
             goodsData:'',
+            iscollection: false,
         }
     },
     mounted() {
-        let a = this.$route.path.split('/')[3]
-        this.$axios('/oneGoodsInfo?goods_num='+ a).then( res => {
-            console.log(res.data.data.data[0])
-            this.goodsData = res.data.data.data[0]
-        })
+
     },
     methods: {
         addshop(a,b){
@@ -46,11 +52,20 @@ export default {
                 },{ headers: { Authorization: "Bearer" + val } })
             }).then( res => {
                 alert('成功加入购物车')
+            }).catch(err => {
+                this.$message.error('失败:' + err.response.data.message)
             })
         },
         fanhui(){
            this.$router.go(-1)
-       } 
+        },
+        shoucang(a){
+            gettoken().then( val => {
+                return this.$axios.post('/collectionGoods',{1:a},{ headers: { Authorization: "Bearer" + val } })
+            }).then(res => {
+                this.iscollection = true
+            })
+        } 
     },
 }
 </script>
@@ -66,6 +81,7 @@ export default {
     top: 0;
     left: 0;
     background-color: #fff;
+    z-index: 99;
 }
 .mfanhui{
     font-size: 24px;
@@ -74,25 +90,28 @@ export default {
 }
 .goodsimg{
     width: 100%;
+    height: 157px;
+    text-align: center;
+    background: url('/m/goodsimg.png') no-repeat center top;
+    background-size: 100% 157px;
+}
+.goodsimg img {
+    width: 54px;
+    margin-top: 40px;
+    border-radius: 50%;
 }
 .username{
-    padding: 20px;
+    padding: 18px;
+    padding-right: 30px;
     position: relative;
 }
-.username p:nth-child(1){
+.goodsimg p {
     font-size: 18px;
     margin-bottom: 20px;
-}
-.username p:nth-child(1) span {
-    display: inline-block;
-    padding: 3px 7px;
-    background-color: #7769F9;
     color: #fff;
-    border-radius: 10px;
-    font-size: 12px;
-    margin-right: 5px;
 }
-.username p:nth-child(2) {
+.username p:nth-child(2),
+.username p:nth-child(3) {
     font-size: 14px;
     color: #888
 }
@@ -102,6 +121,9 @@ export default {
     line-height: 40px;
     padding: 0 15px;
 
+}
+.goodsprice:nth-child(odd){
+    background-color: #F8FCFF
 }
 .goodsmessage{
     background-color: #fff;

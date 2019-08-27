@@ -772,7 +772,7 @@ export default {
       this.price_data={}
     },
     btn() {
-      if(this.isshangchuan){return this.$message({message: '正在上传头像',type: 'success'})}
+      if(this.isshangchuan){return this.$message({message: '正在上传头像',type: 'warning'})}
       if(this.iswait == true){return}
       this.iswait = true
       this.mediadata[this.theme_index].priceclassify.forEach(item => {            //价格种类若不选则为0

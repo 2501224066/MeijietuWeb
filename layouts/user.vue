@@ -92,13 +92,13 @@
         <div>
           <img style="margin:37px 0" src="/indexicon/footerlogo.png">
           <ul class="layoutful">
-            <li><nuxt-link to="/problem">关于我们</nuxt-link> </li>
+            <li><nuxt-link to="/problem/companyProfile">关于我们</nuxt-link> </li>
             <li><nuxt-link to="/problem">常见问题</nuxt-link> </li>
             <li><nuxt-link to="/problem/advertisers">广告主</nuxt-link> </li>
             <li><nuxt-link to="/problem/mediaOwner">媒体主</nuxt-link> </li>
             <li><nuxt-link to="/problem/financialSecurity">资金安全</nuxt-link> </li>
             <li><nuxt-link to="/problem">业务咨询</nuxt-link> </li>
-            <li><nuxt-link to="cooperation">商务合作</nuxt-link> </li>
+            <li><nuxt-link to="/cooperation">商务合作</nuxt-link> </li>
             <li><nuxt-link to="/problem/agreement">用户协议</nuxt-link> </li>
           </ul>
           <div class="erweima">

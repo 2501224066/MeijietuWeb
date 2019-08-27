@@ -20,17 +20,17 @@
                 </div>
                 <div class="vc_column">
                     <div>
-                        <div style="height:64px"></div>
+                        <div style="height:64px"><img src="/cooperation/faicon01.png" alt=""></div>
                         <h3>不成功，不收费</h3>
                         <p>对结果负责任，融资不成功，不收取服务费用</p>
                     </div>
                     <div>
-                        <div style="height:64px"></div>
+                        <div style="height:64px"><img src="/cooperation/faicon02.png" alt=""></div>
                         <h3>TOP资源，TOP团队</h3>
                         <p>顶级投行、律所资源，高管均有多年行业经验</p>
                     </div>
                     <div>
-                        <div style="height:64px"></div>
+                        <div style="height:64px"><img src="/cooperation/faicon03.png" alt=""></div>
                         <h3>有温度，有态度</h3>
                         <p>融资参谋，全程陪伴企业成长，恪守职业道德</p>
                     </div>
@@ -114,7 +114,7 @@ export default {
 .c_rbanner{
     width: 815px;
     height: 300px;
-    background-color: #666;
+    background: url('/cooperation/fa.jpg') 0 0/100% no-repeat;
     margin-bottom: 35px;
 }
 h2{
