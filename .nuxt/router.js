@@ -60,6 +60,7 @@ const _5261aa4a = () => interopDefault(import('..\\pages\\search\\service\\pptwo
 const _4c07167a = () => interopDefault(import('..\\pages\\search\\service\\vip.vue' /* webpackChunkName: "pages_search_service_vip" */))
 const _3f378a06 = () => interopDefault(import('..\\pages\\search\\service\\word.vue' /* webpackChunkName: "pages_search_service_word" */))
 const _5a934c05 = () => interopDefault(import('..\\pages\\m\\goods\\_goodsid.vue' /* webpackChunkName: "pages_m_goods__goodsid" */))
+const _10f4f9ee = () => interopDefault(import('..\\pages\\user\\2-3\\_indentnum.vue' /* webpackChunkName: "pages_user_2-3__indentnum" */))
 const _2854feb2 = () => interopDefault(import('..\\pages\\user\\5-5\\_goodsnum.vue' /* webpackChunkName: "pages_user_5-5__goodsnum" */))
 const _60f7c2ae = () => interopDefault(import('..\\pages\\goods\\_goodsid.vue' /* webpackChunkName: "pages_goods__goodsid" */))
 const _047eb2bf = () => interopDefault(import('..\\pages\\information\\_information.vue' /* webpackChunkName: "pages_information__information" */))
@@ -372,6 +373,10 @@ export function createRouter() {
       path: "/m/goods/:goodsid?",
       component: _5a934c05,
       name: "m-goods-goodsid"
+    }, {
+      path: "/user/2-3/:indentnum?",
+      component: _10f4f9ee,
+      name: "user-2-3-indentnum"
     }, {
       path: "/user/5-5/:goodsnum?",
       component: _2854feb2,

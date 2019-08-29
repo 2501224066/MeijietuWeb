@@ -19,7 +19,7 @@
                     <el-col :span="3"><div>实名认证</div></el-col>
                     <el-col :span="3"><div>操作</div></el-col>
                 </el-row>
-                <el-row v-for="(item,index) in serveUser.data" :key="index">
+                <el-row class="hovercolor" v-for="(item,index) in serveUser.data" :key="index">
                     <el-col :span="3"><div>{{item.user_num}}</div></el-col>
                     <el-col :span="3"><div>{{item.phone}}</div></el-col>
                     <el-col :span="3"><div>{{item.nickname}}</div></el-col>

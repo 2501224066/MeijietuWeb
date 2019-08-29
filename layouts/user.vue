@@ -158,12 +158,15 @@ export default {
     var mytime ,count
     if(mytime){clearInterval(mytime)}
     mytime = setInterval(() => {
-      gettoken().catch(err=>{
+      gettoken().then(val => {
+        this.$store.commit('settoken',val)
+      }).catch(err=>{
         clearInterval(mytime)
       })
       count +=1
     }, 360000);
      gettoken().then(val =>{ 
+      this.$store.commit('settoken',val)
       if(val){  
         let walletInfo ;            //得到钱包资金数据
         this.$axios.post('/walletInfo',{},{headers:{'Authorization':'Bearer'+val}}).then(res=>{

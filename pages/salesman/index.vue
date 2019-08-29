@@ -29,11 +29,11 @@
                     <el-col :span="3"><div>商品议价</div></el-col>
                     <el-col :span="3"><div>操作</div></el-col>
                 </el-row>
-                <div v-for="(item,index) in serveIndent.data" :key="index">
+                <div class="hovercolor" v-for="(item,index) in serveIndent.data" :key="index">
                     <el-col :span="4"><div>{{item.create_time}}</div></el-col>
                     <el-col :span="3"><div>{{item.indent_num}}</div></el-col>
                     <el-col :span="3"><div>{{item.buyer_name}}</div></el-col>
-                    <el-col :span="2"><div>{{item.pay_amount||'/'}}</div></el-col>
+                    <el-col :span="2"><div>{{item.total_amount||'/'}}</div></el-col>
                     <el-col :span="3"><div>{{item.seller_name}}</div></el-col>
                     <el-col :span="3"><div>{{indentStatus[item.status]}}</div></el-col>
                     <el-col :span="3"><div :class="item.bargaining_status==0?'red':''">{{item.bargaining_status==0?'未完成':item.bargaining_status==1?'已完成':'/'}}</div></el-col>
@@ -81,13 +81,14 @@
             <div class="xiangqingkuang">
                 <p>创建时间:{{xiangqingdata.create_time}}</p>
                 <p>订单号:{{xiangqingdata.indent_num}}</p>
-                <p>客服编号:{{xiangqingdata.salesman_id}}</p>
+                <p>商品模块:{{xiangqingdata.indent_item.modular_name}}</p>
+                <p>商品名称:{{xiangqingdata.indent_item.goods_title}}</p>
+                <p>商品编号:{{xiangqingdata.indent_item.goods_num}}</p>
                 <p>手续费:{{xiangqingdata.compensate_fee}}</p>
                 <p>订单价格:{{xiangqingdata.indent_amount}}</p>
                 <p>媒体主收入:{{xiangqingdata.seller_income}}</p>
                 <p>广告主昵称:{{xiangqingdata.buyer_name}}</p>
                 <p>广告主电话:{{xiangqingdata.buyer_phone}}</p>
-                <p>广告主编号:{{xiangqingdata.buyer_id}}</p>
                 <p>媒体主昵称:{{xiangqingdata.seller_name}}</p>
                 <p>媒体主电话:{{xiangqingdata.seller_phone}}</p>
                 <p>媒体主编号:{{xiangqingdata.seller_num}}</p>
@@ -114,7 +115,7 @@ export default {
             radio:'',                //是否同意议价
             yijiaprice:'',           //议价价格
             xiangqing:false,         //商品详情弹出框   
-            xiangqingdata:'',         //商品详情数据
+            xiangqingdata: {indent_item:''},         //商品详情数据
             selestatus: '',
             currentPage:1,
             serveIndent:'',          //订单数据

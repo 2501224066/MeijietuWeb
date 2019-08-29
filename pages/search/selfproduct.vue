@@ -74,6 +74,15 @@ export default {
         return { mediadata: data.data[5].theme ,listdata : selectgoods.data.data,
             selectWeixin : selectgoods.data };    
     },
+    head(){
+        return{
+            title:'搜索引擎优化|搜索引擎营销|SEO|SEM - 媒介兔-全行业&全流程_获客整合营销平台',
+            meta:[
+                {hid: 'description', name: 'description', content: '搜索引擎获客尽在媒介兔,发掘成本更低、效果更好的搜索引擎营销方法.' },
+                {hid:'keywords',name:'keywords',content:'框架户,端口户,高返户,百度开户,搜狗开户,神马开户,360开户,搜索引擎优化,搜索引擎营销,SEO,SEM,全网霸屏,问答营销,论坛营销'}
+            ]
+        }
+    },
     data() {
         return {
             loading:false,

@@ -101,16 +101,16 @@
     <!-- ================================  分页   =============================== -->
     <div class="fenye" v-show="indentlist.length!==0">
         <el-pagination
-        background
-        @current-change="handleCurrentChange"
-        :current-page.sync="currentPage"
-        :page-size="15"
-        layout="prev, pager, next, jumper"
-        :total="this.indentdata.total">
+          background
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="15"
+          layout="prev, pager, next, jumper"
+          :total="this.indentdata.total">
         </el-pagination>
     </div>
     <!-- 弹出框 -->
-    <el-dialog title="注意事项" :visible.sync="shanghcuanbtn" width="30%">
+    <!-- <el-dialog title="注意事项" :visible.sync="shanghcuanbtn" width="30%">
       <p>1.上传资料，仅允许上传一次,不允许修改。</p>
       <p>2.上传资料仅支持doc,docx,和rar,zip格式的压缩文件</p>
       <p>3.多个商品，请将多个对应的word文档放入压缩包中上传。</p>
@@ -131,7 +131,7 @@
         <el-button type="primary" @click="shanghcuanbtn = false">确 定</el-button>
         <el-button @click="shanghcuanbtn = false">取 消</el-button>
       </span>
-    </el-dialog>
+    </el-dialog> -->
     <!-- 取消订单弹出框 -->
     <el-dialog title="取消原因" :visible.sync="dialogVisible" width="30%">
       <p class="red" v-show="cancel_status!==1" style="margin-top:-20px">取消订单将扣除保证金!</p>
@@ -161,15 +161,15 @@ export default {
       currentPage:1,       //当前页数
       istruefukuan: false, //确认付款弹出框
       shanghcuanbtn:false, //上传弹出框
-      fukuanindent: "", //确认付款订单号
+      fukuanindent: "",   //确认付款订单号
       dialogVisible: false, //取消订单弹出框
       loading: true,
       indent_num: "",     //上传资料订单号
-      indentdata: "", //个人订单全部数据
-      token:'',    //不能删
+      indentdata: "",     //个人订单全部数据
+      token:'',           //不能删
       indentclass: 1,
       indentlist: [],
-      indentstatus0: [], //订单的状态分类列表
+      indentstatus0: [],  //订单的状态分类列表
       indentstatus1: [],
       indentstatus4: [],
       indentstatus7: [],
@@ -189,7 +189,7 @@ export default {
         {},
         {
           headers: {
-            Authorization: "Bearer" + localStorage.getItem("access_token")
+            Authorization: "Bearer" + this.$store.state.token
           }
         }
       )
@@ -316,8 +316,10 @@ export default {
     upload(a,b){
       if(b!==''){return this.$message({message: '只能上传一次',type: 'warning'})}
       if(this.btnwait){return this.$message({message: '操作太频繁,请稍后',type: 'warning'})}
-       this.shanghcuanbtn=true
-       this.indent_num=a
+      // this.$router.push('/user/2-3/' + a)
+      window.open('/user/2-3/' + a)
+      // this.shanghcuanbtn=true
+      // this.indent_num=a
     },
     beforeAvatarUpload() {
       this.loading = true;

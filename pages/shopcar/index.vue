@@ -235,6 +235,7 @@ export default {
         this.btnwait = false
         this.carlist.length==0
         this.finsh = true
+        this.$store.commit('settoken',localStorage.getItem('access_token'))
         setTimeout(()=>{
           this.$router.push('/user/2-1')
         },2000)
