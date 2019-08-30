@@ -123,7 +123,7 @@ export default {
   height: 40px;
   margin: 0 auto;
   align-items: flex-end;
-  font-weight: 600;
+  font-weight: 700;
 }
 .headerNav a {
   margin: 10px 40px 10px 0;

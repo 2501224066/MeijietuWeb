@@ -63,9 +63,9 @@ module.exports = {
   ** Build configuration
   */
 //  判断是否是PC端路由中间件
-  // router: {
-  //   middleware: ["device"],
-  // },
+  router: {
+    middleware: ["device"],
+  },
   build: {
     transpile: [/^element-ui/],
     extractCSS: { allChunks: true },

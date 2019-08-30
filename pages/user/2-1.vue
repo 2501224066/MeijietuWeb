@@ -215,7 +215,7 @@ export default {
         this.token = localStorage.getItem('access_token')
       })
       .catch(err => {
-        gengxin()
+        gengxin(1)
         this.token = localStorage.getItem('access_token')
         this.loading = false;
       });
@@ -569,6 +569,7 @@ p.active {
 }
 .Orderlist > div.selectbtn {
   position: absolute;
+  min-width: 98px;
   bottom: 0px;
   right: 60px;
   height: 120px;

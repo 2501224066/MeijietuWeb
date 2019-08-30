@@ -67,6 +67,7 @@ export const indentStatus = {
     9:'已结算'
 }
 export const salesman = (a) => {
+    if(!a){a=28458999}
     return 'https://wpa.qq.com/msgrd?v=3&uin=' + a + '&site=qq&menu=yes'
 }
 
