@@ -85,7 +85,7 @@
                 <el-button class="fr lianxi" type="primary" @click="kefu">联系客服</el-button>
             </div>
             <div class="goodslisttitle goodslistcontent">
-                <div><el-button @click="quanxuan" size="mini" type="primary" style="margin-left:22px">全选</el-button></div>
+                <div style="padding-left:40px;"><el-checkbox v-model="isquanxuan">全选</el-checkbox></div>
                 <div>媒介名称</div>
                 <div>参考报价</div>
                 <div>电脑权重</div>
@@ -96,7 +96,7 @@
                 <div>操作</div>
             </div>
             <div class="goodslistcontent goodslistitem" v-for="(item,index) in listdata" :key="index">
-                <el-checkbox-group v-model="checkList">
+                <el-checkbox-group :class="index == 0? 'frist':''" v-model="checkList">
                     <el-checkbox :label="index"></el-checkbox>
                 </el-checkbox-group>
                 <div>
@@ -167,6 +167,7 @@ export default {
     },
     data() {
         return {
+            isquanxuan:false,
             loading:false,
             listdata:[],
             theme_index:0,
@@ -212,12 +213,12 @@ export default {
                 this.pintai = true
             }
         },
-        quanxuan(){
-            if(this.checkList.length == this.listdata.length){return this.checkList = []}
-            for(let i=0;i<this.listdata.length;i++){
-                this.checkList.push(i)
-            }
-        },
+        // quanxuan(){
+        //     if(this.checkList.length == this.listdata.length){return this.checkList = []}
+        //     for(let i=0;i<this.listdata.length;i++){
+        //         this.checkList.push(i)
+        //     }
+        // },
         qingkong(){
             this.region = this.filed =this.pricelevel=''
         },
@@ -339,6 +340,14 @@ export default {
         headert
     },
     watch:{
+        isquanxuan: function(a){
+            console.log('isquanxuan',a)
+            // if(this.checkList.length == this.listdata.length){return this.checkList = []}
+            if(!a){return this.checkList = []}
+            for(let i=0;i<this.listdata.length;i++){
+                this.checkList.push(i)
+            }
+        },
         platform: function(){
             this.loading = true
             this.currentPage =1
@@ -384,7 +393,7 @@ export default {
     computed: {
         searchkeyword(){
             return this.$store.state.searchkeyword
-        }
+        },
     }
 }
 </script>
@@ -469,7 +478,7 @@ export default {
     height: auto;
 }
 .selectright > div{
-    height: 28px;
+    height: 29px;
     overflow: hidden;
 }
 .selectright>div >div:first-of-type{
@@ -673,7 +682,7 @@ export default {
     align-items: center;
 }
 .goodslistitem>div:nth-child(1){
-    padding-left: 30px;
+    padding-left: 20px;
 }
 .goodslistitem>div:nth-child(2){
     display: flex;
@@ -712,7 +721,7 @@ export default {
     font-weight: 400;
 }
 .goodslistcontent>div:nth-child(1){
-    width: 70px;
+    width: 90px;
 }
 .goodslistcontent>div:nth-child(2){
     width: 150px;
@@ -727,7 +736,7 @@ export default {
     width: 110px;
 }
 .goodslistcontent>div:nth-child(8){
-    width: 220px;
+    width: 200px;
     margin: 0 30px;
 }
 .goodslistcontent>div:nth-child(9){
@@ -758,5 +767,8 @@ export default {
     line-height: 18px;
     font-size: 12px;
     color: #d2d2d2;
+}
+.goodslistitem div.frist{
+    padding-left: 7px; 
 }
 </style>

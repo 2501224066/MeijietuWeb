@@ -12,9 +12,14 @@ const _016c4384 = () => interopDefault(import('..\\pages\\shopcar\\index.vue' /*
 const _f28aa766 = () => interopDefault(import('..\\pages\\user\\index.vue' /* webpackChunkName: "pages_user_index" */))
 const _42dedd38 = () => interopDefault(import('..\\pages\\login\\forgot_password.vue' /* webpackChunkName: "pages_login_forgot_password" */))
 const _18167df2 = () => interopDefault(import('..\\pages\\login\\register.vue' /* webpackChunkName: "pages_login_register" */))
+const _7b4f529e = () => interopDefault(import('..\\pages\\m\\collection.vue' /* webpackChunkName: "pages_m_collection" */))
+const _0ea75182 = () => interopDefault(import('..\\pages\\m\\indent.vue' /* webpackChunkName: "pages_m_indent" */))
 const _3d763026 = () => interopDefault(import('..\\pages\\m\\login.vue' /* webpackChunkName: "pages_m_login" */))
 const _584e29bf = () => interopDefault(import('..\\pages\\m\\my.vue' /* webpackChunkName: "pages_m_my" */))
+const _5fa26f4c = () => interopDefault(import('..\\pages\\m\\seo.vue' /* webpackChunkName: "pages_m_seo" */))
 const _b200fbca = () => interopDefault(import('..\\pages\\m\\shopcar.vue' /* webpackChunkName: "pages_m_shopcar" */))
+const _19390790 = () => interopDefault(import('..\\pages\\m\\video.vue' /* webpackChunkName: "pages_m_video" */))
+const _28f853b6 = () => interopDefault(import('..\\pages\\m\\weibo.vue' /* webpackChunkName: "pages_m_weibo" */))
 const _09e81df5 = () => interopDefault(import('..\\pages\\m\\weixin.vue' /* webpackChunkName: "pages_m_weixin" */))
 const _7444069a = () => interopDefault(import('..\\pages\\problem\\advertisers.vue' /* webpackChunkName: "pages_problem_advertisers" */))
 const _592cc5d5 = () => interopDefault(import('..\\pages\\problem\\agreement.vue' /* webpackChunkName: "pages_problem_agreement" */))
@@ -182,6 +187,14 @@ export function createRouter() {
       component: _18167df2,
       name: "login-register"
     }, {
+      path: "/m/collection",
+      component: _7b4f529e,
+      name: "m-collection"
+    }, {
+      path: "/m/indent",
+      component: _0ea75182,
+      name: "m-indent"
+    }, {
       path: "/m/login",
       component: _3d763026,
       name: "m-login"
@@ -190,9 +203,21 @@ export function createRouter() {
       component: _584e29bf,
       name: "m-my"
     }, {
+      path: "/m/seo",
+      component: _5fa26f4c,
+      name: "m-seo"
+    }, {
       path: "/m/shopcar",
       component: _b200fbca,
       name: "m-shopcar"
+    }, {
+      path: "/m/video",
+      component: _19390790,
+      name: "m-video"
+    }, {
+      path: "/m/weibo",
+      component: _28f853b6,
+      name: "m-weibo"
     }, {
       path: "/m/weixin",
       component: _09e81df5,

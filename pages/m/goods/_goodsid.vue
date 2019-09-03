@@ -12,8 +12,8 @@
              <div class="username">
                 <p class="nowrap">{{goodsData.title_about}}</p>
                 <p>粉丝数: <span style="color:orange">{{goodsData.fans_num}}</span> 地区: <span style="color:#242424">{{goodsData.region_name}}</span>  </p>
-                <p>分类领域: <span style="color:#242424">{{goodsData.filed_name}}</span> </p>
-                <div class="shoucang" @click="shoucang(item.goods_id)">
+                <p>领域分类: <span style="color:#242424">{{goodsData.filed_name}}</span> </p>
+                <div class="shoucang" @click="shoucang(goodsData.goods_id)">
                     <img :src="iscollection?'/indexicon/shouc_icon2.png':'/indexicon/shouc_icon01.png'" alt="收藏">
                 </div>
             </div>
@@ -61,9 +61,12 @@ export default {
         },
         shoucang(a){
             gettoken().then( val => {
-                return this.$axios.post('/collectionGoods',{1:a},{ headers: { Authorization: "Bearer" + val } })
+                return this.$axios.post('/collectionGoods',{goods_id_json: JSON.stringify({1:a})},{ headers: { Authorization: "Bearer" + val } })
             }).then(res => {
                 this.iscollection = true
+                alert('收藏成功')
+            }).catch(err => {
+                alert('只有广告主有收藏功能')
             })
         } 
     },

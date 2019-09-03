@@ -10,8 +10,8 @@
                <p></p>
            </div>
         </div>
-        <div class="myindent">我的订单 <span class="allindent">全部订单</span></div>
-        <div class="status">
+        <div class="myindent">我的订单 <span class="allindent" @click="indent">全部订单 <i class="el-icon-arrow-right"></i></span></div>
+        <div class="status" @click="indent">
             <div><img src="/m/status01.png" alt="待付款"><p>待付款</p></div>
             <div><img src="/m/status04.png" alt="待接单"><p>待接单</p></div>
             <div><img src="/m/status05.png" alt="执行中"><p>执行中</p></div>
@@ -19,7 +19,7 @@
             <div><img src="/m/status03.png" alt="已完成"><p>已完成</p></div>
         </div>
         <div class="jiange"></div>
-        <div class="mysc">
+        <div class="mysc" @click="coll">
             我的收藏
         </div>
         <div class="myzj">
@@ -60,7 +60,13 @@ export default {
             localStorage.setItem('access_token','')
             localStorage.setItem('userdata','')
             this.$router.push('/m')
-        }
+        },
+        indent(){
+            this.$router.push('/m/indent')
+        },
+        coll(){
+            this.$router.push('/m/collection')
+        },
     },
 }
 </script>
@@ -110,6 +116,7 @@ export default {
     float: right;
     color: #888;
     font-size: 12px;
+    padding: 3px 10px;
 }
 .jiange{
     height: 20px;

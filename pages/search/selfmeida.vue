@@ -438,7 +438,7 @@ export default {
     height: auto;
 }
 .selectright > div{
-    height: 28px;
+    height: 29px;
     overflow: hidden;
 }
 .selectright>div >div:first-of-type{

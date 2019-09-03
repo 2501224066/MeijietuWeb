@@ -144,6 +144,12 @@ input:focus{
 .imginput{
     position: relative;
 }
+.imginput p{
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    color: red;
+}
 .imgCode{
    position: absolute;
     right: 0;
