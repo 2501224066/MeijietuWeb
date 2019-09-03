@@ -33,6 +33,7 @@
       <!-- <nuxt-link to="/search/selfmeida" :style="$route.path=='/search/selfmeida'?'color:#5141ED':''">自媒体营销</nuxt-link> -->
       <nuxt-link to="/search/selfproduct" :style="$route.path=='/search/selfproduct'?'color:#5141ED':''">SEO</nuxt-link>
       <nuxt-link to="/search/service" :style="$route.path=='/search/service'?'color:#5141ED':''">服务项目</nuxt-link>
+      <nuxt-link to="/search/info" :style="$route.path=='/search/info'?'color:#5141ED':''">信息流广告</nuxt-link>
     </div>
     </div>
     <div class="banner">

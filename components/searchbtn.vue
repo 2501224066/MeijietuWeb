@@ -30,7 +30,8 @@ export default {
                 },{
                 value: '4',
                 label: '软文营销'
-                }],
+                }
+            ],
             value:'1',
         }
     },
