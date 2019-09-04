@@ -1,6 +1,6 @@
 <template>
     <div class="login_all">
-        <div v-if="status ==1">
+        <div v-if="status == 1">
             <div class="mheader">
                 登录
             </div>
@@ -28,6 +28,25 @@
                 <span class="zhuce" @click="zhuce">注册账号</span>
             </div>
         </div> 
+        <!-- <div v-if="status == 2">
+            <div class="mheader">忘记密码</div>
+            <div class="input_l">
+                <div>
+                    <input type="text" v-model="phone" placeholder="请输入手机号">
+                </div>
+                <div>
+                    <input type="text" v-model="phone" placeholder="图形验证码">
+                    <img @click="shuaxin" class="imgCode" :src="imgCode" alt="验证码">
+                </div>
+                <div>
+                    <input type="text" v-model="phone" placeholder="短信验证码">
+                </div>
+                <div class="btn_l" @click="login">
+                    确定
+                </div>
+            </div>
+        </div> -->
+        <div v-if="status == 3"></div>
     </div>
 </template>
 <script>
@@ -158,5 +177,8 @@ input:focus{
 .footer_login{
     overflow: hidden;
     padding-bottom: 50px;
+}
+.imgforgot{
+    position: relative;
 }
 </style>

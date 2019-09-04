@@ -336,6 +336,8 @@ export default {
 .topleftname > div:nth-child(3){
     width: 240px;
     padding-left: 40px;
+    overflow: hidden;
+    max-height: 100px;
 }
 .touxiang{
     width: 108px;

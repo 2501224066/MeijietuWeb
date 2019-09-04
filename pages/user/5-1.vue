@@ -410,6 +410,14 @@
             </el-select>
           </div>
         </div>
+          <div class="applyaline">
+          <div class="applyleft">
+            <span class="red">*</span>粉丝数:
+          </div>
+          <div class="applyright">
+            <el-input v-model="fans_num" maxlength="10" placeholder="请输入粉丝数"></el-input>
+          </div>
+        </div>
         <div class="applyaline">
           <div class="applyleft">
             入口网址:
@@ -900,6 +908,7 @@ export default {
                 reserve_status: this.isorder,
                 platform_id: this.platform_id,
                 region_id: this.region_id,
+                fans_num: this.fans_num
               },
               { headers: { Authorization: "Bearer" + val } }
             );
