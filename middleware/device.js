@@ -8,7 +8,7 @@ export default function(context) {
  context.deviceType = deviceType(context.userAgent);
  // 这里注入到store,是因为我部分页面需要判断机型请求不同的数据,
  // 你们没有用到的话可以移除
- context.store.commit("SetDeviceType", context.userAgent);
+ context.store.commit("SetDeviceType", 'userAgent:'+context.userAgent);
  
  // 若是判断UA非移动端的,就在这里做处理了..
  // context.redirect(status,url) 这个可以重定向到外部网站
