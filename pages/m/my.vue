@@ -51,7 +51,6 @@ export default {
         }).then( res => {
             this.money = res.data.data.available_money
         }).catch( err => {
-            console.log(err.response.data.message)
             return this.$router.push('/m/login')
         })
     },

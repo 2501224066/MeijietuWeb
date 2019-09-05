@@ -5,9 +5,9 @@
             媒体分类
         </div>
         <div class="fenlei">
-           <nuxt-link to="/m/weixin">微信营销</nuxt-link>
+            <nuxt-link to="/m/weixin">微信营销</nuxt-link>
             <nuxt-link to="/m/video">短视频营销</nuxt-link>
-            <nuxt-link to="/m/weibo">微博营销</nuxt-link>
+            <nuxt-link class="blue" to="/m/weibo">微博营销</nuxt-link>
             <nuxt-link to="/m/seo">套餐SEO</nuxt-link>
         </div>
         <div class="select">
@@ -120,6 +120,7 @@ export default {
     /* height: 100px; */
     overflow: hidden;
     color: #888;
+    font-size: 15px;
     border-bottom: 1px solid #d2d2d2;
 }
 .fenlei a{

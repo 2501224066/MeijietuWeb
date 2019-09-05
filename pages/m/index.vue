@@ -31,6 +31,7 @@
 <script>
 import {gettoken} from '@@/assets/commen.js'
 
+
 export default {
     layout:'phone',
     data() {

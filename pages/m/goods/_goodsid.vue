@@ -64,9 +64,9 @@ export default {
                 return this.$axios.post('/collectionGoods',{goods_id_json: JSON.stringify({1:a})},{ headers: { Authorization: "Bearer" + val } })
             }).then(res => {
                 this.iscollection = true
-                alert('收藏成功')
+                this.$message({message: '收藏成功',type: 'success'})
             }).catch(err => {
-                alert('只有广告主有收藏功能')
+                this.$message.error('失败:' + err.response.data.message)
             })
         } 
     },
@@ -76,7 +76,7 @@ export default {
 .mheader{
     text-align: center;
     width: 100%;
-    font-size: 20px;
+    font-size: 18px;
     height: 50px;
     line-height: 45px;
     border-bottom: 1px solid #ccc;
@@ -87,7 +87,7 @@ export default {
     z-index: 99;
 }
 .mfanhui{
-    font-size: 24px;
+    font-size: 18px;
     float: left;
     margin: 13px 0 0 12px;
 }

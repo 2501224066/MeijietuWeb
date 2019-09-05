@@ -12,6 +12,9 @@
 export default {
     methods: {
         my(){
+            if(!localStorage.getItem('userdata')){
+                return this.$router.push('/m/login')
+            }
             this.$router.push('/m/my')
         },
         shopcar(){
