@@ -5,7 +5,7 @@
     <div class="banxin" style="margin-top:200px">
       <div class="plate">
         <div class="plateheader">
-          <h3>微信公众号</h3>
+          <h3>微信公众号{{$store.state.deviceType}}</h3>
           <ul>
             <li :class="weixinclass===1?'select':''" @click="weixinclass=1">金融理财</li>
             <li :class="weixinclass===2?'select':''" @click="weixinclass=2">情感美妆</li>

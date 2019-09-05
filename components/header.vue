@@ -27,7 +27,7 @@
       <!-- <nuxt-link to>直播营销</nuxt-link> -->
       <nuxt-link to="/search/weibo" :style="$route.path=='/search/weibo'?'color:#5141ED':''">微博营销</nuxt-link>
       <nuxt-link to="/search/softarticle" :style="$route.path=='/search/softarticle'?'color:#5141ED':''">软文营销</nuxt-link>
-      <nuxt-link to="/search/selfmeida" target="_blank" :style="$route.path=='/search/selfmeida'?'color:#5141ED':''">自媒体营销</nuxt-link>
+      <nuxt-link to="/search/selfmeida" :style="$route.path=='/search/selfmeida'?'color:#5141ED':''">自媒体营销</nuxt-link>
       <nuxt-link to="/search/selfproduct" :style="$route.path=='/search/selfproduct'?'color:#5141ED':''">SEO</nuxt-link>
       <nuxt-link to="/search/service" :style="$route.path=='/search/service'?'color:#5141ED':''">服务项目</nuxt-link>
       <nuxt-link to="/search/info" :style="$route.path=='/search/info'?'color:#5141ED':''">信息流广告</nuxt-link>

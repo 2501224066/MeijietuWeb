@@ -3,7 +3,7 @@
     <shopright></shopright>
     <div class="header">
       <el-row class="top">
-        <el-col :span="4">
+        <el-col :span="4" class="cr" @click="pushshouye">
           欢迎来到媒介兔!
         </el-col>
         <el-col :span="4"></el-col>
@@ -119,6 +119,9 @@ export default {
     kefu(){
             window.open('https://wpa.qq.com/msgrd?v=3&uin='+JSON.parse(localStorage.getItem('salesman')).salesman_qq_ID+'&site=qq&menu=yes') 
     },
+    pushshouye(){
+      this.$router.push('/')
+    }
   },
   components:{
     headert,shopright

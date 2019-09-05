@@ -66,7 +66,7 @@ export default {
                 this.iscollection = true
                 this.$message({message: '收藏成功',type: 'success'})
             }).catch(err => {
-                this.$message.error('失败:' + err.response.data.message)
+                this.$message.error('失败:只有广告主拥有此功能')
             })
         } 
     },

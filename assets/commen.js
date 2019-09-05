@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import { url } from '@@/static/comm.js'
-// const url = 'http://develop_webapi.meijietu.cn/api'          //测试
-const url = 'https://back.meijietu.cn/api'                      //线上
+const url = 'http://develop_webapi.meijietu.cn/api'          //测试
+// const url = 'https://back.meijietu.cn/api'                      //线上
 export const gettoken = async () => {
     var newtoken
     var oldtoken = localStorage.getItem('access_token')
