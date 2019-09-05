@@ -5,7 +5,7 @@
     <div class="banxin" style="margin-top:200px">
       <div class="plate">
         <div class="plateheader">
-          <h3>微信公众号{{$store.state.deviceType}}</h3>
+          <h3>微信公众号{{test}}</h3>
           <ul>
             <li :class="weixinclass===1?'select':''" @click="weixinclass=1">金融理财</li>
             <li :class="weixinclass===2?'select':''" @click="weixinclass=2">情感美妆</li>
@@ -552,6 +552,7 @@ export default {
       videoclass: 1,
       weixincolle:[],     //商品收藏goods_id数组
       iswait:false,
+      test:'',
     };
   },
   components: {
@@ -590,7 +591,8 @@ export default {
         localStorage.setItem('salesman',JSON.stringify(res.data.data))
       })
     }
-    
+    this.test = JSON.stringify(this.$store.state.deviceType)
+    console.log(this.$store.state.deviceType)
     // this.$store.commit('setsalesman',this.indexData)
   },
 }

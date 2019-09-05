@@ -135,7 +135,7 @@ export default {
   // },
   mounted() {
     if( /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
-      this.$router.push('/m')
+      console.log(navigator.userAgent)
     }else{
       console.log('PC')
     }
