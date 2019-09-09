@@ -50,7 +50,7 @@ export default {
             this.userdata = result.data.data
             localStorage.setItem('userdata', JSON.stringify(result.data.data))
         }).catch(err => {
-            return this.$router.push('/m/login')
+            this.$message.error('失败:' + err.response.data.message)
         })
         
     },
