@@ -3,8 +3,11 @@
         <div class="mheader">
             <img src="/m/logo01.png" alt="媒介兔">
         </div>
-        <div class="banner">
+        <!-- <div class="banner">
             <img :src="$store.state.header_img + banner[1].img" alt="">
+        </div> -->
+        <div class="banner">
+            <img src="/m/banner01.png" alt="">
         </div>
         <div class="mtab">
             <nuxt-link to="/m/weixin" tag="div"><img src="/m/tab01.png" alt="微信营销"><p>微信营销</p></nuxt-link>
@@ -20,8 +23,8 @@
                 <img class="headerImg" :src="$store.state.header_img + item.avatar_url" :alt="item.title">
                 <div>
                     <div class="goodstitle">{{item.title}}</div>
-                    <div>所属分类: {{item.theme_name}}</div>
-                    <div>粉丝数: {{item.fans_num}}</div>
+                    <div style="margin: 4px 0">所属分类: {{item.theme_name}}</div>
+                    <div>粉丝数: <span class="orange">{{item.fans_num}}</span></div>
                 </div>
                 <img class="jinru" src="/indexicon/mgoods01.png" alt="进入详情">
             </div>
@@ -77,26 +80,22 @@ export default {
 </script>
 <style scoped>
 .mheader{
-    padding: 5px;
-    height: 24px;
+    padding: 13px;
+    height: 44px;
     background-color: #fff;
 }
 .mheader img{
-    width: 50%;
+    width: 194px;
 }
 .banner{
     width: 100%;
-    height: 160px;
     overflow: hidden;
 }
 .banner img{
-    position: relative;
-    height: 160px;
-    left: 50%;
-    margin-left: -255px;
+    width: 100%;
 }
 .mtab{
-    height: 90px;
+    height: 100px;
     background: #f7f7f7;
 }
 .mtab div{
@@ -114,7 +113,6 @@ export default {
 }
 .mgoods{
     background-color: #fff;
-    margin-bottom: 38px;
     min-height: 300px
 }
 .mgoods_header{
@@ -122,7 +120,7 @@ export default {
     line-height: 35px;
     padding-left: 20px;
     font-size: 14px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #d2d2d2;
     position: relative;
 }
 .mgoods_header::before{
@@ -138,7 +136,7 @@ export default {
     height: 106px;
     margin: 0 20px;
     padding: 15px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #d2d2d2;
 }
 .mgoods_list > div {
     float: left;
@@ -152,7 +150,6 @@ export default {
     border-radius: 50%
 }
 .goodstitle{
-    margin-top: 10px;
     font-size: 14px;
     color: #242424;
 }
@@ -160,5 +157,8 @@ export default {
     width: 16px;
     float: right;
     margin: 30px 10px 0 0;
+}
+.orange{
+    color: #FF7200;
 }
 </style>

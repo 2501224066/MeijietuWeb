@@ -1,0 +1,2 @@
+exports.ids=[5],exports.modules={248:function(t,e,r){"use strict";r.r(e);var o={mounted(){console.log(this.$route.params)}},l=r(1),component=Object(l.a)(o,function(){var t=this.$createElement;return(this._self._c||t)("div",[])},[],!1,null,null,"747b540f");e.default=component.exports}};
+//# sourceMappingURL=91429faaed5d8f114dd5.js.map

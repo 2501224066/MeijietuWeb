@@ -41,18 +41,18 @@ export default {
         }
     },
     mounted(){
-        if(localStorage.getItem('userdata')){
-            this.userdata = JSON.parse(localStorage.getItem('userdata'))
-        }else {
-            return this.$router.push('/m/login')
-        }
-        gettoken().then( val => {
-            return this.$axios.post('/walletInfo',{},{ headers: { Authorization: "Bearer" + val } })
-        }).then( res => {
-            this.money = res.data.data.available_money
-        }).catch( err => {
+        gettoken().then(val => {
+            this.$axios.post('/walletInfo',{},{ headers: { Authorization: "Bearer" +  val } }).then(res => {
+                this.money = res.data.data.available_money
+            })
+            return this.$axios.post('/me',{},{ headers: { Authorization: "Bearer" + val } })
+        }).then( result => {
+            this.userdata = result.data.data
+            localStorage.setItem('userdata', JSON.stringify(result.data.data))
+        }).catch(err => {
             return this.$router.push('/m/login')
         })
+        
     },
     methods: {
         signOut(){

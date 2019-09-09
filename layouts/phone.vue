@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="all_m">
         <nuxt/>
         <div class="mfooter">
             <div class="indexPage" @click="index"><img src="/m/footer01.png" alt="首页"><p>首页</p> </div>
@@ -30,6 +30,9 @@ export default {
 }
 </script>
 <style scoped>
+.all_m{
+    padding-bottom: 50px;
+}
 .mfooter{
     position: fixed;
     bottom: 0;
@@ -50,8 +53,8 @@ export default {
     padding-top: 5px;
 }
 .mfooter div img{
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 }
 /* .indexPage{
     background: url() 49px 4px/24px 24px no-repeat;

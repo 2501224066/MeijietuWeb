@@ -1,5 +1,5 @@
 <template>
-    <div class="shopall">
+    <div class="shopall" v-loading="iswait">
         <div class="mheader">购物车</div>
         <div class="goodslist" v-for="(item,index) in shopcar" :key="index">
             <img :src="$store.state.header_img + item.goods.avatar_url" :alt="item.goods.title">
@@ -15,7 +15,8 @@
             <p>合计:<span class="red">￥{{checkpir}}</span></p>
         </div>
         <div class="alert" v-show="isjiesuan">
-            <div>
+            <div class="alert_c">
+                <img src="/m/mshop_01.png" alt="请前往PC端媒介兔网站进行操作">
                 <p>订单操作请登录媒介兔网站进行！</p>
                 <p>www.meijietu.cn</p>
                 <div class="truebtn cr" @click="truebtn">确定</div>
@@ -31,6 +32,7 @@ export default {
         return {
             shopcar: [],
             isjiesuan: false,
+            iswait:true,
         }
     },
     mounted() {
@@ -40,9 +42,10 @@ export default {
         .then( res => {
             console.log(res,'res')
             this.shopcar = res.data
+            this.iswait = false
         }).catch(err => {
             console.log(err.response,'err')
-            this.$router.push('/m/login')
+            this.iswait = false
         })
     },
     methods: {
@@ -168,5 +171,10 @@ export default {
 .alert > div > p:nth-child(2) {
     font-size: 15px;
     color: #5141ED;
+}
+.alert_c img{
+    text-align: center;
+    margin: 20px 0;
+    width: 99px;
 }
 </style>

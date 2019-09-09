@@ -37,6 +37,7 @@ const _45896940 = () => interopDefault(import('..\\pages\\search\\selfmeida.vue'
 const _2508dd21 = () => interopDefault(import('..\\pages\\search\\selfproduct.vue' /* webpackChunkName: "pages_search_selfproduct" */))
 const _6cd8d122 = () => interopDefault(import('..\\pages\\search\\service\\index.vue' /* webpackChunkName: "pages_search_service_index" */))
 const _5605460a = () => interopDefault(import('..\\pages\\search\\softarticle.vue' /* webpackChunkName: "pages_search_softarticle" */))
+const _57d01daf = () => interopDefault(import('..\\pages\\search\\trademark.vue' /* webpackChunkName: "pages_search_trademark" */))
 const _5e520c0e = () => interopDefault(import('..\\pages\\search\\video.vue' /* webpackChunkName: "pages_search_video" */))
 const _6e115834 = () => interopDefault(import('..\\pages\\search\\weibo.vue' /* webpackChunkName: "pages_search_weibo" */))
 const _4a374f58 = () => interopDefault(import('..\\pages\\search\\weixin.vue' /* webpackChunkName: "pages_search_weixin" */))
@@ -286,6 +287,10 @@ export function createRouter() {
       path: "/search/softarticle",
       component: _5605460a,
       name: "search-softarticle"
+    }, {
+      path: "/search/trademark",
+      component: _57d01daf,
+      name: "search-trademark"
     }, {
       path: "/search/video",
       component: _5e520c0e,
