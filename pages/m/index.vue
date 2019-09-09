@@ -12,6 +12,7 @@
         <div class="mtab">
             <nuxt-link to="/m/weixin" tag="div"><img src="/m/tab01.png" alt="微信营销"><p>微信营销</p></nuxt-link>
             <nuxt-link to="/m/video" tag="div"><img src="/m/tab02.png" alt="视频营销"><p>视频营销</p></nuxt-link>
+            <nuxt-link to="/m/ruanwen" tag="div"><img src="/m/tab05.png" alt="视频营销"><p>软文营销</p></nuxt-link>
             <nuxt-link to="/m/weibo" tag="div"><img src="/m/tab03.png" alt="微博营销"><p>微博营销</p></nuxt-link>
             <nuxt-link to="/m/seo" tag="div"><img src="/m/tab04.png" alt="SEO"><p>SEO</p></nuxt-link>
         </div>
@@ -95,18 +96,18 @@ export default {
     width: 100%;
 }
 .mtab{
-    height: 100px;
+    height: 90px;
     background: #f7f7f7;
 }
 .mtab div{
-    width: 25%;
+    width: 20%;
     float: left;
     text-align: center;
     padding-top: 12px;
     height: 90px;
 }
 .mtab div img{
-    width: 50px;
+    width: 70%;
 }
 .mtab p{
     font-size: 12px

@@ -18,7 +18,9 @@
                 </div>
             </div>
             <div class="goodsprice" v-for="(item,index) in goodsData.goods_price" :key="index" v-show="item.price != 0">
-                {{item.priceclassify_name}} : <span class="red">￥{{item.price}}元</span>  
+                <div class="fl">
+                    {{item.priceclassify_name}} : <span class="red">￥{{item.price}}元</span>  
+                </div>
                 <div class="fr shopcar" @click="addshop(item.goods_id,item.goods_price_id)">加入购物车</div>
             </div>
         </div>

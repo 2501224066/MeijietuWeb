@@ -583,6 +583,9 @@ export default {
     }
   },
   mounted() {
+    if(document.body.clientWidth<500){
+      this.$router.push('/m')
+    }
     bp()
     hmt()
     // localStorage.setItem('salesman',JSON.stringify(this.indexData.randomSalesman))

@@ -16,6 +16,7 @@ const _7b4f529e = () => interopDefault(import('..\\pages\\m\\collection.vue' /* 
 const _0ea75182 = () => interopDefault(import('..\\pages\\m\\indent.vue' /* webpackChunkName: "pages_m_indent" */))
 const _3d763026 = () => interopDefault(import('..\\pages\\m\\login.vue' /* webpackChunkName: "pages_m_login" */))
 const _584e29bf = () => interopDefault(import('..\\pages\\m\\my.vue' /* webpackChunkName: "pages_m_my" */))
+const _922670a6 = () => interopDefault(import('..\\pages\\m\\ruanwen.vue' /* webpackChunkName: "pages_m_ruanwen" */))
 const _5fa26f4c = () => interopDefault(import('..\\pages\\m\\seo.vue' /* webpackChunkName: "pages_m_seo" */))
 const _b200fbca = () => interopDefault(import('..\\pages\\m\\shopcar.vue' /* webpackChunkName: "pages_m_shopcar" */))
 const _19390790 = () => interopDefault(import('..\\pages\\m\\video.vue' /* webpackChunkName: "pages_m_video" */))
@@ -203,6 +204,10 @@ export function createRouter() {
       path: "/m/my",
       component: _584e29bf,
       name: "m-my"
+    }, {
+      path: "/m/ruanwen",
+      component: _922670a6,
+      name: "m-ruanwen"
     }, {
       path: "/m/seo",
       component: _5fa26f4c,
